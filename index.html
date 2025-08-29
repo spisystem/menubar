@@ -1,154 +1,155 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bar Centrale - Menu</title>
-    <style>
-        /* Reset e base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bar Centrale - Menu Moderno</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        color: #333;
+    }
 
-        body {
-            background-color: #fdf6e3;
-            color: #333;
-            line-height: 1.6;
-        }
+    header {
+        text-align: center;
+        padding: 50px 20px;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        color: white;
+        font-size: 3em;
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
 
+    .menu-section {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .category {
+        margin-bottom: 50px;
+    }
+
+    .category h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+        color: #ff7e5f;
+        border-bottom: 3px solid #ff7e5f;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+    .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .product-card {
+        background-color: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .product-name {
+        font-weight: 600;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
+
+    .product-price {
+        font-weight: 600;
+        color: #feb47b;
+        font-size: 1em;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px 20px;
+        background-color: #333;
+        color: white;
+        margin-top: 50px;
+    }
+
+    @media(max-width: 600px){
         header {
-            background-color: #d2691e;
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 2.5em;
-            font-weight: bold;
-            letter-spacing: 2px;
+            font-size: 2em;
+            padding: 30px 10px;
         }
-
-        .menu-section {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .category {
-            margin-bottom: 40px;
-        }
-
-        .category h2 {
-            border-bottom: 2px solid #d2691e;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            color: #d2691e;
-        }
-
-        .product {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .product-name {
-            font-weight: 600;
-        }
-
-        .product-price {
-            color: #d2691e;
-            font-weight: bold;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: #333;
-            color: #fff;
-            margin-top: 50px;
-        }
-
-        /* Responsivo */
-        @media (max-width: 600px) {
-            header {
-                font-size: 2em;
-            }
-
-            .product {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .product-price {
-                margin-top: 5px;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
 
-<header>
-    Bar Centrale
-</header>
+<header>Bar Centrale</header>
 
 <section class="menu-section">
-
     <div class="category">
         <h2>Colazioni</h2>
-        <div class="product">
-            <span class="product-name">Cappuccino</span>
-            <span class="product-price">€2,50</span>
-        </div>
-        <div class="product">
-            <span class="product-name">Cornetto</span>
-            <span class="product-price">€1,80</span>
-        </div>
-        <div class="product">
-            <span class="product-name">Tè</span>
-            <span class="product-price">€2,00</span>
+        <div class="products">
+            <div class="product-card">
+                <div class="product-name">Cappuccino</div>
+                <div class="product-price">€2,50</div>
+            </div>
+            <div class="product-card">
+                <div class="product-name">Cornetto</div>
+                <div class="product-price">€1,80</div>
+            </div>
+            <div class="product-card">
+                <div class="product-name">Tè</div>
+                <div class="product-price">€2,00</div>
+            </div>
         </div>
     </div>
 
     <div class="category">
         <h2>Pranzi</h2>
-        <div class="product">
-            <span class="product-name">Panino Prosciutto e Formaggio</span>
-            <span class="product-price">€5,50</span>
-        </div>
-        <div class="product">
-            <span class="product-name">Insalata Mista</span>
-            <span class="product-price">€4,50</span>
-        </div>
-        <div class="product">
-            <span class="product-name">Pasta del Giorno</span>
-            <span class="product-price">€6,50</span>
+        <div class="products">
+            <div class="product-card">
+                <div class="product-name">Panino Prosciutto e Formaggio</div>
+                <div class="product-price">€5,50</div>
+            </div>
+            <div class="product-card">
+                <div class="product-name">Insalata Mista</div>
+                <div class="product-price">€4,50</div>
+            </div>
+            <div class="product-card">
+                <div class="product-name">Pasta del Giorno</div>
+                <div class="product-price">€6,50</div>
+            </div>
         </div>
     </div>
 
     <div class="category">
         <h2>Bevande</h2>
-        <div class="product">
-            <span class="product-name">Acqua Minerale</span>
-            <span class="product-price">€1,50</span>
-        </div>
-        <div class="product">
-            <span class="product-name">Bibita in Lattina</span>
-            <span class="product-price">€2,00</span>
-        </div>
-        <div class="product">
-            <span class="product-name">Birra alla Spina</span>
-            <span class="product-price">€3,50</span>
+        <div class="products">
+            <div class="product-card">
+                <div class="product-name">Acqua Minerale</div>
+                <div class="product-price">€1,50</div>
+            </div>
+            <div class="product-card">
+                <div class="product-name">Bibita in Lattina</div>
+                <div class="product-price">€2,00</div>
+            </div>
+            <div class="product-card">
+                <div class="product-name">Birra alla Spina</div>
+                <div class="product-price">€3,50</div>
+            </div>
         </div>
     </div>
-
 </section>
 
-<footer>
-    &copy; 2025 Bar Centrale - Tutti i diritti riservati
-</footer>
+<footer>&copy; 2025 Bar Centrale - Tutti i diritti riservati</footer>
 
 </body>
 </html>
