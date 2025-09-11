@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>SPI Menù — Bianco & Nero</title>
+<title>SPI Menù — Elegante Dark</title>
+<meta name="description" content="Bozza sito demo stile ristorante premium scuro, elegante e minimal." />
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   body{
@@ -11,114 +12,112 @@
     background:#000;
     color:#fff;
     line-height:1.6;
+    padding:24px;
   }
 
-  /* Hero */
+  /* Header */
   header{
+    max-width:900px;
+    margin:0 auto 32px auto;
     text-align:center;
-    padding:60px 20px 40px 20px;
-    background:#000;
-    border-bottom:1px solid #333;
+    border-bottom:1px solid #444;
+    padding-bottom:16px;
   }
   header h1{
     font-family:"Playfair Display", Georgia, serif;
-    font-size:44px;
+    font-size:32px;
     font-weight:700;
     letter-spacing:1px;
-    margin-bottom:10px;
     color:#fff;
   }
   header p{
-    font-size:15px;
-    color:#ccc;
+    font-size:14px;
+    color:#aaa;
+    margin-top:4px;
   }
 
   /* Nav categories */
   nav{
-    background:#fff;
-    padding:20px;
+    margin:24px auto;
     text-align:center;
   }
   .cat-btn{
     display:inline-block;
     margin:6px;
-    padding:8px 18px;
-    border:1px solid #000;
+    padding:8px 14px;
+    border:1px solid #fff;
     border-radius:999px;
-    background:#fff;
-    color:#000;
+    background:#000;
+    color:#fff;
     cursor:pointer;
-    font-size:15px;
+    font-size:14px;
     transition:all .2s;
   }
-  .cat-btn:hover{background:#000;color:#fff;}
-  .cat-btn.active{background:#000;color:#fff;}
+  .cat-btn:hover{background:#111;}
+  .cat-btn.active{background:#fff;color:#000;}
 
-  /* Main */
-  main section{
+  /* Section */
+  main{
     max-width:900px;
     margin:0 auto;
-    padding:60px 20px;
   }
-  main section:nth-child(even){
-    background:#111;
-  }
-  main section:nth-child(odd){
-    background:#fff;
-    color:#000;
+  section{
+    margin-bottom:40px;
   }
   section h2{
     font-family:"Playfair Display", Georgia, serif;
-    font-size:28px;
-    border-bottom:1px solid currentColor;
-    padding-bottom:10px;
-    margin-bottom:24px;
+    font-size:22px;
+    border-bottom:1px solid #444;
+    padding-bottom:6px;
+    margin-bottom:16px;
+    color:#fff;
   }
 
-  /* Item */
+  /* Menu item */
   .item{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:18px 0;
-    border-bottom:1px dotted #666;
-    gap:18px;
+    padding:12px 0;
+    border-bottom:1px dotted #333;
+    gap:12px;
   }
-  section:nth-child(odd) .item{border-bottom:1px dotted #bbb;}
   .item img{
-    width:55px;
-    height:55px;
+    width:50px;
+    height:50px;
     object-fit:cover;
     border-radius:50%;
-    border:2px solid currentColor;
+    border:1px solid #555;
   }
-  .item-info{flex:1;}
+  .item-info{
+    flex:1;
+  }
   .item-title{
     font-weight:600;
-    font-size:18px;
-    color:inherit;
+    font-size:16px;
+    color:#fff;
   }
   .item-desc{
     font-size:13px;
-    color:inherit;
-    opacity:.6;
+    color:#aaa;
   }
   .item-price{
     font-weight:700;
-    font-size:16px;
+    font-size:15px;
     margin-left:12px;
     white-space:nowrap;
-    color:inherit;
+    color:#fff;
   }
 
   /* Footer */
   footer{
+    max-width:900px;
+    margin:40px auto 0 auto;
+    padding-top:20px;
+    border-top:1px solid #444;
     text-align:center;
-    padding:40px 20px;
-    background:#000;
-    border-top:1px solid #333;
-    font-size:14px;
-    color:#888;
+    font-size:13px;
+    color:#777;
   }
 </style>
 </head>
@@ -126,7 +125,7 @@
 
 <header>
   <h1>SPI Menù</h1>
-  <p>Bozza elegante in bianco e nero</p>
+  <p>Bozza elegante dark — bianco & nero</p>
 </header>
 
 <nav>
@@ -142,7 +141,7 @@
   <section data-category="caffetteria">
     <h2>Caffetteria</h2>
     <div class="item">
-      <img src="https://picsum.photos/55?random=1" alt="Cappuccino">
+      <img src="https://picsum.photos/50?random=1" alt="Cappuccino">
       <div class="item-info">
         <div class="item-title">Cappuccino classico</div>
         <div class="item-desc">Espresso con latte montato a crema e cacao.</div>
@@ -150,7 +149,7 @@
       <div class="item-price">€2,50</div>
     </div>
     <div class="item">
-      <img src="https://picsum.photos/55?random=2" alt="Cornetto">
+      <img src="https://picsum.photos/50?random=2" alt="Cornetto">
       <div class="item-info">
         <div class="item-title">Cornetto al burro</div>
         <div class="item-desc">Fresco ogni mattina, vuoto o con crema.</div>
@@ -163,7 +162,7 @@
   <section data-category="pizze">
     <h2>Pizze</h2>
     <div class="item">
-      <img src="https://picsum.photos/55?random=3" alt="Pizza Margherita">
+      <img src="https://picsum.photos/50?random=3" alt="Pizza Margherita">
       <div class="item-info">
         <div class="item-title">Margherita</div>
         <div class="item-desc">Pomodoro San Marzano, mozzarella, basilico.</div>
@@ -171,7 +170,7 @@
       <div class="item-price">€7,50</div>
     </div>
     <div class="item">
-      <img src="https://picsum.photos/55?random=4" alt="Pizza Prosciutto e Funghi">
+      <img src="https://picsum.photos/50?random=4" alt="Pizza Prosciutto e Funghi">
       <div class="item-info">
         <div class="item-title">Prosciutto e funghi</div>
         <div class="item-desc">Prosciutto cotto e funghi champignon.</div>
@@ -184,7 +183,7 @@
   <section data-category="dolci">
     <h2>Dolci</h2>
     <div class="item">
-      <img src="https://picsum.photos/55?random=5" alt="Tiramisù">
+      <img src="https://picsum.photos/50?random=5" alt="Tiramisù">
       <div class="item-info">
         <div class="item-title">Tiramisù monoporzione</div>
         <div class="item-desc">Classico al mascarpone, 120 g.</div>
@@ -197,7 +196,7 @@
   <section data-category="bevande">
     <h2>Bevande</h2>
     <div class="item">
-      <img src="https://picsum.photos/55?random=6" alt="Aranciata">
+      <img src="https://picsum.photos/50?random=6" alt="Aranciata">
       <div class="item-info">
         <div class="item-title">Aranciata</div>
         <div class="item-desc">Bibita frizzante 330 ml.</div>
@@ -208,11 +207,14 @@
 </main>
 
 <footer>
-  © <span id="year"></span> SPI Menù — Demo Bianco & Nero
+  © <span id="year"></span> SPI Menù — Bozza Dark Elegante
 </footer>
 
 <script>
+  // anno dinamico
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // filtro categorie
   const buttons=document.querySelectorAll('.cat-btn');
   const sections=document.querySelectorAll('main section');
   buttons.forEach(btn=>{
