@@ -74,6 +74,15 @@
   #mobile-menu a:hover{
     background:#222;
   }
+  #mobile-menu .map-link img{
+    display:block;
+    width:150px;
+    height:100px;
+    object-fit:cover;
+    border-radius:6px;
+    margin:6px auto;
+    border:1px solid #555;
+  }
 
   /* Nav categories */
   nav{
@@ -173,8 +182,10 @@
   <button id="menu-toggle" aria-label="Apri menù">☰</button>
   <div id="mobile-menu">
     <a href="#about">Chi siamo</a>
-    <a href="#location">Dove siamo</a>
     <a href="#contact">Contatti</a>
+    <a href="https://goo.gl/maps/xxxxxx" target="_blank" class="map-link">Posizione
+      <img src="https://maps.googleapis.com/maps/api/staticmap?center=Via+Roma+123,Roma,Italy&zoom=15&size=150x100&maptype=roadmap&markers=color:red%7CVia+Roma+123,Roma" alt="Mappa piccola">
+    </a>
   </div>
 </header>
 
@@ -191,13 +202,6 @@
   <section id="about">
     <h2>Chi siamo</h2>
     <p>Siamo una piccola attività dedicata a offrire prodotti freschi e di qualità: caffè, pizze, dolci e bevande selezionate.</p>
-  </section>
-
-  <!-- Dove siamo -->
-  <section id="location">
-    <h2>Dove siamo</h2>
-    <p>Via Roma 123, 00100 Roma, Italia</p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </section>
 
   <!-- Caffetteria -->
@@ -273,6 +277,15 @@
     <h2>Contatti</h2>
     <p>Email: info@spimenu.it</p>
     <p>Telefono: +39 0123 456789</p>
+  </section>
+
+  <!-- Posizione -->
+  <section id="location">
+    <h2>Dove siamo</h2>
+    <p>Via Roma 123, 00100 Roma, Italia</p>
+    <a href="https://goo.gl/maps/xxxxxx" target="_blank">
+      <img src="https://maps.googleapis.com/maps/api/staticmap?center=Via+Roma+123,Roma,Italy&zoom=15&size=300x200&maptype=roadmap&markers=color:red%7CVia+Roma+123,Roma" alt="Mappa">
+    </a>
   </section>
 </main>
 
