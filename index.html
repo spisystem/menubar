@@ -7,6 +7,7 @@
 <meta name="description" content="Bozza sito demo stile ristorante premium scuro, elegante e minimal." />
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html { scroll-behavior: smooth; }
   body{
     font-family: "Helvetica Neue", Arial, sans-serif;
     background:#000;
@@ -61,6 +62,7 @@
     border-radius:6px;
     padding:10px;
     text-align:left;
+    z-index:100;
   }
   #mobile-menu a{
     display:block;
@@ -171,10 +173,7 @@
   <button id="menu-toggle" aria-label="Apri menù">☰</button>
   <div id="mobile-menu">
     <a href="#about">Chi siamo</a>
-    <a href="#caffetteria">Caffetteria</a>
-    <a href="#pizze">Pizze</a>
-    <a href="#dolci">Dolci</a>
-    <a href="#bevande">Bevande</a>
+    <a href="#location">Dove siamo</a>
     <a href="#contact">Contatti</a>
   </div>
 </header>
@@ -192,6 +191,13 @@
   <section id="about">
     <h2>Chi siamo</h2>
     <p>Siamo una piccola attività dedicata a offrire prodotti freschi e di qualità: caffè, pizze, dolci e bevande selezionate.</p>
+  </section>
+
+  <!-- Dove siamo -->
+  <section id="location">
+    <h2>Dove siamo</h2>
+    <p>Via Roma 123, 00100 Roma, Italia</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </section>
 
   <!-- Caffetteria -->
@@ -297,6 +303,13 @@
   const mobileMenu = document.getElementById('mobile-menu');
   menuToggle.addEventListener('click',()=>{
     mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // chiudi menu quando si clicca su un link
+  mobileMenu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click',()=>{
+      mobileMenu.style.display='none';
+    });
   });
 </script>
 
