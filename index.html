@@ -3,391 +3,230 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>SPI Menù — Bozza sito</title>
-<meta name="description" content="Bozza sito demo per attività: caffetteria, pizza, dolci. Tema bianco/nero, menu in alto a sinistra." />
+<title>SPI Menù — Elegante Dark</title>
+<meta name="description" content="Bozza sito demo stile ristorante premium scuro, elegante e minimal." />
 <style>
-  /* Reset minimale */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
   body{
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background:#ffffff;
-    color:#000;
-    line-height:1.4;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background:#000;
+    color:#fff;
+    line-height:1.6;
     padding:24px;
   }
 
-  /* Layout header */
-  .site-header{
+  /* Header */
+  header{
+    max-width:900px;
+    margin:0 auto 32px auto;
+    text-align:center;
+    border-bottom:1px solid #444;
+    padding-bottom:16px;
+  }
+  header h1{
+    font-family:"Playfair Display", Georgia, serif;
+    font-size:32px;
+    font-weight:700;
+    letter-spacing:1px;
+    color:#fff;
+  }
+  header p{
+    font-size:14px;
+    color:#aaa;
+    margin-top:4px;
+  }
+
+  /* Nav categories */
+  nav{
+    margin:24px auto;
+    text-align:center;
+  }
+  .cat-btn{
+    display:inline-block;
+    margin:6px;
+    padding:8px 14px;
+    border:1px solid #fff;
+    border-radius:999px;
+    background:#000;
+    color:#fff;
+    cursor:pointer;
+    font-size:14px;
+    transition:all .2s;
+  }
+  .cat-btn:hover{background:#111;}
+  .cat-btn.active{background:#fff;color:#000;}
+
+  /* Section */
+  main{
+    max-width:900px;
+    margin:0 auto;
+  }
+  section{
+    margin-bottom:40px;
+  }
+  section h2{
+    font-family:"Playfair Display", Georgia, serif;
+    font-size:22px;
+    border-bottom:1px solid #444;
+    padding-bottom:6px;
+    margin-bottom:16px;
+    color:#fff;
+  }
+
+  /* Menu item */
+  .item{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:16px;
-    max-width:1200px;
-    margin:0 auto 24px auto;
-  }
-  .brand{
-    display:flex;
-    align-items:center;
+    padding:12px 0;
+    border-bottom:1px dotted #333;
     gap:12px;
   }
-  .brand .logo{
-    width:56px;height:56px;border-radius:8px;border:2px solid #000;
-    display:flex;align-items:center;justify-content:center;font-weight:700;
-    font-size:18px;
+  .item img{
+    width:50px;
+    height:50px;
+    object-fit:cover;
+    border-radius:50%;
+    border:1px solid #555;
   }
-  .brand .title{
-    font-weight:700;font-size:20px;
-    letter-spacing:0.6px;
+  .item-info{
+    flex:1;
   }
-
-  /* Top nav small (left) */
-  .top-nav{
-    display:flex;gap:12px;align-items:center;
+  .item-title{
+    font-weight:600;
+    font-size:16px;
+    color:#fff;
   }
-  .cta-contact{
-    border:2px solid #000;padding:10px 14px;border-radius:8px;background:#fff;color:#000;
-    text-decoration:none;font-weight:600;
+  .item-desc{
+    font-size:13px;
+    color:#aaa;
   }
-
-  /* Category buttons */
-  .categories{
-    max-width:1200px;margin:0 auto 24px auto;display:flex;gap:12px;flex-wrap:wrap;
+  .item-price{
+    font-weight:700;
+    font-size:15px;
+    margin-left:12px;
+    white-space:nowrap;
+    color:#fff;
   }
-  .cat-btn{
-    padding:10px 14px;border-radius:999px;border:2px solid #000;background:#fff;
-    cursor:pointer;font-weight:700;transition:transform .12s,background .12s;
-  }
-  .cat-btn:active{transform:translateY(1px)}
-  .cat-btn.active{background:#000;color:#fff}
-
-  /* Grid of product cards */
-  .container{
-    max-width:1200px;margin:0 auto;
-  }
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:18px;
-  }
-  .card{
-    border:1px solid #000;padding:12px;border-radius:10px;background:#fff;
-    display:flex;flex-direction:column;gap:10px;
-  }
-  .card .media{
-    width:100%;aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:1px solid #000;
-    display:flex;align-items:center;justify-content:center;
-    background:#f7f7f7;
-  }
-  .card h3{font-size:18px;margin-top:6px}
-  .card p.desc{font-size:14px;color:#111;min-height:44px}
-  .price-row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;}
-  .price{font-weight:800;font-size:18px}
-  .btn-order{
-    border:2px solid #000;padding:8px 12px;border-radius:8px;background:#000;color:#fff;
-    text-decoration:none;font-weight:700;
-  }
-
-  /* Section headers and anchors */
-  .section-header{
-    display:flex;justify-content:space-between;align-items:center;margin:28px 0 12px 0;
-  }
-  .section-header h2{font-size:20px}
 
   /* Footer */
   footer{
-    margin-top:40px;padding-top:20px;border-top:1px solid #000;max-width:1200px;margin-left:auto;margin-right:auto;
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    max-width:900px;
+    margin:40px auto 0 auto;
+    padding-top:20px;
+    border-top:1px solid #444;
+    text-align:center;
+    font-size:13px;
+    color:#777;
   }
-
-  /* Responsive mobile tweaks */
-  @media (max-width:520px){
-    .brand .title{font-size:16px}
-    .brand .logo{width:48px;height:48px}
-    .cat-btn{padding:9px 10px;font-size:14px}
-  }
-
-  /* Accessibility focus */
-  .cat-btn:focus,.btn-order:focus,.cta-contact:focus{outline:3px solid #00000055;outline-offset:3px}
-  a{color:inherit}
 </style>
 </head>
 <body>
 
-<header class="site-header" role="banner">
-  <div class="brand" aria-label="Nome attività">
-    <div class="logo" aria-hidden="true">SPI</div>
-    <div>
-      <div class="title">SPI Menù</div>
-      <div style="font-size:12px;color:#111">Bozza sito — tema bianco/nero</div>
-    </div>
-  </div>
-
-  <nav class="top-nav" aria-label="Navigazione principale">
-    <a href="#menu" class="cta-contact">Menu</a>
-    <a href="#contatti" class="cta-contact">Contatti</a>
-  </nav>
+<header>
+  <h1>SPI Menù</h1>
+  <p>Bozza elegante dark — bianco & nero</p>
 </header>
 
-<!-- Category buttons -->
-<section class="categories" aria-label="Categorie" id="categories">
-  <button class="cat-btn active" data-filter="all" aria-pressed="true">Tutti</button>
+<nav>
+  <button class="cat-btn active" data-filter="all">Tutti</button>
   <button class="cat-btn" data-filter="caffetteria">Caffetteria</button>
   <button class="cat-btn" data-filter="pizze">Pizze</button>
   <button class="cat-btn" data-filter="dolci">Dolci</button>
   <button class="cat-btn" data-filter="bevande">Bevande</button>
-</section>
+</nav>
 
-<main class="container" id="menu" role="main">
-
+<main>
   <!-- Caffetteria -->
-  <div class="section" data-category="caffetteria">
-    <div class="section-header">
-      <h2>Caffetteria</h2>
-      <div style="font-size:14px;color:#111">Seleziona per vedere solo questa categoria</div>
+  <section data-category="caffetteria">
+    <h2>Caffetteria</h2>
+    <div class="item">
+      <img src="https://picsum.photos/50?random=1" alt="Cappuccino">
+      <div class="item-info">
+        <div class="item-title">Cappuccino classico</div>
+        <div class="item-desc">Espresso con latte montato a crema e cacao.</div>
+      </div>
+      <div class="item-price">€2,50</div>
     </div>
-    <div class="grid">
-      <!-- Product 1 -->
-      <article class="card" role="article" aria-labelledby="c1-title">
-        <div class="media" aria-hidden="true">
-          <!-- SVG placeholder immagine caffè -->
-          <svg width="100%" height="100%" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <rect width="100%" height="100%" fill="#fff"/>
-            <g transform="translate(20,15)" fill="none" stroke="#000" stroke-width="3">
-              <path d="M20 90c0-33 40-40 60-40s60 7 60 40v10H20z" fill="#f6f6f6"/>
-              <ellipse cx="80" cy="70" rx="40" ry="22" fill="#fff"/>
-              <path d="M35 30c0-10 12-18 28-18s28 8 28 18" stroke="#000" stroke-linecap="round"/>
-            </g>
-          </svg>
-        </div>
-        <h3 id="c1-title">Cappuccino classico</h3>
-        <p class="desc">Espresso con latte montato a crema. Schiuma vellutata e cacao sopra. Porzione: 200 ml.</p>
-        <div class="price-row">
-          <div class="price">€2,50</div>
-          <a class="btn-order" href="#contatti" aria-label="Ordina Cappuccino">Ordina</a>
-        </div>
-      </article>
-
-      <!-- Product 2 -->
-      <article class="card" role="article" aria-labelledby="c2-title">
-        <div class="media" aria-hidden="true">
-          <!-- SVG piccolo dolce/croissant -->
-          <svg width="100%" height="100%" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <rect width="100%" height="100%" fill="#fff"/>
-            <g transform="translate(20,20)" stroke="#000" stroke-width="3" fill="#fff">
-              <path d="M10 70c15-40 80-40 110 0 0 0-10 24-55 24S20 70 10 70z" fill="#f8f8f8"/>
-              <path d="M30 60c10-15 36-16 50 0" stroke-linecap="round" />
-            </g>
-          </svg>
-        </div>
-        <h3 id="c2-title">Cornetto al burro</h3>
-        <p class="desc">Cornetto fresco preparato giornalmente. Morbido e burroso. Disponibile vuoto o con crema.</p>
-        <div class="price-row">
-          <div class="price">€1,80</div>
-          <a class="btn-order" href="#contatti" aria-label="Ordina Cornetto">Ordina</a>
-        </div>
-      </article>
+    <div class="item">
+      <img src="https://picsum.photos/50?random=2" alt="Cornetto">
+      <div class="item-info">
+        <div class="item-title">Cornetto al burro</div>
+        <div class="item-desc">Fresco ogni mattina, vuoto o con crema.</div>
+      </div>
+      <div class="item-price">€1,80</div>
     </div>
-  </div>
-
-  <!-- Pizze -->
-  <div class="section" data-category="pizze">
-    <div class="section-header">
-      <h2>Pizze</h2>
-      <div style="font-size:14px;color:#111">Impasti artigianali — esempio di proposte</div>
-    </div>
-    <div class="grid">
-      <article class="card" role="article" aria-labelledby="p1-title">
-        <div class="media" aria-hidden="true">
-          <!-- SVG pizza placeholder -->
-          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <rect width="100%" height="100%" fill="#fff"/>
-            <g transform="translate(12,12)" stroke="#000" stroke-width="3" fill="#fff">
-              <circle cx="80" cy="60" r="50" fill="#fdf0d9"/>
-              <circle cx="80" cy="60" r="36" fill="#ffdad0"/>
-              <g fill="#a40000"><circle cx="60" cy="55" r="5"/><circle cx="88" cy="70" r="5"/><circle cx="100" cy="48" r="5"/></g>
-            </g>
-          </svg>
-        </div>
-        <h3 id="p1-title">Margherita</h3>
-        <p class="desc">Pomodoro San Marzano, fior di latte, basilico e un filo d'olio extravergine.</p>
-        <div class="price-row">
-          <div class="price">€7,50</div>
-          <a class="btn-order" href="#contatti" aria-label="Ordina Pizza Margherita">Ordina</a>
-        </div>
-      </article>
-
-      <article class="card" role="article" aria-labelledby="p2-title">
-        <div class="media" aria-hidden="true">
-          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <rect width="100%" height="100%" fill="#fff"/>
-            <g transform="translate(12,12)" stroke="#000" stroke-width="3" fill="#fff">
-              <circle cx="80" cy="60" r="50" fill="#fdf0d9"/>
-              <g fill="#f4b400"><circle cx="70" cy="55" r="6"/><circle cx="95" cy="62" r="6"/></g>
-              <rect x="58" y="74" width="44" height="10" fill="#6b3"/>
-            </g>
-          </svg>
-        </div>
-        <h3 id="p2-title">Prosciutto e funghi</h3>
-        <p class="desc">Prosciutto cotto di qualità, funghi champignon, mozzarella filante.</p>
-        <div class="price-row">
-          <div class="price">€9,00</div>
-          <a class="btn-order" href="#contatti" aria-label="Ordina Pizza Prosciutto e Funghi">Ordina</a>
-        </div>
-      </article>
-    </div>
-  </div>
-
-  <!-- Dolci -->
-  <div class="section" data-category="dolci">
-    <div class="section-header">
-      <h2>Dolci</h2>
-      <div style="font-size:14px;color:#111">Dolci fatti in casa — esempio</div>
-    </div>
-    <div class="grid">
-      <article class="card" role="article" aria-labelledby="d1-title">
-        <div class="media" aria-hidden="true">
-          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <rect width="100%" height="100%" fill="#fff"/>
-            <g transform="translate(20,20)" stroke="#000" stroke-width="3" fill="#fff">
-              <rect x="10" y="40" width="100" height="30" rx="8" fill="#fff5e6"/>
-              <path d="M10 40c12-20 98-20 110 0" fill="#ffd7d7"/>
-            </g>
-          </svg>
-        </div>
-        <h3 id="d1-title">Tiramisù monoporzione</h3>
-        <p class="desc">Classico tiramisù al mascarpone, porzione da 120 g, senza conservanti.</p>
-        <div class="price-row">
-          <div class="price">€4,50</div>
-          <a class="btn-order" href="#contatti" aria-label="Ordina Tiramisù">Ordina</a>
-        </div>
-      </article>
-    </div>
-  </div>
-
-  <!-- Bevande -->
-  <div class="section" data-category="bevande">
-    <div class="section-header">
-      <h2>Bevande</h2>
-      <div style="font-size:14px;color:#111">Analcoliche e gassate</div>
-    </div>
-    <div class="grid">
-      <article class="card" role="article" aria-labelledby="b1-title">
-        <div class="media" aria-hidden="true">
-          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <rect width="100%" height="100%" fill="#fff"/>
-            <g transform="translate(20,20)" stroke="#000" stroke-width="3" fill="#fff">
-              <rect x="30" y="20" width="28" height="60" rx="8" fill="#e6f7ff"/>
-              <ellipse cx="44" cy="84" rx="18" ry="6" fill="#e6f7ff"/>
-            </g>
-          </svg>
-        </div>
-        <h3 id="b1-title">Aranciata</h3>
-        <p class="desc">Aranciata biologica, 330 ml. Fresca e frizzante.</p>
-        <div class="price-row">
-          <div class="price">€2,20</div>
-          <a class="btn-order" href="#contatti" aria-label="Ordina Aranciata">Ordina</a>
-        </div>
-      </article>
-    </div>
-  </div>
-
-  <!-- Suggerimento per servizi: eventi / catering -->
-  <section style="margin-top:28px;">
-    <h2 style="font-size:18px;margin-bottom:8px">Servizi aggiuntivi (esempio)</h2>
-    <ul style="margin-left:18px">
-      <li>Eventi privati / Catering su prenotazione</li>
-      <li>Menù personalizzati per aziende</li>
-      <li>Opzione asporto / consegna (da integrare con ordine online)</li>
-    </ul>
   </section>
 
+  <!-- Pizze -->
+  <section data-category="pizze">
+    <h2>Pizze</h2>
+    <div class="item">
+      <img src="https://picsum.photos/50?random=3" alt="Pizza Margherita">
+      <div class="item-info">
+        <div class="item-title">Margherita</div>
+        <div class="item-desc">Pomodoro San Marzano, mozzarella, basilico.</div>
+      </div>
+      <div class="item-price">€7,50</div>
+    </div>
+    <div class="item">
+      <img src="https://picsum.photos/50?random=4" alt="Pizza Prosciutto e Funghi">
+      <div class="item-info">
+        <div class="item-title">Prosciutto e funghi</div>
+        <div class="item-desc">Prosciutto cotto e funghi champignon.</div>
+      </div>
+      <div class="item-price">€9,00</div>
+    </div>
+  </section>
+
+  <!-- Dolci -->
+  <section data-category="dolci">
+    <h2>Dolci</h2>
+    <div class="item">
+      <img src="https://picsum.photos/50?random=5" alt="Tiramisù">
+      <div class="item-info">
+        <div class="item-title">Tiramisù monoporzione</div>
+        <div class="item-desc">Classico al mascarpone, 120 g.</div>
+      </div>
+      <div class="item-price">€4,50</div>
+    </div>
+  </section>
+
+  <!-- Bevande -->
+  <section data-category="bevande">
+    <h2>Bevande</h2>
+    <div class="item">
+      <img src="https://picsum.photos/50?random=6" alt="Aranciata">
+      <div class="item-info">
+        <div class="item-title">Aranciata</div>
+        <div class="item-desc">Bibita frizzante 330 ml.</div>
+      </div>
+      <div class="item-price">€2,20</div>
+    </div>
+  </section>
 </main>
 
-<!-- Contatti -->
-<section id="contatti" style="max-width:1200px;margin:36px auto 0 auto;padding:18px;border:1px solid #000;border-radius:10px;">
-  <div style="display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;">
-    <div style="flex:1;min-width:240px;">
-      <h2>Contatti</h2>
-      <p style="max-width:560px">Per ordini e info: chiamaci o scrivi via email. Questo form è un esempio; per rendere operativo il form dovrai collegarlo a un backend o servizi come Formspree, Netlify Forms, o un endpoint tuo.</p>
-      <p><strong>Telefono:</strong> +39 012 345 6789</p>
-      <p><strong>Email:</strong> info@spi-menu.it</p>
-      <p><strong>Indirizzo:</strong> Via Esempio 1, 00100 Roma</p>
-    </div>
-
-    <div style="flex:1;min-width:260px;">
-      <h3 style="margin-bottom:8px">Invia un messaggio (esempio)</h3>
-      <form onsubmit="event.preventDefault();alert('Grazie! Questo è un demo — integrare con backend per renderlo operativo.');" aria-label="Modulo contatti demo">
-        <label style="display:block;margin-bottom:6px;font-weight:600">Nome</label>
-        <input type="text" name="nome" required style="width:100%;padding:8px;border:1px solid #000;border-radius:6px;margin-bottom:8px" />
-        <label style="display:block;margin-bottom:6px;font-weight:600">Email</label>
-        <input type="email" name="email" required style="width:100%;padding:8px;border:1px solid #000;border-radius:6px;margin-bottom:8px" />
-        <label style="display:block;margin-bottom:6px;font-weight:600">Messaggio</label>
-        <textarea name="msg" rows="4" required style="width:100%;padding:8px;border:1px solid #000;border-radius:6px;margin-bottom:8px"></textarea>
-        <button type="submit" class="btn-order" style="width:100%">Invia</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer aria-label="Footer">
-  <div>© <span id="year"></span> SPI Menù — Bozza. Tutti i diritti riservati (demo)</div>
-  <div style="font-size:13px;color:#111">Design minimale • Tema: Bianco &amp; Nero • HTML5</div>
+<footer>
+  © <span id="year"></span> SPI Menù — Bozza Dark Elegante
 </footer>
 
 <script>
-  // Inserisci anno corrente
+  // anno dinamico
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Filtraggio categorie
-  const catButtons = document.querySelectorAll('.cat-btn');
-  const sections = document.querySelectorAll('.section');
-
-  function setActiveButton(activeBtn){
-    catButtons.forEach(b=>{
-      const is = b === activeBtn;
-      b.classList.toggle('active', is);
-      b.setAttribute('aria-pressed', is ? 'true' : 'false');
-    });
-  }
-
-  catButtons.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const filter = btn.getAttribute('data-filter');
-      setActiveButton(btn);
-      if(filter === 'all'){
-        // mostra tutte le sezioni
-        sections.forEach(s => s.style.display = '');
-        window.location.hash = "#menu";
-        return;
-      }
-      // mostra solo quella categoria
+  // filtro categorie
+  const buttons=document.querySelectorAll('.cat-btn');
+  const sections=document.querySelectorAll('main section');
+  buttons.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const f=btn.dataset.filter;
+      buttons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
       sections.forEach(s=>{
-        const cat = s.getAttribute('data-category');
-        s.style.display = (cat === filter) ? '' : 'none';
+        s.style.display=(f==='all'||s.dataset.category===f)?'':'none';
       });
-      // scroll verso la sezione visibile
-      const firstVisible = Array.from(sections).find(s => s.style.display !== 'none');
-      if(firstVisible) firstVisible.scrollIntoView({behavior:'smooth', block:'start'});
     });
   });
-
-  // Miglioria: supporto tastiera per i bottoni categorie (enter/space)
-  catButtons.forEach(btn=>{
-    btn.setAttribute('tabindex','0');
-    btn.addEventListener('keydown', (e)=>{
-      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
-    });
-  });
-
-  // Piccolo fallback: mostra tutte le sezioni all'avvio
-  sections.forEach(s => s.style.display = '');
-
-  // Note per il cliente (non visibili):Console log con suggerimenti
-  console.log("Bozza SPI Menù: sostituisci gli SVG con foto reali => usa <img src='path/tuafoto.jpg' alt='...'/>");
-  console.log("Per prendere ordini online integra API/servizi (es: Stripe, PayPal, Formspree o backend).");
 </script>
 
 </body>
