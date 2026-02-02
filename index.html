@@ -6,8 +6,9 @@
   <title>Menù del Bar</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Nuovo font Poppins -->
 
-  <!-- Inclusione di i18next -->
+  <!-- Inclusione della libreria i18next -->
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
+
   <style>
     /* Stili di base */
     * {
@@ -90,11 +91,11 @@
       margin-right: 5px;
     }
 
-    /* Freccia simbolo verso il basso e bianca */
+    /* Freccia simbolo verso il basso */
     .arrow {
-      font-size: 2em; /* Aumentata per essere più visibile */
+      font-size: 2em;
       margin-left: 5px;
-      color: white;  /* Freccia bianca */
+      cursor: pointer;
     }
 
     /* Menu a tendina */
@@ -144,7 +145,7 @@
 
   <!-- Sezione Hero -->
   <div class="hero">
-    <button class="btn" onclick="window.location.href='#menu'"></button>
+    <button class="btn" onclick="window.location.href='#menu'">Visualizza Menù</button>
   </div>
 
   <!-- Titolo -->
@@ -158,7 +159,6 @@
     <span>🇮🇹</span> <!-- Bandiera Italiana -->
     <span class="arrow">&#8595;</span> <!-- Freccia verso il basso -->
     <div class="language-dropdown">
-      <!-- Solo bandiere emoji, senza testo -->
       <a href="#" onclick="changeLanguage('it')">🇮🇹</a>
       <a href="#" onclick="changeLanguage('en')">🇬🇧</a>
       <a href="#" onclick="changeLanguage('es')">🇪🇸</a>
@@ -174,10 +174,9 @@
   </footer>
 
   <script>
-    // Cambia la lingua dinamicamente
+    // Funzione per cambiare la lingua dinamicamente
     function changeLanguage(language) {
       i18next.changeLanguage(language, () => {
-        // Cambia il testo del tasto, titolo, footer e paragrafo
         document.querySelector('.btn').textContent = i18next.t('menu_button');
         document.querySelector('#header-title').textContent = i18next.t('header_title');
         document.querySelector('#paragraph-text').textContent = i18next.t('paragraph_text');
@@ -195,7 +194,7 @@
       dropdown.style.display = isVisible ? 'none' : 'block';
     }
 
-    // Configurazione di i18next per le lingue
+    // Configurazione i18next per le lingue
     i18next.init({
       lng: 'it', // Lingua di default
       resources: {
