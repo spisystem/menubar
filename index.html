@@ -9,7 +9,7 @@
   <!-- Inclusione di i18next -->
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
   <style>
-    /* Reset delle impostazioni di base */
+    /* Stili di base */
     * {
       margin: 0;
       padding: 0;
@@ -90,11 +90,10 @@
       margin-right: 5px;
     }
 
-    /* Simbolo della freccia */
+    /* Freccia come simbolo */
     .arrow {
-      font-size: 1.2em;
+      font-size: 1.5em; /* Freccia più piccola */
       margin-left: 5px;
-      transform: rotate(90deg); /* Ruota la freccia per renderla a destra */
     }
 
     /* Menu a tendina */
@@ -144,13 +143,19 @@
 
   <!-- Sezione Hero -->
   <div class="hero">
-    <button class="btn" onclick="window.location.href='#menu'">Visualizza Menù</button>
+    <button class="btn" onclick="window.location.href='#menu'"></button>
   </div>
+
+  <!-- Titolo -->
+  <h1 id="header-title"></h1>
+
+  <!-- Paragrafo -->
+  <p id="paragraph-text"></p>
 
   <!-- Selettore Lingua con bandiera emoji e freccia -->
   <div class="language-selector" onclick="toggleDropdown()">
     <span>🇮🇹</span> <!-- Bandiera Italiana -->
-    <span class="arrow">▶</span> <!-- Freccia a simbolo -->
+    <span class="arrow">▶</span> <!-- Freccia come simbolo -->
     <div class="language-dropdown">
       <!-- Solo bandiere emoji, senza testo -->
       <a href="#" onclick="changeLanguage('it')">🇮🇹</a>
@@ -163,17 +168,19 @@
 
   <!-- Footer -->
   <footer>
-    <p>Contattaci: info@bar.com | Telefono: 123-456-7890</p>
+    <p id="footer-text"></p>
     <p>&copy; 2026 Bar Provamen</p>
   </footer>
 
   <script>
-    // Funzione per cambiare lingua
+    // Cambia la lingua dinamicamente
     function changeLanguage(language) {
       i18next.changeLanguage(language, () => {
-        // Cambia il testo del tasto e del footer in base alla lingua
+        // Cambia il testo del tasto, titolo, footer e paragrafo
         document.querySelector('.btn').textContent = i18next.t('menu_button');
-        document.querySelector('footer p').textContent = i18next.t('footer_text');
+        document.querySelector('#header-title').textContent = i18next.t('header_title');
+        document.querySelector('#paragraph-text').textContent = i18next.t('paragraph_text');
+        document.querySelector('#footer-text').textContent = i18next.t('footer_text');
       });
 
       // Chiudi il menu a tendina dopo aver selezionato una lingua
@@ -194,31 +201,41 @@
         it: {
           translation: {
             "menu_button": "Visualizza Menù",
-            "footer_text": "Contattaci: info@bar.com | Telefono: 123-456-7890"
+            "footer_text": "Contattaci: info@bar.com | Telefono: 123-456-7890",
+            "header_title": "Benvenuto nel nostro bar!",
+            "paragraph_text": "Goditi le migliori bevande e caffè!"
           }
         },
         en: {
           translation: {
             "menu_button": "View Menu",
-            "footer_text": "Contact us: info@bar.com | Phone: 123-456-7890"
+            "footer_text": "Contact us: info@bar.com | Phone: 123-456-7890",
+            "header_title": "Welcome to our bar!",
+            "paragraph_text": "Enjoy the best drinks and coffee!"
           }
         },
         es: {
           translation: {
             "menu_button": "Ver menú",
-            "footer_text": "Contáctanos: info@bar.com | Teléfono: 123-456-7890"
+            "footer_text": "Contáctanos: info@bar.com | Teléfono: 123-456-7890",
+            "header_title": "¡Bienvenido a nuestro bar!",
+            "paragraph_text": "¡Disfruta de las mejores bebidas y café!"
           }
         },
         fr: {
           translation: {
             "menu_button": "Voir le menu",
-            "footer_text": "Contactez-nous: info@bar.com | Téléphone: 123-456-7890"
+            "footer_text": "Contactez-nous: info@bar.com | Téléphone: 123-456-7890",
+            "header_title": "Bienvenue dans notre bar!",
+            "paragraph_text": "Profitez des meilleures boissons et cafés!"
           }
         },
         de: {
           translation: {
             "menu_button": "Menü anzeigen",
-            "footer_text": "Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890"
+            "footer_text": "Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890",
+            "header_title": "Willkommen in unserer Bar!",
+            "paragraph_text": "Genießen Sie die besten Getränke und Kaffee!"
           }
         }
       }
@@ -226,7 +243,9 @@
 
     // Inizializza i testi al caricamento della pagina
     document.querySelector('.btn').textContent = i18next.t('menu_button');
-    document.querySelector('footer p').textContent = i18next.t('footer_text');
+    document.querySelector('#header-title').textContent = i18next.t('header_title');
+    document.querySelector('#paragraph-text').textContent = i18next.t('paragraph_text');
+    document.querySelector('#footer-text').textContent = i18next.t('footer_text');
   </script>
 
 </body>
