@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menù del Bar</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Nuovo font Poppins -->
+
+  <!-- Inclusione di i18next -->
+  <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
   <style>
     /* Reset delle impostazioni di base */
     * {
@@ -34,7 +37,7 @@
     }
 
     nav .logo img {
-      height: 80px; /* Logo ingrandito */
+      height: 80px;
       width: auto;
     }
 
@@ -139,7 +142,7 @@
   <!-- Barra di navigazione -->
   <nav>
     <div class="logo">
-      <img src="images/E7FAAD49-2107-44FF-8C7F-167C8E1D017F.png" alt="Logo"> <!-- Logo ingrandito -->
+      <img src="images/E7FAAD49-2107-44FF-8C7F-167C8E1D017F.png" alt="Logo">
     </div>
   </nav>
 
@@ -150,7 +153,7 @@
 
   <!-- Selettore Lingua con bandiera e freccia -->
   <div class="language-selector">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png" alt="Italiano" title="Italiano">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png" alt="Italiano">
     <div class="language-dropdown">
       <a href="#" onclick="changeLanguage('it')">Italiano</a>
       <a href="#" onclick="changeLanguage('en')">English</a>
@@ -167,15 +170,55 @@
   </footer>
 
   <script>
-    // Funzione per cambiare lingua
-    function changeLanguage(language) {
-      // Funzionalità di traduzione
-      // Qui puoi aggiungere la logica per caricare il contenuto in base alla lingua
-      // Per ora, mostriamo un alert con la lingua selezionata
-      alert("Lingua selezionata: " + language);
+    // Configurazione di i18next per le lingue
+    i18next.init({
+      lng: 'it', // Lingua di default
+      resources: {
+        it: {
+          translation: {
+            "menu_button": "Visualizza Menù",
+            "footer_text": "Contattaci: info@bar.com | Telefono: 123-456-7890"
+          }
+        },
+        en: {
+          translation: {
+            "menu_button": "View Menu",
+            "footer_text": "Contact us: info@bar.com | Phone: 123-456-7890"
+          }
+        },
+        es: {
+          translation: {
+            "menu_button": "Ver menú",
+            "footer_text": "Contáctanos: info@bar.com | Teléfono: 123-456-7890"
+          }
+        },
+        fr: {
+          translation: {
+            "menu_button": "Voir le menu",
+            "footer_text": "Contactez-nous: info@bar.com | Téléphone: 123-456-7890"
+          }
+        },
+        de: {
+          translation: {
+            "menu_button": "Menü anzeigen",
+            "footer_text": "Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890"
+          }
+        }
+      }
+    });
 
-      // Opzionalmente, puoi caricare un altro file o usare una libreria per tradurre
+    // Funzione per cambiare la lingua
+    function changeLanguage(language) {
+      i18next.changeLanguage(language, () => {
+        // Cambia il testo del tasto e del footer in base alla lingua
+        document.querySelector('.btn').textContent = i18next.t('menu_button');
+        document.querySelector('footer p').textContent = i18next.t('footer_text');
+      });
     }
+
+    // Inizializza i testi al caricamento della pagina
+    document.querySelector('.btn').textContent = i18next.t('menu_button');
+    document.querySelector('footer p').textContent = i18next.t('footer_text');
   </script>
 
 </body>
