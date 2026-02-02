@@ -153,7 +153,7 @@
 
   <!-- Selettore Lingua con bandiera e freccia -->
   <div class="language-selector">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png" alt="Italiano">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png" alt="Italiano" title="Italiano">
     <div class="language-dropdown">
       <a href="#" onclick="changeLanguage('it')">Italiano</a>
       <a href="#" onclick="changeLanguage('en')">English</a>
@@ -207,13 +207,16 @@
       }
     });
 
-    // Funzione per cambiare la lingua
+    // Funzione per cambiare lingua e chiudere il menu a tendina
     function changeLanguage(language) {
       i18next.changeLanguage(language, () => {
         // Cambia il testo del tasto e del footer in base alla lingua
         document.querySelector('.btn').textContent = i18next.t('menu_button');
         document.querySelector('footer p').textContent = i18next.t('footer_text');
       });
+
+      // Chiudi il menu a tendina dopo aver selezionato una lingua
+      document.querySelector('.language-dropdown').style.display = 'none';
     }
 
     // Inizializza i testi al caricamento della pagina
