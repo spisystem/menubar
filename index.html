@@ -39,7 +39,7 @@
 
     /* Logo all'angolo sinistro */
     nav .logo img {
-      height: 90px; /* Logo ingrandito leggermente */
+      height: 90px; /* Logo ridotto leggermente */
       width: auto;
       position: absolute;
       left: 20px; /* Posizionato all'angolo sinistro */
@@ -96,7 +96,7 @@
 
     /* Freccia simbolo verso il basso */
     .arrow {
-      font-size: 0.9em; /* Freccia più piccola */
+      font-size: 0.7em; /* Freccia ancora più piccola */
       margin-left: 5px;
       cursor: pointer;
       color: white; /* Freccia bianca */
@@ -188,7 +188,9 @@
       });
 
       // Chiudi il menu a tendina dopo aver selezionato una lingua
-      document.querySelector('.language-dropdown').style.display = 'none';
+      setTimeout(() => {
+        document.querySelector('.language-dropdown').style.display = 'none';
+      }, 200); // Ritardo di 200ms per il cambiamento di lingua
     }
 
     // Funzione per togglare il menu a tendina
