@@ -29,7 +29,7 @@
       padding: 15px 20px;
       z-index: 1000;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
     }
 
@@ -69,6 +69,19 @@
       background-color: rgba(0, 0, 0, 0.6);
     }
 
+    /* Sezione del Menù */
+    .menu-section {
+      padding: 50px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .menu-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
     /* Footer */
     footer {
       background-color: #333;
@@ -78,12 +91,14 @@
       position: relative;
     }
 
-    /* Stile per il cambio lingua */
+    /* Selettore lingua */
     .language-selector {
       position: absolute;
       top: 20px;
       right: 20px;
       z-index: 1001;
+      display: flex;
+      align-items: center;
     }
 
     .language-selector img {
@@ -96,19 +111,7 @@
     .language-selector img:hover {
       opacity: 0.7;
     }
-
   </style>
-  <!-- Aggiungiamo il codice per Google Translate -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'it',
-        includedLanguages: 'en,fr,de,es', // Aggiungi altre lingue se necessario
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
 
@@ -124,14 +127,36 @@
     <button class="btn" onclick="window.location.href='#menu'">Visualizza Menù</button>
   </div>
 
-  <!-- Traduzione (Google Translate) -->
-  <div class="language-selector" id="google_translate_element"></div>
+  <!-- Selettore Lingua (Bandiera) -->
+  <div class="language-selector">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png" alt="Italiano" title="Italiano" onclick="changeLanguage('it')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_Kingdom.svg" alt="English" title="English" onclick="changeLanguage('en')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Flag_of_Spain.svg" alt="Español" title="Español" onclick="changeLanguage('es')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_France.svg" alt="Français" title="Français" onclick="changeLanguage('fr')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png" alt="Deutsch" title="Deutsch" onclick="changeLanguage('de')">
+  </div>
 
   <!-- Footer -->
   <footer>
     <p>Contattaci: info@bar.com | Telefono: 123-456-7890</p>
     <p>&copy; 2026 Bar Provamen</p>
   </footer>
+
+  <script>
+    // Funzione per cambiare lingua con un sistema di traduzione basato su Google Translate
+    function changeLanguage(lang) {
+      var translateElement = document.createElement('script');
+      translateElement.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
+      document.body.appendChild(translateElement);
+      window.googleTranslateElementInit = function() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'it',
+          includedLanguages: 'it,en,es,fr,de', // Aggiungi qui altre lingue se necessario
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+      };
+    }
+  </script>
 
 </body>
 </html>
