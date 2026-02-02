@@ -29,7 +29,7 @@
       padding: 15px 20px;
       z-index: 1000;
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
     }
 
@@ -69,51 +69,6 @@
       background-color: rgba(0, 0, 0, 0.6);
     }
 
-    /* Sezione del Menù */
-    .menu-section {
-      padding: 50px 20px;
-      background-color: #fff;
-      text-align: center;
-    }
-
-    .menu-section h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      font-weight: 600;
-    }
-
-    .menu-section ul {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .menu-section li {
-      padding: 20px;
-      background-color: #009688; /* Nuovo colore più elegante */
-      color: white;
-      font-size: 1.5em;
-      border-radius: 10px;
-      text-align: center;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    .menu-section li a {
-      color: white;
-      text-decoration: none;
-      display: block;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-    }
-
-    .menu-section li:hover {
-      background-color: #00796b; /* Colore più scuro al passaggio del mouse */
-      transform: scale(1.05);
-    }
-
     /* Footer */
     footer {
       background-color: #333;
@@ -141,7 +96,19 @@
     .language-selector img:hover {
       opacity: 0.7;
     }
+
   </style>
+  <!-- Aggiungiamo il codice per Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'it',
+        includedLanguages: 'en,fr,de,es', // Aggiungi altre lingue se necessario
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
 
@@ -157,28 +124,14 @@
     <button class="btn" onclick="window.location.href='#menu'">Visualizza Menù</button>
   </div>
 
-  <!-- Sezione Menù -->
-  <div id="menu" class="menu-section">
-    <h2>Il Nostro Menù</h2>
-    <ul>
-      <li><a href="#">Caffetteria</a></li>
-      <li><a href="#">Cornetti</a></li>
-      <li><a href="#">Bevande</a></li>
-      <li><a href="#">Alcolici</a></li>
-    </ul>
-  </div>
+  <!-- Traduzione (Google Translate) -->
+  <div class="language-selector" id="google_translate_element"></div>
 
   <!-- Footer -->
   <footer>
     <p>Contattaci: info@bar.com | Telefono: 123-456-7890</p>
     <p>&copy; 2026 Bar Provamen</p>
   </footer>
-
-  <!-- Selezione Lingua -->
-  <div class="language-selector">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png" alt="Italiano" title="Italiano" onclick="alert('Lingua italiana selezionata!')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_Kingdom.svg" alt="English" title="English" onclick="alert('English language selected!')">
-  </div>
 
 </body>
 </html>
