@@ -90,6 +90,13 @@
       margin-right: 5px;
     }
 
+    /* Simbolo della freccia */
+    .arrow {
+      font-size: 1.2em;
+      margin-left: 5px;
+      transform: rotate(90deg); /* Ruota la freccia per renderla a destra */
+    }
+
     /* Menu a tendina */
     .language-dropdown {
       display: none;
@@ -143,7 +150,7 @@
   <!-- Selettore Lingua con bandiera emoji e freccia -->
   <div class="language-selector" onclick="toggleDropdown()">
     <span>🇮🇹</span> <!-- Bandiera Italiana -->
-    <span>🔽</span> <!-- Freccia per aprire il menu -->
+    <span class="arrow">▶</span> <!-- Freccia a simbolo -->
     <div class="language-dropdown">
       <!-- Solo bandiere emoji, senza testo -->
       <a href="#" onclick="changeLanguage('it')">🇮🇹</a>
