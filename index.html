@@ -69,19 +69,6 @@
       background-color: rgba(0, 0, 0, 0.6);
     }
 
-    /* Sezione del Menù */
-    .menu-section {
-      padding: 50px 20px;
-      background-color: #fff;
-      text-align: center;
-    }
-
-    .menu-section h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      font-weight: 600;
-    }
-
     /* Footer */
     footer {
       background-color: #333;
@@ -91,7 +78,7 @@
       position: relative;
     }
 
-    /* Selettore lingua */
+    /* Selettore lingua con bandiera e menu a tendina */
     .language-selector {
       position: absolute;
       top: 20px;
@@ -101,16 +88,21 @@
       align-items: center;
     }
 
+    .language-selector select {
+      padding: 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #fff;
+      cursor: pointer;
+    }
+
     .language-selector img {
       width: 40px;
       cursor: pointer;
-      margin-left: 10px;
-      transition: opacity 0.3s ease;
+      margin-right: 10px;
     }
 
-    .language-selector img:hover {
-      opacity: 0.7;
-    }
   </style>
 </head>
 <body>
@@ -127,13 +119,16 @@
     <button class="btn" onclick="window.location.href='#menu'">Visualizza Menù</button>
   </div>
 
-  <!-- Selettore Lingua (Bandiera) -->
+  <!-- Selettore Lingua (Bandiera e Menu a tendina) -->
   <div class="language-selector">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png" alt="Italiano" title="Italiano" onclick="changeLanguage('it')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_Kingdom.svg" alt="English" title="English" onclick="changeLanguage('en')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Flag_of_Spain.svg" alt="Español" title="Español" onclick="changeLanguage('es')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_France.svg" alt="Français" title="Français" onclick="changeLanguage('fr')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png" alt="Deutsch" title="Deutsch" onclick="changeLanguage('de')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png" alt="Italiano">
+    <select id="language-dropdown" onchange="changeLanguage()">
+      <option value="it">Italiano</option>
+      <option value="en">English</option>
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+    </select>
   </div>
 
   <!-- Footer -->
@@ -143,18 +138,11 @@
   </footer>
 
   <script>
-    // Funzione per cambiare lingua con un sistema di traduzione basato su Google Translate
-    function changeLanguage(lang) {
-      var translateElement = document.createElement('script');
-      translateElement.src = `https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
-      document.body.appendChild(translateElement);
-      window.googleTranslateElementInit = function() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'it',
-          includedLanguages: 'it,en,es,fr,de', // Aggiungi qui altre lingue se necessario
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-      };
+    // Funzione per cambiare la lingua in base alla selezione nel menu a tendina
+    function changeLanguage() {
+      var language = document.getElementById("language-dropdown").value;
+      // Per ora, potresti integrare un sistema di traduzione o caricare il contenuto in base alla lingua selezionata.
+      alert("Lingua selezionata: " + language); // Mostra l'alert con la lingua selezionata
     }
   </script>
 
