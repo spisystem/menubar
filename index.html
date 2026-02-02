@@ -81,28 +81,13 @@
       display: flex;
       align-items: center;
       cursor: pointer;
-      background-color: white;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      background-color: transparent;
+      padding: 5px;
     }
 
     .language-selector span {
       font-size: 2em;
-      margin-right: 10px;
-    }
-
-    .language-selector img {
-      width: 40px;
-      transition: opacity 0.3s ease;
-    }
-
-    .language-selector img:hover {
-      opacity: 0.7;
-    }
-
-    .language-selector:hover .language-dropdown {
-      display: block;
+      margin-right: 5px;
     }
 
     /* Menu a tendina */
@@ -156,9 +141,9 @@
   </div>
 
   <!-- Selettore Lingua con bandiera emoji e freccia -->
-  <div class="language-selector">
+  <div class="language-selector" onclick="toggleDropdown()">
     <span>🇮🇹</span> <!-- Bandiera Italiana -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Blue_arrow.svg/1200px-Blue_arrow.svg.png" alt="freccia" style="width: 20px;"> <!-- Freccia -->
+    <span>🔽</span> <!-- Freccia per aprire il menu -->
     <div class="language-dropdown">
       <!-- Solo bandiere emoji, senza testo -->
       <a href="#" onclick="changeLanguage('it')">🇮🇹</a>
@@ -176,6 +161,25 @@
   </footer>
 
   <script>
+    // Funzione per cambiare lingua
+    function changeLanguage(language) {
+      i18next.changeLanguage(language, () => {
+        // Cambia il testo del tasto e del footer in base alla lingua
+        document.querySelector('.btn').textContent = i18next.t('menu_button');
+        document.querySelector('footer p').textContent = i18next.t('footer_text');
+      });
+
+      // Chiudi il menu a tendina dopo aver selezionato una lingua
+      document.querySelector('.language-dropdown').style.display = 'none';
+    }
+
+    // Funzione per togglare il menu a tendina
+    function toggleDropdown() {
+      const dropdown = document.querySelector('.language-dropdown');
+      const isVisible = dropdown.style.display === 'block';
+      dropdown.style.display = isVisible ? 'none' : 'block';
+    }
+
     // Configurazione di i18next per le lingue
     i18next.init({
       lng: 'it', // Lingua di default
@@ -212,18 +216,6 @@
         }
       }
     });
-
-    // Funzione per cambiare lingua e chiudere il menu a tendina
-    function changeLanguage(language) {
-      i18next.changeLanguage(language, () => {
-        // Cambia il testo del tasto e del footer in base alla lingua
-        document.querySelector('.btn').textContent = i18next.t('menu_button');
-        document.querySelector('footer p').textContent = i18next.t('footer_text');
-      });
-
-      // Chiudi il menu a tendina dopo aver selezionato una lingua
-      document.querySelector('.language-dropdown').style.display = 'none';
-    }
 
     // Inizializza i testi al caricamento della pagina
     document.querySelector('.btn').textContent = i18next.t('menu_button');
