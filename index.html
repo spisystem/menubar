@@ -159,15 +159,15 @@
   <p id="paragraph-text"></p>
 
   <!-- Selettore Lingua con bandiera emoji e freccia -->
-  <div class="language-selector" onclick="toggleDropdown()">
+  <div class="language-selector" onclick="toggleDropdown(event)">
     <span>🇮🇹</span> <!-- Bandiera Italiana -->
     <span class="arrow">&#8595;</span> <!-- Nuova freccia verso il basso -->
     <div class="language-dropdown">
-      <a href="#" onclick="changeLanguage('it')">🇮🇹</a>
-      <a href="#" onclick="changeLanguage('en')">🇬🇧</a>
-      <a href="#" onclick="changeLanguage('es')">🇪🇸</a>
-      <a href="#" onclick="changeLanguage('fr')">🇫🇷</a>
-      <a href="#" onclick="changeLanguage('de')">🇩🇪</a>
+      <a href="#" onclick="changeLanguage(event, 'it')">🇮🇹</a>
+      <a href="#" onclick="changeLanguage(event, 'en')">🇬🇧</a>
+      <a href="#" onclick="changeLanguage(event, 'es')">🇪🇸</a>
+      <a href="#" onclick="changeLanguage(event, 'fr')">🇫🇷</a>
+      <a href="#" onclick="changeLanguage(event, 'de')">🇩🇪</a>
     </div>
   </div>
 
@@ -179,7 +179,8 @@
 
   <script>
     // Funzione per cambiare la lingua dinamicamente
-    function changeLanguage(language) {
+    function changeLanguage(event, language) {
+      event.preventDefault(); // Impedisce il comportamento predefinito del link (recarica la pagina)
       i18next.changeLanguage(language, () => {
         document.querySelector('.btn').textContent = i18next.t('menu_button');
         document.querySelector('#header-title').textContent = i18next.t('header_title');
@@ -194,7 +195,7 @@
     }
 
     // Funzione per togglare il menu a tendina
-    function toggleDropdown() {
+    function toggleDropdown(event) {
       const dropdown = document.querySelector('.language-dropdown');
       const isVisible = dropdown.style.display === 'block';
       dropdown.style.display = isVisible ? 'none' : 'block';
