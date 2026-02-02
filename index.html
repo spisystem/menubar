@@ -76,9 +76,9 @@
       background-color: rgba(0, 0, 0, 0.6);
     }
 
-    /* Selettore di lingua */
+    /* Selettore di lingua che segue la pagina quando scorri */
     .language-selector {
-      position: absolute;
+      position: fixed; /* Fissato in alto a destra, indipendente dallo scroll */
       top: 20px;
       right: 20px;
       z-index: 1001;
@@ -94,9 +94,9 @@
       margin-right: 5px;
     }
 
-    /* Freccia simbolo verso il basso */
+    /* Nuovo simbolo della freccia */
     .arrow {
-      font-size: 0.7em; /* Freccia ancora più piccola */
+      font-size: 1.0em; /* Nuova dimensione per la freccia */
       margin-left: 5px;
       cursor: pointer;
       color: white; /* Freccia bianca */
@@ -161,7 +161,7 @@
   <!-- Selettore Lingua con bandiera emoji e freccia -->
   <div class="language-selector" onclick="toggleDropdown()">
     <span>🇮🇹</span> <!-- Bandiera Italiana -->
-    <span class="arrow">&#8595;</span> <!-- Freccia verso il basso -->
+    <span class="arrow">&#8595;</span> <!-- Nuova freccia verso il basso -->
     <div class="language-dropdown">
       <a href="#" onclick="changeLanguage('it')">🇮🇹</a>
       <a href="#" onclick="changeLanguage('en')">🇬🇧</a>
