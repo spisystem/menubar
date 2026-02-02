@@ -14,7 +14,7 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif; /* Font aggiornato */
+      font-family: 'Poppins', sans-serif;
       background-color: #f9f9f9;
       color: #333;
     }
@@ -41,7 +41,7 @@
     /* Sezione Hero con immagine di sfondo */
     .hero {
       height: 100vh;
-      background-image: url('images/IMG_3752.jpeg'); /* Percorso dell'immagine */
+      background-image: url('images/IMG_3752.jpeg');
       background-size: cover;
       background-position: center;
       display: flex;
@@ -69,6 +69,61 @@
       background-color: rgba(0, 0, 0, 0.6);
     }
 
+    /* Selettore di lingua */
+    .language-selector {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .language-selector img {
+      width: 40px;
+      margin-right: 10px;
+      transition: opacity 0.3s ease;
+    }
+
+    .language-selector img:hover {
+      opacity: 0.7;
+    }
+
+    /* Menu a tendina */
+    .language-dropdown {
+      display: none;
+      position: absolute;
+      top: 45px;
+      right: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      z-index: 1002;
+    }
+
+    .language-dropdown a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-dropdown a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .language-selector:hover .language-dropdown {
+      display: block;
+    }
+
     /* Footer */
     footer {
       background-color: #333;
@@ -77,32 +132,6 @@
       padding: 30px;
       position: relative;
     }
-
-    /* Selettore lingua con bandiera e menu a tendina */
-    .language-selector {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 1001;
-      display: flex;
-      align-items: center;
-    }
-
-    .language-selector select {
-      padding: 10px;
-      font-size: 1em;
-      border: none;
-      border-radius: 5px;
-      background-color: #fff;
-      cursor: pointer;
-    }
-
-    .language-selector img {
-      width: 40px;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-
   </style>
 </head>
 <body>
@@ -119,16 +148,16 @@
     <button class="btn" onclick="window.location.href='#menu'">Visualizza Menù</button>
   </div>
 
-  <!-- Selettore Lingua (Bandiera e Menu a tendina) -->
+  <!-- Selettore Lingua con bandiera e freccia -->
   <div class="language-selector">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png" alt="Italiano">
-    <select id="language-dropdown" onchange="changeLanguage()">
-      <option value="it">Italiano</option>
-      <option value="en">English</option>
-      <option value="es">Español</option>
-      <option value="fr">Français</option>
-      <option value="de">Deutsch</option>
-    </select>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png" alt="Italiano" title="Italiano">
+    <div class="language-dropdown">
+      <a href="#" onclick="changeLanguage('it')">Italiano</a>
+      <a href="#" onclick="changeLanguage('en')">English</a>
+      <a href="#" onclick="changeLanguage('es')">Español</a>
+      <a href="#" onclick="changeLanguage('fr')">Français</a>
+      <a href="#" onclick="changeLanguage('de')">Deutsch</a>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -138,11 +167,14 @@
   </footer>
 
   <script>
-    // Funzione per cambiare la lingua in base alla selezione nel menu a tendina
-    function changeLanguage() {
-      var language = document.getElementById("language-dropdown").value;
-      // Per ora, potresti integrare un sistema di traduzione o caricare il contenuto in base alla lingua selezionata.
-      alert("Lingua selezionata: " + language); // Mostra l'alert con la lingua selezionata
+    // Funzione per cambiare lingua
+    function changeLanguage(language) {
+      // Funzionalità di traduzione
+      // Qui puoi aggiungere la logica per caricare il contenuto in base alla lingua
+      // Per ora, mostriamo un alert con la lingua selezionata
+      alert("Lingua selezionata: " + language);
+
+      // Opzionalmente, puoi caricare un altro file o usare una libreria per tradurre
     }
   </script>
 
