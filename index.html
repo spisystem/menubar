@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu Demo</title>
+  <title>Menù del Bar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Nuovo font Poppins -->
   <style>
     /* Reset delle impostazioni di base */
     * {
@@ -13,8 +14,8 @@
     }
 
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f4f4f4;
+      font-family: 'Poppins', sans-serif; /* Font aggiornato */
+      background-color: #f9f9f9;
       color: #333;
     }
 
@@ -45,7 +46,7 @@
     /* Sezione Hero con immagine di sfondo */
     .hero {
       height: 100vh;
-      background-image: url('images/IMG_3752.jpeg'); /* Percorso aggiornato dell'immagine */
+      background-image: url('images/IMG_3752.jpeg'); /* Percorso dell'immagine */
       background-size: cover;
       background-position: center;
       display: flex;
@@ -54,18 +55,6 @@
       text-align: center;
       position: relative;
       padding-bottom: 50px;
-    }
-
-    /* Titolo "Menu Demo" */
-    .hero h1 {
-      font-size: 3em;
-      font-weight: bold;
-      color: white;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
     }
 
     /* Tasto trasparente per visualizzare il menù */
@@ -95,20 +84,25 @@
     .menu-section h2 {
       font-size: 2.5em;
       margin-bottom: 20px;
+      font-weight: 600;
     }
 
     .menu-section ul {
       list-style: none;
       padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
     .menu-section li {
-      padding: 15px 30px;
+      padding: 20px;
+      background-color: #009688; /* Nuovo colore più elegante */
+      color: white;
       font-size: 1.5em;
-      background-color: #009688;
-      margin: 10px 0;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
+      border-radius: 10px;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .menu-section li a {
@@ -116,13 +110,42 @@
       text-decoration: none;
       display: block;
       width: 100%;
+      height: 100%;
       text-align: center;
     }
 
     .menu-section li:hover {
-      background-color: #00796b;
+      background-color: #00796b; /* Colore più scuro al passaggio del mouse */
+      transform: scale(1.05);
     }
 
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      position: relative;
+    }
+
+    /* Stile per il cambio lingua */
+    .language-selector {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+    }
+
+    .language-selector img {
+      width: 40px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: opacity 0.3s ease;
+    }
+
+    .language-selector img:hover {
+      opacity: 0.7;
+    }
   </style>
 </head>
 <body>
@@ -130,14 +153,13 @@
   <!-- Barra di navigazione -->
   <nav>
     <div class="logo">
-      <img src="images/logo.png" alt="Logo"> <!-- Sostituisci con il percorso del tuo logo -->
+      <img src="images/E7FAAD49-2107-44FF-8C7F-167C8E1D017F.png" alt="Logo"> <!-- Percorso del logo aggiornato -->
     </div>
-    <h2>Menu Demo</h2>
+    <h2>Menù del Bar</h2>
   </nav>
 
   <!-- Sezione Hero -->
   <div class="hero">
-    <h1>Menu Demo</h1>
     <button class="btn" onclick="window.location.href='#menu'">Visualizza Menù</button>
   </div>
 
@@ -150,6 +172,18 @@
       <li><a href="#">Bevande</a></li>
       <li><a href="#">Alcolici</a></li>
     </ul>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Contattaci: info@bar.com | Telefono: 123-456-7890</p>
+    <p>&copy; 2026 Bar Provamen</p>
+  </footer>
+
+  <!-- Selezione Lingua -->
+  <div class="language-selector">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png" alt="Italiano" title="Italiano" onclick="alert('Lingua italiana selezionata!')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_Kingdom.svg" alt="English" title="English" onclick="alert('English language selected!')">
   </div>
 
 </body>
