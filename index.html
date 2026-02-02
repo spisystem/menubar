@@ -92,6 +92,19 @@
       margin-right: 10px;
     }
 
+    .language-selector img {
+      width: 40px;
+      transition: opacity 0.3s ease;
+    }
+
+    .language-selector img:hover {
+      opacity: 0.7;
+    }
+
+    .language-selector:hover .language-dropdown {
+      display: block;
+    }
+
     /* Menu a tendina */
     .language-dropdown {
       display: none;
@@ -116,10 +129,6 @@
 
     .language-dropdown a:hover {
       background-color: #f0f0f0;
-    }
-
-    .language-selector:hover .language-dropdown {
-      display: block;
     }
 
     /* Footer */
@@ -148,7 +157,8 @@
 
   <!-- Selettore Lingua con bandiera emoji e freccia -->
   <div class="language-selector">
-    <span>🇮🇹</span>
+    <span>🇮🇹</span> <!-- Bandiera Italiana -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Blue_arrow.svg/1200px-Blue_arrow.svg.png" alt="freccia" style="width: 20px;"> <!-- Freccia -->
     <div class="language-dropdown">
       <!-- Solo bandiere emoji, senza testo -->
       <a href="#" onclick="changeLanguage('it')">🇮🇹</a>
