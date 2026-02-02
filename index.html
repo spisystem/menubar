@@ -6,9 +6,25 @@
   <title>Menù del Bar</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Nuovo font Poppins -->
 
-  <!-- Inclusione di i18next -->
-  <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
+  <!-- Codice per il traduttore di Google invisibile -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'it', // Lingua di default
+        includedLanguages: 'en,es,fr,de', // Le lingue da supportare
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false,  // Nasconde automaticamente il widget
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
   <style>
+    /* Rimuove completamente il widget e il logo di Google Translate */
+    #google_translate_element {
+      display: none;
+    }
+
     /* Stili di base */
     * {
       margin: 0;
@@ -148,17 +164,19 @@
   </div>
 
   <!-- Titolo -->
-  <h1 id="header-title"></h1>
+  <h1 id="header-title">Benvenuto nel nostro bar!</h1>
 
   <!-- Paragrafo -->
-  <p id="paragraph-text"></p>
+  <p id="paragraph-text">Goditi le migliori bevande e caffè!</p>
+
+  <!-- Nuovo Paragrafo (questo sarà tradotto automaticamente) -->
+  <p id="new-paragraph">Questo è un nuovo paragrafo.</p>
 
   <!-- Selettore Lingua con bandiera emoji e freccia -->
   <div class="language-selector" onclick="toggleDropdown()">
     <span>🇮🇹</span> <!-- Bandiera Italiana -->
     <span class="arrow">&#8595;</span> <!-- Freccia verso il basso -->
     <div class="language-dropdown">
-      <!-- Solo bandiere emoji, senza testo -->
       <a href="#" onclick="changeLanguage('it')">🇮🇹</a>
       <a href="#" onclick="changeLanguage('en')">🇬🇧</a>
       <a href="#" onclick="changeLanguage('es')">🇪🇸</a>
@@ -169,23 +187,17 @@
 
   <!-- Footer -->
   <footer>
-    <p id="footer-text"></p>
+    <p id="footer-text">Contattaci: info@bar.com | Telefono: 123-456-7890</p>
     <p>&copy; 2026 Bar Provamen</p>
   </footer>
 
   <script>
     // Cambia la lingua dinamicamente
     function changeLanguage(language) {
-      i18next.changeLanguage(language, () => {
-        // Cambia il testo del tasto, titolo, footer e paragrafo
-        document.querySelector('.btn').textContent = i18next.t('menu_button');
-        document.querySelector('#header-title').textContent = i18next.t('header_title');
-        document.querySelector('#paragraph-text').textContent = i18next.t('paragraph_text');
-        document.querySelector('#footer-text').textContent = i18next.t('footer_text');
-      });
-
-      // Chiudi il menu a tendina dopo aver selezionato una lingua
-      document.querySelector('.language-dropdown').style.display = 'none';
+      var googleTranslateFrame = document.querySelector('iframe.goog-te-frame');
+      if (googleTranslateFrame) {
+        googleTranslateFrame.contentWindow.postMessage({ 'command': 'changeLanguage', 'language': language }, '*');
+      }
     }
 
     // Funzione per togglare il menu a tendina
@@ -194,59 +206,6 @@
       const isVisible = dropdown.style.display === 'block';
       dropdown.style.display = isVisible ? 'none' : 'block';
     }
-
-    // Configurazione di i18next per le lingue
-    i18next.init({
-      lng: 'it', // Lingua di default
-      resources: {
-        it: {
-          translation: {
-            "menu_button": "Visualizza Menù",
-            "footer_text": "Contattaci: info@bar.com | Telefono: 123-456-7890",
-            "header_title": "Benvenuto nel nostro bar!",
-            "paragraph_text": "Goditi le migliori bevande e caffè!"
-          }
-        },
-        en: {
-          translation: {
-            "menu_button": "View Menu",
-            "footer_text": "Contact us: info@bar.com | Phone: 123-456-7890",
-            "header_title": "Welcome to our bar!",
-            "paragraph_text": "Enjoy the best drinks and coffee!"
-          }
-        },
-        es: {
-          translation: {
-            "menu_button": "Ver menú",
-            "footer_text": "Contáctanos: info@bar.com | Teléfono: 123-456-7890",
-            "header_title": "¡Bienvenido a nuestro bar!",
-            "paragraph_text": "¡Disfruta de las mejores bebidas y café!"
-          }
-        },
-        fr: {
-          translation: {
-            "menu_button": "Voir le menu",
-            "footer_text": "Contactez-nous: info@bar.com | Téléphone: 123-456-7890",
-            "header_title": "Bienvenue dans notre bar!",
-            "paragraph_text": "Profitez des meilleures boissons et cafés!"
-          }
-        },
-        de: {
-          translation: {
-            "menu_button": "Menü anzeigen",
-            "footer_text": "Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890",
-            "header_title": "Willkommen in unserer Bar!",
-            "paragraph_text": "Genießen Sie die besten Getränke und Kaffee!"
-          }
-        }
-      }
-    });
-
-    // Inizializza i testi al caricamento della pagina
-    document.querySelector('.btn').textContent = i18next.t('menu_button');
-    document.querySelector('#header-title').textContent = i18next.t('header_title');
-    document.querySelector('#paragraph-text').textContent = i18next.t('paragraph_text');
-    document.querySelector('#footer-text').textContent = i18next.t('footer_text');
   </script>
 
 </body>
