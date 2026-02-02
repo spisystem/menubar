@@ -66,10 +66,11 @@
       font-size: 1.5em;
       padding: 15px 30px;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s ease;
       margin-bottom: 20px;
+      width: 250px;
     }
 
     .hero .btn:hover {
@@ -136,6 +137,25 @@
       padding: 30px;
       position: relative;
     }
+
+    /* Sezioni delle categorie */
+    .category {
+      margin: 20px 0;
+    }
+
+    .category h2 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+
+    .products {
+      list-style-type: none;
+    }
+
+    .products li {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
   </style>
 </head>
 <body>
@@ -171,6 +191,42 @@
     </div>
   </div>
 
+  <!-- Menu -->
+  <div id="menu">
+    <div class="category" id="caffetteria">
+      <h2 id="caffetteria-title"></h2>
+      <ul class="products" id="caffetteria-products">
+        <li id="coffee">Caffè - €1.50</li>
+        <li id="latte">Latte - €2.00</li>
+        <li id="cappuccino">Cappuccino - €2.50</li>
+      </ul>
+    </div>
+
+    <div class="category" id="cornetti">
+      <h2 id="cornetti-title"></h2>
+      <ul class="products" id="cornetti-products">
+        <li id="cornetto">Cornetto Classico - €1.00</li>
+        <li id="cornetto-cioccolato">Cornetto al Cioccolato - €1.50</li>
+      </ul>
+    </div>
+
+    <div class="category" id="bevande">
+      <h2 id="bevande-title"></h2>
+      <ul class="products" id="bevande-products">
+        <li id="coca">Coca-Cola - €1.80</li>
+        <li id="acqua">Acqua - €1.00</li>
+      </ul>
+    </div>
+
+    <div class="category" id="alcolici">
+      <h2 id="alcolici-title"></h2>
+      <ul class="products" id="alcolici-products">
+        <li id="birra">Birra - €3.50</li>
+        <li id="vino">Vino - €4.00</li>
+      </ul>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <p id="footer-text"></p>
@@ -185,6 +241,19 @@
         document.querySelector('.btn').textContent = i18next.t('menu_button');
         document.querySelector('#header-title').textContent = i18next.t('header_title');
         document.querySelector('#paragraph-text').textContent = i18next.t('paragraph_text');
+        document.querySelector('#caffetteria-title').textContent = i18next.t('caffetteria');
+        document.querySelector('#cornetti-title').textContent = i18next.t('cornetti');
+        document.querySelector('#bevande-title').textContent = i18next.t('bevande');
+        document.querySelector('#alcolici-title').textContent = i18next.t('alcolici');
+        document.querySelector('#coffee').textContent = i18next.t('coffee');
+        document.querySelector('#latte').textContent = i18next.t('latte');
+        document.querySelector('#cappuccino').textContent = i18next.t('cappuccino');
+        document.querySelector('#cornetto').textContent = i18next.t('cornetto');
+        document.querySelector('#cornetto-cioccolato').textContent = i18next.t('cornetto_cioccolato');
+        document.querySelector('#coca').textContent = i18next.t('coca');
+        document.querySelector('#acqua').textContent = i18next.t('acqua');
+        document.querySelector('#birra').textContent = i18next.t('birra');
+        document.querySelector('#vino').textContent = i18next.t('vino');
         document.querySelector('#footer-text').textContent = i18next.t('footer_text');
       });
 
@@ -210,7 +279,20 @@
             "menu_button": "Visualizza Menù",
             "footer_text": "Contattaci: info@bar.com | Telefono: 123-456-7890",
             "header_title": "Benvenuto nel nostro bar!",
-            "paragraph_text": "Goditi le migliori bevande e caffè!"
+            "paragraph_text": "Goditi le migliori bevande e caffè!",
+            "caffetteria": "Caffetteria",
+            "cornetti": "Cornetti",
+            "bevande": "Bevande",
+            "alcolici": "Alcolici",
+            "coffee": "Caffè - €1.50",
+            "latte": "Latte - €2.00",
+            "cappuccino": "Cappuccino - €2.50",
+            "cornetto": "Cornetto Classico - €1.00",
+            "cornetto_cioccolato": "Cornetto al Cioccolato - €1.50",
+            "coca": "Coca-Cola - €1.80",
+            "acqua": "Acqua - €1.00",
+            "birra": "Birra - €3.50",
+            "vino": "Vino - €4.00"
           }
         },
         en: {
@@ -218,33 +300,23 @@
             "menu_button": "View Menu",
             "footer_text": "Contact us: info@bar.com | Phone: 123-456-7890",
             "header_title": "Welcome to our bar!",
-            "paragraph_text": "Enjoy the best drinks and coffee!"
+            "paragraph_text": "Enjoy the best drinks and coffee!",
+            "caffetteria": "Coffee Shop",
+            "cornetti": "Croissants",
+            "bevande": "Drinks",
+            "alcolici": "Alcohol",
+            "coffee": "Coffee - €1.50",
+            "latte": "Latte - €2.00",
+            "cappuccino": "Cappuccino - €2.50",
+            "cornetto": "Plain Croissant - €1.00",
+            "cornetto_cioccolato": "Chocolate Croissant - €1.50",
+            "coca": "Coca-Cola - €1.80",
+            "acqua": "Water - €1.00",
+            "birra": "Beer - €3.50",
+            "vino": "Wine - €4.00"
           }
         },
-        es: {
-          translation: {
-            "menu_button": "Ver menú",
-            "footer_text": "Contáctanos: info@bar.com | Teléfono: 123-456-7890",
-            "header_title": "¡Bienvenido a nuestro bar!",
-            "paragraph_text": "¡Disfruta de las mejores bebidas y café!"
-          }
-        },
-        fr: {
-          translation: {
-            "menu_button": "Voir le menu",
-            "footer_text": "Contactez-nous: info@bar.com | Téléphone: 123-456-7890",
-            "header_title": "Bienvenue dans notre bar!",
-            "paragraph_text": "Profitez des meilleures boissons et cafés!"
-          }
-        },
-        de: {
-          translation: {
-            "menu_button": "Menü anzeigen",
-            "footer_text": "Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890",
-            "header_title": "Willkommen in unserer Bar!",
-            "paragraph_text": "Genießen Sie die besten Getränke und Kaffee!"
-          }
-        }
+        // Aggiungere qui altre lingue come "es", "fr", "de", ecc.
       }
     });
 
