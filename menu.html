@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menù del Bar</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Font elegante Lora -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Font Poppins -->
 
   <!-- Inclusione della libreria i18next -->
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
@@ -58,7 +58,7 @@
     }
 
     .language-selector span {
-      font-size: 2em; /* Dimensione più piccola per la bandiera */
+      font-size: 2.2em; /* Aumentato per visibilità */
       margin-right: 5px;
     }
 
@@ -101,20 +101,29 @@
       padding: 20px;
     }
 
-    /* Sezione delle categorie come un classico menù */
+    /* Sezione delle categorie come un classico menù, ma più moderno */
     .category {
-      background-color: #333;
+      background-color: #444; /* Colore di fondo più moderno */
       margin: 15px 0;
-      padding: 20px 30px;
-      border-radius: 10px;
+      padding: 25px 35px; /* Più padding per uno stile più raffinato */
+      border-radius: 15px; /* Bordi arrotondati per un look più moderno */
       color: white;
       font-size: 1.4em; /* Grandezza del testo ridotta */
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Ombra leggera */
+    }
+
+    .category:hover {
+      background-color: #555; /* Colore di hover più scuro */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Ombra più marcata al passaggio del mouse */
     }
 
     .category h2 {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       text-transform: uppercase;
-      font-size: 1.6em; /* Grandezza più piccola */
+      font-size: 1.8em; /* Più grande per i titoli */
+      font-weight: 700;
+      color: #ffd700; /* Colore dorato per i titoli delle categorie */
     }
 
     .products {
@@ -147,7 +156,7 @@
     </div>
 
     <!-- Selettore di lingua -->
-    <div class="language-selector" onclick="toggleDropdown(event)">
+    <div class="language-selector" onclick="toggleDropdown()">
       <span>🇮🇹</span> <!-- Bandiera Italiana -->
       <span class="arrow">&#8595;</span> <!-- Freccia verso il basso -->
       <div class="language-dropdown">
@@ -229,10 +238,11 @@
       });
     }
 
-    // Funzione per toggle delle categorie
-    function toggleCategory(category) {
-      const categoryElement = document.getElementById(category);
-      categoryElement.classList.toggle('open');
+    // Funzione per togglare il menu a tendina
+    function toggleDropdown() {
+      const dropdown = document.querySelector('.language-dropdown');
+      const isVisible = dropdown.style.display === 'block';
+      dropdown.style.display = isVisible ? 'none' : 'block';
     }
 
     // Configurazione i18next per le lingue
