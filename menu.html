@@ -19,7 +19,7 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #333, #000); /* Sfondo scuro elegante con gradiente */
+      background: linear-gradient(135deg, #2e2e2e, #1a1a1a); /* Sfondo sfumato elegante */
       color: #fff;
       min-height: 100vh;
       padding-top: 80px; /* Distanza dalla barra di navigazione */
@@ -31,7 +31,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.7);
       padding: 15px 20px;
       z-index: 1000;
       display: flex;
@@ -96,49 +96,42 @@
       background-color: rgba(0, 0, 0, 0.1);
     }
 
-    /* Menu delle categorie */
-    .menu-categories {
-      display: flex;
-      flex-direction: column;
-      margin-top: 50px;
-      align-items: center;
+    /* Menu principale */
+    .menu {
+      padding: 20px;
     }
 
-    .category {
-      background-color: #444;
-      margin: 10px 0;
-      padding: 20px 30px;
-      width: 60%;
+    .menu h1 {
       text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+
+    /* Sezione delle categorie come un classico menù */
+    .category {
+      background-color: #333;
+      margin: 15px 0;
+      padding: 20px;
       border-radius: 10px;
-      cursor: pointer;
-      font-size: 1.6em;
       color: white;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Ombra elegante */
+      font-size: 1.6em;
     }
 
-    .category:hover {
-      background-color: #555;
+    .category h2 {
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-size: 1.8em;
     }
 
-    /* Prodotti nelle categorie */
     .products {
-      display: none;
       margin-top: 10px;
       font-size: 1.2em;
-      text-align: left;
-      padding: 10px;
-      list-style-type: none;
       color: #ccc;
-    }
-
-    .category.open .products {
-      display: block;
+      list-style-type: none;
     }
 
     .products li {
-      margin: 5px 0;
+      margin: 10px 0;
     }
 
     /* Footer */
@@ -173,9 +166,12 @@
     </div>
   </nav>
 
-  <!-- Sezioni del Menù -->
-  <div class="menu-categories">
-    <div class="category" onclick="toggleCategory('caffetteria')">
+  <!-- Menu -->
+  <div class="menu">
+    <h1>Menù SPI System</h1>
+
+    <!-- Caffetteria -->
+    <div class="category" id="caffetteria">
       <h2 id="caffetteria-title">Caffetteria</h2>
       <ul class="products" id="caffetteria-products">
         <li>Caffè - €1.50</li>
@@ -184,7 +180,8 @@
       </ul>
     </div>
 
-    <div class="category" onclick="toggleCategory('cornetti')">
+    <!-- Cornetti -->
+    <div class="category" id="cornetti">
       <h2 id="cornetti-title">Cornetti</h2>
       <ul class="products" id="cornetti-products">
         <li>Cornetto Classico - €1.00</li>
@@ -192,7 +189,8 @@
       </ul>
     </div>
 
-    <div class="category" onclick="toggleCategory('bevande')">
+    <!-- Bevande -->
+    <div class="category" id="bevande">
       <h2 id="bevande-title">Bevande</h2>
       <ul class="products" id="bevande-products">
         <li>Coca-Cola - €1.80</li>
@@ -200,7 +198,8 @@
       </ul>
     </div>
 
-    <div class="category" onclick="toggleCategory('alcolici')">
+    <!-- Alcolici -->
+    <div class="category" id="alcolici">
       <h2 id="alcolici-title">Alcolici</h2>
       <ul class="products" id="alcolici-products">
         <li>Birra - €3.50</li>
@@ -208,7 +207,8 @@
       </ul>
     </div>
 
-    <div class="category" onclick="toggleCategory('rosticceria')">
+    <!-- Rosticceria -->
+    <div class="category" id="rosticceria">
       <h2 id="rosticceria-title">Rosticceria</h2>
       <ul class="products" id="rosticceria-products">
         <li>Panzerotto - €2.50</li>
