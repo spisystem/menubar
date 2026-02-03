@@ -1,1 +1,311 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menù SPI System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Font rap per titolo e font normale per il resto -->
 
+  <!-- Inclusione della libreria i18next -->
+  <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
+
+  <style>
+    /* Stili di base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #222222; /* Sfondo scuro elegante */
+      color: #fff;
+    }
+
+    /* Barra di navigazione superiore */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px 20px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Logo */
+    nav .logo img {
+      height: 90px;
+      width: auto;
+    }
+
+    /* Selettore di lingua */
+    .language-selector {
+      position: fixed; /* Fissato in alto a destra */
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      background-color: transparent;
+      padding: 5px;
+    }
+
+    .language-selector span {
+      font-size: 2em;
+      margin-right: 5px;
+    }
+
+    /* Freccia simbolo verso il basso */
+    .arrow {
+      font-size: 1.0em;
+      margin-left: 5px;
+      cursor: pointer;
+      color: white; /* Freccia bianca */
+    }
+
+    /* Menu a tendina trasparente */
+    .language-dropdown {
+      display: none;
+      position: absolute;
+      top: 45px;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.8); /* Trasparente */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      z-index: 1002;
+    }
+
+    .language-dropdown a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-dropdown a:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Sezione Hero con immagine di sfondo */
+    .hero {
+      height: 100vh;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding-bottom: 50px;
+    }
+
+    /* Titolo in stile rap */
+    .hero h1 {
+      font-family: 'Bangers', sans-serif;
+      font-size: 4em;
+      color: #fff;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Informazioni sotto il titolo */
+    .hero p {
+      font-size: 1.5em;
+      color: #ccc;
+      margin-top: 10px;
+    }
+
+    /* Categorie del menù */
+    .menu-categories {
+      display: flex;
+      flex-direction: column;
+      margin-top: 50px;
+      align-items: center;
+    }
+
+    .category {
+      background-color: #333;
+      margin: 10px 0;
+      padding: 15px 25px;
+      width: 60%;
+      text-align: center;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.8em;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    .category:hover {
+      background-color: #555;
+    }
+
+    /* Prodotti nelle categorie */
+    .products {
+      display: none;
+      margin-top: 10px;
+      font-size: 1.2em;
+      text-align: left;
+      padding: 10px;
+      list-style-type: none;
+      color: #ccc;
+    }
+
+    .category.open .products {
+      display: block;
+    }
+
+    .products li {
+      margin: 5px 0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra di navigazione -->
+  <nav>
+    <div class="logo">
+      <img src="images/E7FAAD49-2107-44FF-8C7F-167C8E1D017F.png" alt="Logo">
+    </div>
+
+    <!-- Selettore di lingua -->
+    <div class="language-selector" onclick="toggleDropdown(event)">
+      <span>🇮🇹</span> <!-- Bandiera Italiana -->
+      <span class="arrow">&#8595;</span> <!-- Freccia verso il basso -->
+      <div class="language-dropdown">
+        <a href="#" onclick="changeLanguage(event, 'it')">🇮🇹</a>
+        <a href="#" onclick="changeLanguage(event, 'en')">🇬🇧</a>
+        <a href="#" onclick="changeLanguage(event, 'es')">🇪🇸</a>
+        <a href="#" onclick="changeLanguage(event, 'fr')">🇫🇷</a>
+        <a href="#" onclick="changeLanguage(event, 'de')">🇩🇪</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sezione Hero -->
+  <div class="hero">
+    <div>
+      <h1 id="header-title">SPI System</h1>
+      <p>Via Monterosa, 22, Palo del Colle (BA)</p>
+    </div>
+  </div>
+
+  <!-- Sezioni del Menù -->
+  <div class="menu-categories">
+    <div class="category" onclick="toggleCategory('caffetteria')">
+      <h2 id="caffetteria-title">Caffetteria</h2>
+      <ul class="products" id="caffetteria-products">
+        <li>Caffè - €1.50</li>
+        <li>Latte - €2.00</li>
+        <li>Cappuccino - €2.50</li>
+      </ul>
+    </div>
+
+    <div class="category" onclick="toggleCategory('cornetti')">
+      <h2 id="cornetti-title">Cornetti</h2>
+      <ul class="products" id="cornetti-products">
+        <li>Cornetto Classico - €1.00</li>
+        <li>Cornetto al Cioccolato - €1.50</li>
+      </ul>
+    </div>
+
+    <div class="category" onclick="toggleCategory('bevande')">
+      <h2 id="bevande-title">Bevande</h2>
+      <ul class="products" id="bevande-products">
+        <li>Coca-Cola - €1.80</li>
+        <li>Acqua - €1.00</li>
+      </ul>
+    </div>
+
+    <div class="category" onclick="toggleCategory('alcolici')">
+      <h2 id="alcolici-title">Alcolici</h2>
+      <ul class="products" id="alcolici-products">
+        <li>Birra - €3.50</li>
+        <li>Vino - €4.00</li>
+      </ul>
+    </div>
+
+    <div class="category" onclick="toggleCategory('rosticceria')">
+      <h2 id="rosticceria-title">Rosticceria</h2>
+      <ul class="products" id="rosticceria-products">
+        <li>Panzerotto - €2.50</li>
+        <li>Arancino - €2.00</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p id="footer-text"></p>
+    <p>&copy; 2026 Bar Provamen</p>
+  </footer>
+
+  <script>
+    // Funzione per cambiare la lingua dinamicamente
+    function changeLanguage(event, language) {
+      event.preventDefault(); // Impedisce il comportamento predefinito del link (recarica la pagina)
+      i18next.changeLanguage(language, () => {
+        document.querySelector('#header-title').textContent = i18next.t('header_title');
+        document.querySelector('#footer-text').textContent = i18next.t('footer_text');
+        document.querySelector('#caffetteria-title').textContent = i18next.t('caffetteria');
+        document.querySelector('#cornetti-title').textContent = i18next.t('cornetti');
+        document.querySelector('#bevande-title').textContent = i18next.t('bevande');
+        document.querySelector('#alcolici-title').textContent = i18next.t('alcolici');
+        document.querySelector('#rosticceria-title').textContent = i18next.t('rosticceria');
+      });
+    }
+
+    // Funzione per toggle delle categorie
+    function toggleCategory(category) {
+      const categoryElement = document.getElementById(category);
+      categoryElement.classList.toggle('open');
+    }
+
+    // Configurazione i18next per le lingue
+    i18next.init({
+      lng: 'it', // Lingua di default
+      resources: {
+        it: {
+          translation: {
+            "header_title": "SPI System",
+            "footer_text": "Contattaci: info@bar.com | Telefono: 123-456-7890",
+            "caffetteria": "Caffetteria",
+            "cornetti": "Cornetti",
+            "bevande": "Bevande",
+            "alcolici": "Alcolici",
+            "rosticceria": "Rosticceria"
+          }
+        },
+        en: {
+          translation: {
+            "header_title": "SPI System",
+            "footer_text": "Contact us: info@bar.com | Phone: 123-456-7890",
+            "caffetteria": "Coffee Shop",
+            "cornetti": "Croissants",
+            "bevande": "Drinks",
+            "alcolici": "Alcohol",
+            "rosticceria": "Snacks"
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
