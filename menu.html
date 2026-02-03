@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menù SPI System</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Font Poppins -->
+  <title>Menù del Bar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Font elegante Lora -->
 
   <!-- Inclusione della libreria i18next -->
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
@@ -18,8 +18,8 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #2e2e2e, #1a1a1a); /* Sfondo sfumato elegante */
+      font-family: 'Lora', serif; /* Font elegante */
+      background-color: #000; /* Sfondo nero elegante */
       color: #fff;
       min-height: 100vh;
       padding-top: 80px; /* Distanza dalla barra di navigazione */
@@ -40,7 +40,7 @@
     }
 
     nav .logo img {
-      height: 80px;
+      height: 60px; /* Logo più piccolo */
       width: auto;
     }
 
@@ -58,7 +58,7 @@
     }
 
     .language-selector span {
-      font-size: 2.2em; /* Aumentato per visibilità */
+      font-size: 2em; /* Dimensione più piccola per la bandiera */
       margin-right: 5px;
     }
 
@@ -101,31 +101,25 @@
       padding: 20px;
     }
 
-    .menu h1 {
-      text-align: center;
-      font-size: 2.5em;
-      margin-bottom: 40px;
-    }
-
     /* Sezione delle categorie come un classico menù */
     .category {
       background-color: #333;
       margin: 15px 0;
-      padding: 20px;
+      padding: 20px 30px;
       border-radius: 10px;
       color: white;
-      font-size: 1.6em;
+      font-size: 1.4em; /* Grandezza del testo ridotta */
     }
 
     .category h2 {
       margin-bottom: 15px;
       text-transform: uppercase;
-      font-size: 1.8em;
+      font-size: 1.6em; /* Grandezza più piccola */
     }
 
     .products {
       margin-top: 10px;
-      font-size: 1.2em;
+      font-size: 1.1em;
       color: #ccc;
       list-style-type: none;
     }
@@ -168,8 +162,6 @@
 
   <!-- Menu -->
   <div class="menu">
-    <h1>Menù SPI System</h1>
-
     <!-- Caffetteria -->
     <div class="category" id="caffetteria">
       <h2 id="caffetteria-title">Caffetteria</h2>
