@@ -41,44 +41,47 @@
       left: 20px;
     }
 
-    /* Scritta promozionale */
-    .promo-text {
-      position: absolute;
-      top: 130px; /* leggermente più in basso */
-      width: 100%;
-      text-align: center;
-      font-family: 'Lora', serif;
-      font-size: 2rem; /* più visibile */
-      font-weight: 700;
-      color: #b8860b; /* dorato elegante */
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.6); /* rende più leggibile sullo sfondo */
-    }
-
     .hero {
       height: 100vh;
       background-image: url('images/IMG_3752.jpeg');
       background-size: cover;
       background-position: center;
       display: flex;
-      justify-content: center;
-      align-items: flex-end; /* bottone rimane in basso */
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
       text-align: center;
       position: relative;
       padding-bottom: 50px;
+    }
+
+    /* Scritta promozionale sopra lo sfondo */
+    .promo-text {
+      position: absolute;
+      top: 25%; /* leggermente sotto il logo */
+      width: 100%;
+      text-align: center;
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #b8860b; /* dorato elegante */
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+      z-index: 2;
     }
 
     .hero .btn {
       background-color: rgba(0, 0, 0, 0.5);
       color: white;
       font-family: 'Lora', serif;
-      font-size: 1.5rem; /* ridotto da 2rem */
+      font-size: 1.5rem;
       font-weight: 700;
-      padding: 15px 30px; /* ridotto da 20px 40px */
+      padding: 15px 30px;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
       margin-bottom: 20px;
+      z-index: 2;
     }
 
     .hero .btn:hover {
@@ -152,12 +155,11 @@
     </div>
   </nav>
 
-  <!-- Scritta promozionale -->
-  <div class="promo-text">
-    Il tuo menù, in un QR code
-  </div>
-
   <div class="hero">
+    <div class="promo-text">
+      Il tuo menù, in un QR code
+    </div>
+
     <button class="btn" onclick="window.location.href='menu.html';">Visualizza Menù</button>
   </div>
 
