@@ -13,11 +13,7 @@
 
   <style>
     /* RESET */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     /* PALETTE MODERNA */
     :root {
@@ -29,7 +25,6 @@
       --border-soft: rgba(255,255,255,0.08);
     }
 
-    /* BODY */
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--bg-main);
@@ -39,11 +34,9 @@
       letter-spacing: 0.3px;
     }
 
-    /* NAVBAR */
     nav {
       position: fixed;
-      top: 0;
-      width: 100%;
+      top: 0; width: 100%;
       background: rgba(15, 15, 15, 0.9);
       backdrop-filter: blur(12px);
       padding: 18px 40px;
@@ -60,11 +53,8 @@
       transition: transform 0.3s ease;
     }
 
-    nav .logo img:hover {
-      transform: scale(1.05);
-    }
+    nav .logo img:hover { transform: scale(1.05); }
 
-    /* LANGUAGE SELECTOR */
     .language-selector {
       position: relative;
       display: flex;
@@ -72,15 +62,8 @@
       cursor: pointer;
     }
 
-    .language-selector span {
-      font-size: 1.4rem;
-    }
-
-    .arrow {
-      font-size: 0.8rem;
-      margin-left: 6px;
-      color: var(--text-soft);
-    }
+    .language-selector span { font-size: 1.4rem; }
+    .arrow { font-size: 0.8rem; margin-left: 6px; color: var(--text-soft); }
 
     .language-dropdown {
       display: none;
@@ -102,18 +85,14 @@
       transition: background 0.2s ease;
     }
 
-    .language-dropdown a:hover {
-      background: rgba(255,255,255,0.05);
-    }
+    .language-dropdown a:hover { background: rgba(255,255,255,0.05); }
 
-    /* MENU CONTAINER */
     .menu {
       max-width: 900px;
       margin: 0 auto;
       padding: 40px 25px 80px;
     }
 
-    /* CATEGORY CARD */
     .category {
       background: var(--bg-card);
       margin-bottom: 40px;
@@ -132,13 +111,9 @@
     }
 
     @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* TITOLI */
     .category h2 {
       font-family: 'Lora', serif;
       font-size: 1.8rem;
@@ -148,10 +123,7 @@
       letter-spacing: 1px;
     }
 
-    /* LISTA PRODOTTI */
-    .products {
-      list-style: none;
-    }
+    .products { list-style: none; }
 
     .products li {
       display: flex;
@@ -164,21 +136,10 @@
       position: relative;
     }
 
-    .products li:last-child {
-      border-bottom: none;
-    }
+    .products li:last-child { border-bottom: none; }
+    .products li span:first-child::after { content: ""; margin: 0; }
+    .products li span:last-child { color: var(--text-main); font-weight: 600; }
 
-    .products li span:first-child::after {
-      content: "";
-      margin: 0;
-    }
-
-    .products li span:last-child {
-      color: var(--text-main);
-      font-weight: 600;
-    }
-
-    /* FOOTER */
     footer {
       border-top: 1px solid var(--border-soft);
       background: #111;
@@ -188,37 +149,24 @@
       font-size: 0.9rem;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav {
-        padding: 15px 20px;
-      }
-
-      .category {
-        padding: 25px;
-      }
-
+    @media (max-width: 768px){
+      nav { padding: 15px 20px; }
+      .category { padding: 25px; }
       .products li {
         font-size: 0.95rem;
         flex-direction: column;
         align-items: flex-start;
       }
-
-      .products li span:last-child {
-        margin-top: 5px;
-      }
+      .products li span:last-child { margin-top: 5px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Barra di navigazione -->
   <nav>
     <div class="logo">
       <img src="images/E7FAAD49-2107-44FF-8C7F-167C8E1D017F.png" alt="Logo">
     </div>
-
-    <!-- Selettore di lingua -->
     <div class="language-selector" onclick="toggleDropdown()">
       <span>🇮🇹</span>
       <span class="arrow">&#8595;</span>
@@ -232,151 +180,137 @@
     </div>
   </nav>
 
-  <!-- Menu -->
   <div class="menu">
-    <!-- Caffetteria -->
     <div class="category" id="caffetteria">
       <h2 id="caffetteria-title">Caffetteria</h2>
       <ul class="products" id="caffetteria-products">
-        <li><span>Caffè</span><span>€1.50</span></li>
-        <li><span>Latte</span><span>€2.00</span></li>
-        <li><span>Cappuccino</span><span>€2.50</span></li>
+        <li><span data-key="caffe">Caffè</span><span>€1.50</span></li>
+        <li><span data-key="latte">Latte</span><span>€2.00</span></li>
+        <li><span data-key="cappuccino">Cappuccino</span><span>€2.50</span></li>
       </ul>
     </div>
-
-    <!-- Cornetti -->
     <div class="category" id="cornetti">
       <h2 id="cornetti-title">Cornetti</h2>
       <ul class="products" id="cornetti-products">
-        <li><span>Cornetto Classico</span><span>€1.00</span></li>
-        <li><span>Cornetto al Cioccolato</span><span>€1.50</span></li>
+        <li><span data-key="cornetto_classico">Cornetto Classico</span><span>€1.00</span></li>
+        <li><span data-key="cornetto_cioccolato">Cornetto al Cioccolato</span><span>€1.50</span></li>
       </ul>
     </div>
-
-    <!-- Bevande -->
     <div class="category" id="bevande">
       <h2 id="bevande-title">Bevande</h2>
       <ul class="products" id="bevande-products">
-        <li><span>Coca-Cola</span><span>€1.80</span></li>
-        <li><span>Acqua</span><span>€1.00</span></li>
+        <li><span data-key="cocacola">Coca-Cola</span><span>€1.80</span></li>
+        <li><span data-key="acqua">Acqua</span><span>€1.00</span></li>
       </ul>
     </div>
-
-    <!-- Alcolici -->
     <div class="category" id="alcolici">
       <h2 id="alcolici-title">Alcolici</h2>
       <ul class="products" id="alcolici-products">
-        <li><span>Birra</span><span>€3.50</span></li>
-        <li><span>Vino</span><span>€4.00</span></li>
+        <li><span data-key="birra">Birra</span><span>€3.50</span></li>
+        <li><span data-key="vino">Vino</span><span>€4.00</span></li>
       </ul>
     </div>
-
-    <!-- Rosticceria -->
     <div class="category" id="rosticceria">
       <h2 id="rosticceria-title">Rosticceria</h2>
       <ul class="products" id="rosticceria-products">
-        <li><span>Panzerotto</span><span>€2.50</span></li>
-        <li><span>Arancino</span><span>€2.00</span></li>
+        <li><span data-key="panzerotto">Panzerotto</span><span>€2.50</span></li>
+        <li><span data-key="arancino">Arancino</span><span>€2.00</span></li>
       </ul>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
     <p id="footer-text"></p>
     <p>&copy; 2026 Bar Provamen</p>
   </footer>
 
-  <!-- SCRIPT LINGUA -->
   <script>
-    // Configurazione i18next
+    // Configurazione i18next con prodotti tradotti
     i18next.init({
       lng: 'it',
       resources: {
-        it: {
-          translation: {
-            "footer_text": "Contattaci: info@bar.com | Telefono: 123-456-7890",
-            "caffetteria": "Caffetteria",
-            "cornetti": "Cornetti",
-            "bevande": "Bevande",
-            "alcolici": "Alcolici",
-            "rosticceria": "Rosticceria"
-          }
-        },
-        en: {
-          translation: {
-            "footer_text": "Contact us: info@bar.com | Phone: 123-456-7890",
-            "caffetteria": "Coffee Shop",
-            "cornetti": "Croissants",
-            "bevande": "Drinks",
-            "alcolici": "Alcohol",
-            "rosticceria": "Snacks"
-          }
-        },
-        es: {
-          translation: {
-            "footer_text": "Contáctanos: info@bar.com | Teléfono: 123-456-7890",
-            "caffetteria": "Cafetería",
-            "cornetti": "Croissants",
-            "bevande": "Bebidas",
-            "alcolici": "Alcohol",
-            "rosticceria": "Comida rápida"
-          }
-        },
-        fr: {
-          translation: {
-            "footer_text": "Contactez-nous: info@bar.com | Téléphone: 123-456-7890",
-            "caffetteria": "Café",
-            "cornetti": "Croissants",
-            "bevande": "Boissons",
-            "alcolici": "Alcool",
-            "rosticceria": "Snack"
-          }
-        },
-        de: {
-          translation: {
-            "footer_text": "Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890",
-            "caffetteria": "Kaffeehaus",
-            "cornetti": "Croissants",
-            "bevande": "Getränke",
-            "alcolici": "Alkohol",
-            "rosticceria": "Snacks"
-          }
-        }
+        it:{translation:{
+          "footer_text":"Contattaci: info@bar.com | Telefono: 123-456-7890",
+          "caffetteria":"Caffetteria","cornetti":"Cornetti","bevande":"Bevande","alcolici":"Alcolici","rosticceria":"Rosticceria",
+          "caffe":"Caffè","latte":"Latte","cappuccino":"Cappuccino",
+          "cornetto_classico":"Cornetto Classico","cornetto_cioccolato":"Cornetto al Cioccolato",
+          "cocacola":"Coca-Cola","acqua":"Acqua",
+          "birra":"Birra","vino":"Vino",
+          "panzerotto":"Panzerotto","arancino":"Arancino"
+        }},
+        en:{translation:{
+          "footer_text":"Contact us: info@bar.com | Phone: 123-456-7890",
+          "caffetteria":"Coffee Shop","cornetti":"Croissants","bevande":"Drinks","alcolici":"Alcohol","rosticceria":"Snacks",
+          "caffe":"Coffee","latte":"Milk","cappuccino":"Cappuccino",
+          "cornetto_classico":"Classic Croissant","cornetto_cioccolato":"Chocolate Croissant",
+          "cocacola":"Coca-Cola","acqua":"Water",
+          "birra":"Beer","vino":"Wine",
+          "panzerotto":"Panzerotto","arancino":"Arancino"
+        }},
+        es:{translation:{
+          "footer_text":"Contáctanos: info@bar.com | Teléfono: 123-456-7890",
+          "caffetteria":"Cafetería","cornetti":"Croissants","bevande":"Bebidas","alcolici":"Alcohol","rosticceria":"Comida rápida",
+          "caffe":"Café","latte":"Leche","cappuccino":"Capuchino",
+          "cornetto_classico":"Croissant clásico","cornetto_cioccolato":"Croissant de chocolate",
+          "cocacola":"Coca-Cola","acqua":"Agua",
+          "birra":"Cerveza","vino":"Vino",
+          "panzerotto":"Panzerotto","arancino":"Arancino"
+        }},
+        fr:{translation:{
+          "footer_text":"Contactez-nous: info@bar.com | Téléphone: 123-456-7890",
+          "caffetteria":"Café","cornetti":"Croissants","bevande":"Boissons","alcolici":"Alcool","rosticceria":"Snack",
+          "caffe":"Café","latte":"Lait","cappuccino":"Cappuccino",
+          "cornetto_classico":"Croissant classique","cornetto_cioccolato":"Croissant au chocolat",
+          "cocacola":"Coca-Cola","acqua":"Eau",
+          "birra":"Bière","vino":"Vin",
+          "panzerotto":"Panzerotto","arancino":"Arancino"
+        }},
+        de:{translation:{
+          "footer_text":"Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890",
+          "caffetteria":"Kaffeehaus","cornetti":"Croissants","bevande":"Getränke","alcolici":"Alkohol","rosticceria":"Snacks",
+          "caffe":"Kaffee","latte":"Milch","cappuccino":"Cappuccino",
+          "cornetto_classico":"Klassisches Croissant","cornetto_cioccolato":"Schokoladen-Croissant",
+          "cocacola":"Coca-Cola","acqua":"Wasser",
+          "birra":"Bier","vino":"Wein",
+          "panzerotto":"Panzerotto","arancino":"Arancino"
+        }}
       }
     });
 
-    // Recupero lingua salvata dal localStorage e inizializza
     const savedLang = localStorage.getItem('selectedLanguage');
-    if(savedLang){
-      i18next.changeLanguage(savedLang, updateTexts);
-    } else {
-      updateTexts();
-    }
+    if(savedLang){ i18next.changeLanguage(savedLang, updateTexts); }
+    else{ updateTexts(); }
 
-    // Funzione cambio lingua
     function changeLanguage(event, language){
       event.preventDefault();
       localStorage.setItem('selectedLanguage', language);
       i18next.changeLanguage(language, updateTexts);
-      setTimeout(()=>{ document.querySelector('.language-dropdown').style.display='none'; },200);
+      setTimeout(()=>document.querySelector('.language-dropdown').style.display='none',200);
     }
 
-    // Toggle dropdown
     function toggleDropdown(){
       const dropdown = document.querySelector('.language-dropdown');
       dropdown.style.display = dropdown.style.display==='block' ? 'none' : 'block';
     }
 
-    // Aggiorna testi e bandiera
     function updateTexts(){
-      document.querySelector('#footer-text').textContent = i18next.t('footer_text');
+      // Aggiorna titoli categorie
       document.querySelector('#caffetteria-title').textContent = i18next.t('caffetteria');
       document.querySelector('#cornetti-title').textContent = i18next.t('cornetti');
       document.querySelector('#bevande-title').textContent = i18next.t('bevande');
       document.querySelector('#alcolici-title').textContent = i18next.t('alcolici');
       document.querySelector('#rosticceria-title').textContent = i18next.t('rosticceria');
 
+      // Aggiorna prodotti
+      document.querySelectorAll('[data-key]').forEach(el=>{
+        const key = el.getAttribute('data-key');
+        el.textContent = i18next.t(key);
+      });
+
+      // Aggiorna footer
+      document.querySelector('#footer-text').textContent = i18next.t('footer_text');
+
+      // Aggiorna bandiera
       const langSpan = document.querySelector('.language-selector span:first-child');
       switch(i18next.language){
         case 'en': langSpan.textContent='🇬🇧'; break;
