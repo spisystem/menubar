@@ -238,6 +238,7 @@
     }
 
     function updateTexts() {
+      document.querySelector('.promo-text').textContent = i18next.t('promo_text'); // slogan tradotto
       document.querySelector('.btn').textContent = i18next.t('menu_button');
       document.querySelector('#location-title').textContent = i18next.t('location_title');
       document.querySelector('#location-text').innerHTML = i18next.t('location_text');
@@ -264,6 +265,7 @@
       lng: localStorage.getItem('selectedLanguage') || 'it',
       resources:{
         it:{translation:{
+          "promo_text":"Il tuo menù, in un QR code",
           "menu_button":"Visualizza Menù",
           "location_title":"Dove ci troviamo",
           "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Apri su Google Maps</a>",
@@ -274,6 +276,7 @@
           "footer_text":"Contattaci: info@bar.com | Telefono: 123-456-7890"
         }},
         en:{translation:{
+          "promo_text":"Your menu, in a QR code",
           "menu_button":"View Menu",
           "location_title":"Our Location",
           "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Open in Google Maps</a>",
@@ -284,6 +287,7 @@
           "footer_text":"Contact us: info@bar.com | Phone: 123-456-7890"
         }},
         es:{translation:{
+          "promo_text":"Tu menú, en un código QR",
           "menu_button":"Ver menú",
           "location_title":"Ubicación",
           "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Abrir en Google Maps</a>",
@@ -294,6 +298,7 @@
           "footer_text":"Contáctanos: info@bar.com | Teléfono: 123-456-7890"
         }},
         fr:{translation:{
+          "promo_text":"Votre menu, en QR code",
           "menu_button":"Voir le menu",
           "location_title":"Notre emplacement",
           "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Ouvrir sur Google Maps</a>",
@@ -304,6 +309,7 @@
           "footer_text":"Contactez-nous: info@bar.com | Téléphone: 123-456-7890"
         }},
         de:{translation:{
+          "promo_text":"Ihr Menü, in einem QR-Code",
           "menu_button":"Menü anzeigen",
           "location_title":"Standort",
           "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>In Google Maps öffnen</a>",
