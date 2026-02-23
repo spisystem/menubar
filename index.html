@@ -9,11 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -55,18 +51,17 @@
       padding-bottom: 50px;
     }
 
-    /* Scritta promozionale sopra lo sfondo */
     .promo-text {
       position: absolute;
-      top: 100px; /* più in alto vicino al logo */
+      top: 100px;
       width: 100%;
       text-align: center;
       font-family: 'Lora', serif;
       font-size: 2rem;
       font-weight: 700;
-      color: #ffffff; /* bianco */
+      color: #ffffff;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-      z-index: 5; /* sopra lo sfondo */
+      z-index: 5;
     }
 
     .hero .btn {
@@ -101,18 +96,8 @@
       padding: 5px;
     }
 
-    .language-selector span {
-      font-size: 2em;
-      margin-right: 5px;
-    }
-
-    .arrow {
-      font-size: 1em;
-      margin-left: 5px;
-      cursor: pointer;
-      color: white;
-    }
-
+    .language-selector span { font-size: 2em; margin-right: 5px; }
+    .arrow { font-size: 1em; margin-left: 5px; cursor: pointer; color: white; }
     .language-dropdown {
       display: none;
       position: absolute;
@@ -121,7 +106,7 @@
       background-color: rgba(255, 255, 255, 0.8);
       border: 1px solid #ccc;
       border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
       z-index: 1002;
     }
 
@@ -134,9 +119,50 @@
       transition: background-color 0.3s ease;
     }
 
-    .language-dropdown a:hover {
-      background-color: rgba(0, 0, 0, 0.1);
+    .language-dropdown a:hover { background-color: rgba(0,0,0,0.1); }
+
+    /* Nuova sezione info */
+    .info-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #222;
+      color: #fff;
+      padding: 50px 20px;
+      text-align: center;
     }
+
+    .info-box {
+      flex: 1 1 250px;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #333;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .info-box:hover { transform: translateY(-5px); }
+
+    .info-box h3 {
+      margin-bottom: 10px;
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f1c40f; /* giallo elegante */
+    }
+
+    .info-box p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .info-box a {
+      color: #f1c40f;
+      text-decoration: none;
+    }
+
+    .info-box a:hover { text-decoration: underline; }
 
     footer {
       background-color: #333;
@@ -145,6 +171,7 @@
       padding: 30px;
       position: relative;
     }
+
   </style>
 </head>
 <body>
@@ -159,8 +186,24 @@
     <div class="promo-text">
       Il tuo menù, in un QR code
     </div>
-
     <button class="btn" onclick="window.location.href='menu.html';">Visualizza Menù</button>
+  </div>
+
+  <!-- Sezione informazioni -->
+  <div class="info-section">
+    <div class="info-box">
+      <h3>Dove ci troviamo</h3>
+      <p>Via Monterosa, 22<br>Palo del Colle (BA)<br>
+      <a href="https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle" target="_blank">Apri su Google Maps</a></p>
+    </div>
+    <div class="info-box">
+      <h3>Orari di apertura</h3>
+      <p>Lun - Ven: 07:00 - 20:00<br>Sab - Dom: 08:00 - 18:00</p>
+    </div>
+    <div class="info-box">
+      <h3>Contatti</h3>
+      <p>Telefono: 123-456-7890<br>Email: <a href="mailto:info@bar.com">info@bar.com</a></p>
+    </div>
   </div>
 
   <div class="language-selector" onclick="toggleDropdown(event)">
