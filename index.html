@@ -118,7 +118,7 @@
 
     .language-dropdown a:hover { background-color: rgba(0,0,0,0.1); }
 
-    /* Sezione informazioni moderna con icone */
+    /* Sezione informazioni moderna con icone e sfondi uguali */
     .info-section {
       display:flex;
       flex-wrap:wrap;
@@ -127,7 +127,6 @@
       color:#fff;
       padding:60px 20px;
       text-align:center;
-      position:relative;
     }
 
     .info-box {
@@ -135,19 +134,15 @@
       margin:20px;
       padding:25px;
       border-radius:15px;
-      background-color: rgba(255,255,255,0.05);
+      background-color: rgba(50,50,50,0.9); /* SFONDO UGUALE PER TUTTI */
       box-shadow:0 6px 15px rgba(0,0,0,0.5);
       transition: transform 0.3s ease, background-color 0.3s ease;
       position:relative;
     }
 
-    /* Sfalsamento leggero dei box */
-    .info-box:nth-child(2) { top:20px; }
-    .info-box:nth-child(3) { top:40px; }
-
     .info-box:hover {
       transform:translateY(-5px);
-      background-color: rgba(255,255,255,0.1);
+      background-color: rgba(50,50,50,1); /* Hover leggermente più scuro */
     }
 
     .info-box i {
@@ -184,9 +179,8 @@
       position:relative;
     }
 
-    /* Responsive */
     @media (max-width:768px){
-      .info-box:nth-child(2), .info-box:nth-child(3) { top:0px; }
+      .info-box { top:0px; }
     }
   </style>
 </head>
@@ -203,7 +197,6 @@
     <button class="btn" onclick="window.location.href='menu.html';">Visualizza Menù</button>
   </div>
 
-  <!-- Sezione informazioni con icone -->
   <div class="info-section">
     <div class="info-box">
       <i class="fas fa-map-marker-alt"></i>
