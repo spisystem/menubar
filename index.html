@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menù del Bar</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Nuovo font Poppins -->
 
-  <!-- Inclusione della libreria i18next -->
+  <!-- Font eleganti -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- i18next per traduzioni -->
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
 
   <style>
-    /* Stili di base */
     * {
       margin: 0;
       padding: 0;
@@ -23,13 +24,12 @@
       color: #333;
     }
 
-    /* Barra di navigazione superiore */
+    /* Navbar */
     nav {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.6);
       padding: 15px 20px;
       z-index: 1000;
       display: flex;
@@ -37,55 +37,99 @@
       align-items: center;
     }
 
-    /* Logo all'angolo sinistro */
     nav .logo img {
-      height: 90px; /* Logo ridotto leggermente */
+      height: 95px;
       width: auto;
-      position: absolute;
-      left: 20px; /* Posizionato all'angolo sinistro */
     }
 
-    /* Sezione Hero con immagine di sfondo */
+    /* Hero */
     .hero {
       height: 100vh;
       background-image: url('images/IMG_3752.jpeg');
       background-size: cover;
       background-position: center;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      align-items: flex-end;
+      align-items: center;
       text-align: center;
       position: relative;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
       padding-bottom: 50px;
     }
 
-    /* Tasto trasparente per visualizzare il menù */
     .hero .btn {
-      background-color: rgba(0, 0, 0, 0.4);
-      color: white;
-      font-size: 1.5em;
-      padding: 15px 30px;
+      background: linear-gradient(135deg, #c6a75e, #b8860b);
+      color: #fff;
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      padding: 20px 40px;
       border: none;
-      border-radius: 5px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-bottom: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease, background 0.3s ease;
+      margin-bottom: 10px;
     }
 
     .hero .btn:hover {
-      background-color: rgba(0, 0, 0, 0.6);
+      transform: translateY(-3px) scale(1.05);
+      background: linear-gradient(135deg, #b8860b, #c6a75e);
     }
 
-    /* Selettore di lingua che segue la pagina quando scorri */
+    .hero .location-text {
+      font-family: 'Lora', serif;
+      font-size: 1.4rem;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    /* Mappa */
+    .map-container {
+      width: 90%;
+      max-width: 800px;
+      margin: 20px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+      cursor: pointer;
+    }
+
+    /* Orari e slogan */
+    .info-container {
+      text-align: center;
+      margin: 20px auto 50px auto;
+      font-family: 'Lora', serif;
+    }
+
+    .info-container .slogan {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .info-container .hours {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    /* Lingua */
     .language-selector {
-      position: fixed; /* Fissato in alto a destra, indipendente dallo scroll */
+      position: fixed;
       top: 20px;
       right: 20px;
-      z-index: 1001;
       display: flex;
       align-items: center;
       cursor: pointer;
-      background-color: transparent;
       padding: 5px;
     }
 
@@ -94,25 +138,19 @@
       margin-right: 5px;
     }
 
-    /* Nuovo simbolo della freccia */
     .arrow {
-      font-size: 1.0em; /* Nuova dimensione per la freccia */
-      margin-left: 5px;
-      cursor: pointer;
-      color: white; /* Freccia bianca */
+      font-size: 1em;
+      color: white;
     }
 
-    /* Menu a tendina trasparente */
     .language-dropdown {
       display: none;
       position: absolute;
       top: 45px;
       right: 0;
-      background-color: rgba(255, 255, 255, 0.8); /* Trasparente */
-      border: 1px solid #ccc;
+      background: rgba(255,255,255,0.8);
       border-radius: 5px;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-      z-index: 1002;
     }
 
     .language-dropdown a {
@@ -121,11 +159,10 @@
       text-decoration: none;
       color: #333;
       font-size: 1.1em;
-      transition: background-color 0.3s ease;
     }
 
     .language-dropdown a:hover {
-      background-color: rgba(0, 0, 0, 0.1); /* Aggiunto effetto hover */
+      background: rgba(0,0,0,0.1);
     }
 
     /* Footer */
@@ -134,28 +171,52 @@
       color: white;
       text-align: center;
       padding: 30px;
-      position: relative;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Barra di navigazione -->
+  <!-- Navbar -->
   <nav>
     <div class="logo">
       <img src="images/E7FAAD49-2107-44FF-8C7F-167C8E1D017F.png" alt="Logo">
     </div>
   </nav>
 
-  <!-- Sezione Hero -->
+  <!-- Hero -->
   <div class="hero">
-<button class="btn" onclick="window.location.href='menu.html';">Visualizza Menù</button>
+    <button class="btn" onclick="window.location.href='menu.html';">
+      Visualizza Menù
+    </button>
+    <div class="location-text">
+      Dove ci troviamo
+    </div>
   </div>
 
-  <!-- Selettore Lingua con bandiera emoji e freccia -->
+  <!-- Google Map -->
+  <div class="map-container" onclick="window.open('https://www.google.com/maps/search/?api=1&query=Via+Monterosa+22+Palo+del+Colle+BA','_blank')">
+    <iframe
+      src="https://maps.google.com/maps?q=Via%20Monterosa%2022%20Palo%20del%20Colle%20BA&t=&z=15&ie=UTF8&iwloc=&output=embed"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <!-- Slogan e orari -->
+  <div class="info-container">
+    <div class="slogan">Il miglior caffè della città, dal 1998</div>
+    <div class="hours">
+      Orari di apertura: Lunedì - Venerdì 07:00 - 20:00 | Sabato - Domenica 08:00 - 22:00
+    </div>
+  </div>
+
+  <!-- Lingua -->
   <div class="language-selector" onclick="toggleDropdown(event)">
-    <span>🇮🇹</span> <!-- Bandiera Italiana -->
-    <span class="arrow">&#8595;</span> <!-- Nuova freccia verso il basso -->
+    <span>🇮🇹</span>
+    <span class="arrow">&#8595;</span>
     <div class="language-dropdown">
       <a href="#" onclick="changeLanguage(event, 'it')">🇮🇹</a>
       <a href="#" onclick="changeLanguage(event, 'en')">🇬🇧</a>
@@ -172,65 +233,30 @@
   </footer>
 
   <script>
-    // Funzione per cambiare la lingua dinamicamente
     function changeLanguage(event, language) {
-      event.preventDefault(); // Impedisce il comportamento predefinito del link (recarica la pagina)
+      event.preventDefault();
       i18next.changeLanguage(language, () => {
         document.querySelector('.btn').textContent = i18next.t('menu_button');
-        document.querySelector('#footer-text').textContent = i18next.t('footer_text');
       });
-
-      // Chiudi il menu a tendina dopo aver selezionato una lingua
-      setTimeout(() => {
-        document.querySelector('.language-dropdown').style.display = 'none';
-      }, 200); // Ritardo di 200ms per il cambiamento di lingua
+      setTimeout(() => document.querySelector('.language-dropdown').style.display = 'none', 200);
     }
 
-    // Funzione per togglare il menu a tendina
     function toggleDropdown(event) {
       const dropdown = document.querySelector('.language-dropdown');
-      const isVisible = dropdown.style.display === 'block';
-      dropdown.style.display = isVisible ? 'none' : 'block';
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
     }
 
-    // Configurazione i18next per le lingue
     i18next.init({
-      lng: 'it', // Lingua di default
+      lng: 'it',
       resources: {
-        it: {
-          translation: {
-            "menu_button": "Visualizza Menù",
-            "footer_text": "Contattaci: info@bar.com | Telefono: 123-456-7890"
-          }
-        },
-        en: {
-          translation: {
-            "menu_button": "View Menu",
-            "footer_text": "Contact us: info@bar.com | Phone: 123-456-7890"
-          }
-        },
-        es: {
-          translation: {
-            "menu_button": "Ver menú",
-            "footer_text": "Contáctanos: info@bar.com | Teléfono: 123-456-7890"
-          }
-        },
-        fr: {
-          translation: {
-            "menu_button": "Voir le menu",
-            "footer_text": "Contactez-nous: info@bar.com | Téléphone: 123-456-7890"
-          }
-        },
-        de: {
-          translation: {
-            "menu_button": "Menü anzeigen",
-            "footer_text": "Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890"
-          }
-        }
+        it: { translation: { "menu_button": "Visualizza Menù", "footer_text": "Contattaci: info@bar.com | Telefono: 123‑456‑7890" }},
+        en: { translation: { "menu_button": "View Menu", "footer_text": "Contact us: info@bar.com | Phone: 123‑456‑7890" }},
+        es: { translation: { "menu_button": "Ver menú", "footer_text": "Contáctanos: info@bar.com | Teléfono: 123‑456‑7890" }},
+        fr: { translation: { "menu_button": "Voir le menu", "footer_text": "Contactez‑nous: info@bar.com | Téléphone: 123‑456‑7890" }},
+        de: { translation: { "menu_button": "Menü anzeigen", "footer_text": "Kontaktieren Sie uns: info@bar.com | Telefon: 123‑456‑7890" }}
       }
     });
 
-    // Inizializza i testi al caricamento della pagina
     document.querySelector('.btn').textContent = i18next.t('menu_button');
     document.querySelector('#footer-text').textContent = i18next.t('footer_text');
   </script>
