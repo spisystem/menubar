@@ -6,7 +6,6 @@
   <title>Menù del Bar</title>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Inclusione della libreria i18next -->
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
 
   <style>
@@ -42,7 +41,7 @@
       left: 20px;
     }
 
-    /* Scritta promozionale sotto il logo */
+    /* Scritta promozionale breve e diretta sotto il logo */
     .promo-text {
       position: absolute;
       top: 110px; /* poco sotto il logo */
@@ -50,8 +49,8 @@
       text-align: center;
       font-family: 'Lora', serif;
       font-size: 1.8rem;
-      color: #b8860b; /* dorato elegante */
       font-weight: 700;
+      color: #b8860b; /* dorato elegante */
     }
 
     .hero {
@@ -61,16 +60,17 @@
       background-position: center;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-end; /* bottone rimane in basso */
       text-align: center;
       position: relative;
+      padding-bottom: 50px;
     }
 
     .hero .btn {
       background-color: rgba(0, 0, 0, 0.5);
       color: white;
-      font-family: 'Lora', serif; /* font elegante per il bottone */
-      font-size: 2rem; /* più grande e leggibile */
+      font-family: 'Lora', serif; /* font elegante */
+      font-size: 2rem;
       font-weight: 700;
       padding: 20px 40px;
       border: none;
@@ -151,9 +151,9 @@
     </div>
   </nav>
 
-  <!-- Scritta promozionale -->
+  <!-- Scritta promozionale breve e diretta -->
   <div class="promo-text">
-    Menù digitali interattivi – Questa è una demo
+    Il tuo menù, in un QR code
   </div>
 
   <div class="hero">
