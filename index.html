@@ -118,7 +118,6 @@
 
     .language-dropdown a:hover { background-color: rgba(0,0,0,0.1); }
 
-    /* Sezione informazioni moderna con icone e sfondi uguali */
     .info-section {
       display:flex;
       flex-wrap:wrap;
@@ -134,7 +133,7 @@
       margin:20px;
       padding:25px;
       border-radius:15px;
-      background-color: rgba(50,50,50,0.9); /* SFONDO UGUALE PER TUTTI */
+      background-color: rgba(0,0,0,0.7); /* SFONDO NERO QUASI TRASPARENTE */
       box-shadow:0 6px 15px rgba(0,0,0,0.5);
       transition: transform 0.3s ease, background-color 0.3s ease;
       position:relative;
@@ -142,7 +141,7 @@
 
     .info-box:hover {
       transform:translateY(-5px);
-      background-color: rgba(50,50,50,1); /* Hover leggermente più scuro */
+      background-color: rgba(0,0,0,0.85);
     }
 
     .info-box i {
@@ -198,21 +197,21 @@
   </div>
 
   <div class="info-section">
-    <div class="info-box">
+    <div class="info-box" id="location-box">
       <i class="fas fa-map-marker-alt"></i>
-      <h3>Dove ci troviamo</h3>
-      <p>Via Monterosa, 22<br>Palo del Colle (BA)<br>
+      <h3 id="location-title">Dove ci troviamo</h3>
+      <p id="location-text">Via Monterosa, 22<br>Palo del Colle (BA)<br>
       <a href="https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle" target="_blank">Apri su Google Maps</a></p>
     </div>
-    <div class="info-box">
+    <div class="info-box" id="hours-box">
       <i class="fas fa-clock"></i>
-      <h3>Orari di apertura</h3>
-      <p>Lun - Ven: 07:00 - 20:00<br>Sab - Dom: 08:00 - 18:00</p>
+      <h3 id="hours-title">Orari di apertura</h3>
+      <p id="hours-text">Lun - Ven: 07:00 - 20:00<br>Sab - Dom: 08:00 - 18:00</p>
     </div>
-    <div class="info-box">
+    <div class="info-box" id="contact-box">
       <i class="fas fa-phone-alt"></i>
-      <h3>Contatti</h3>
-      <p>Telefono: 123-456-7890<br>Email: <a href="mailto:info@bar.com">info@bar.com</a></p>
+      <h3 id="contact-title">Contatti</h3>
+      <p id="contact-text">Telefono: 123-456-7890<br>Email: <a href="mailto:info@bar.com">info@bar.com</a></p>
     </div>
   </div>
 
@@ -238,29 +237,100 @@
       event.preventDefault();
       i18next.changeLanguage(language, () => {
         document.querySelector('.btn').textContent = i18next.t('menu_button');
+
+        document.querySelector('#location-title').textContent = i18next.t('location_title');
+        document.querySelector('#location-text').innerHTML = i18next.t('location_text');
+
+        document.querySelector('#hours-title').textContent = i18next.t('hours_title');
+        document.querySelector('#hours-text').innerHTML = i18next.t('hours_text');
+
+        document.querySelector('#contact-title').textContent = i18next.t('contact_title');
+        document.querySelector('#contact-text').innerHTML = i18next.t('contact_text');
+
         document.querySelector('#footer-text').textContent = i18next.t('footer_text');
       });
       setTimeout(()=>document.querySelector('.language-dropdown').style.display='none',200);
     }
 
-    function toggleDropdown(event) {
-      const dropdown = document.querySelector('.language-dropdown');
-      dropdown.style.display = dropdown.style.display==='block'?'none':'block';
-    }
-
     i18next.init({
       lng:'it',
       resources:{
-        it:{translation:{"menu_button":"Visualizza Menù","footer_text":"Contattaci: info@bar.com | Telefono: 123-456-7890"}},
-        en:{translation:{"menu_button":"View Menu","footer_text":"Contact us: info@bar.com | Phone: 123-456-7890"}},
-        es:{translation:{"menu_button":"Ver menú","footer_text":"Contáctanos: info@bar.com | Teléfono: 123-456-7890"}},
-        fr:{translation:{"menu_button":"Voir le menu","footer_text":"Contactez-nous: info@bar.com | Téléphone: 123-456-7890"}},
-        de:{translation:{"menu_button":"Menü anzeigen","footer_text":"Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890"}}
+        it:{
+          translation:{
+            "menu_button":"Visualizza Menù",
+            "location_title":"Dove ci troviamo",
+            "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Apri su Google Maps</a>",
+            "hours_title":"Orari di apertura",
+            "hours_text":"Lun - Ven: 07:00 - 20:00<br>Sab - Dom: 08:00 - 18:00",
+            "contact_title":"Contatti",
+            "contact_text":"Telefono: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
+            "footer_text":"Contattaci: info@bar.com | Telefono: 123-456-7890"
+          }
+        },
+        en:{
+          translation:{
+            "menu_button":"View Menu",
+            "location_title":"Our Location",
+            "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Open in Google Maps</a>",
+            "hours_title":"Opening Hours",
+            "hours_text":"Mon - Fri: 07:00 - 20:00<br>Sat - Sun: 08:00 - 18:00",
+            "contact_title":"Contacts",
+            "contact_text":"Phone: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
+            "footer_text":"Contact us: info@bar.com | Phone: 123-456-7890"
+          }
+        },
+        es:{
+          translation:{
+            "menu_button":"Ver menú",
+            "location_title":"Ubicación",
+            "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Abrir en Google Maps</a>",
+            "hours_title":"Horario",
+            "hours_text":"Lun - Vie: 07:00 - 20:00<br>Sáb - Dom: 08:00 - 18:00",
+            "contact_title":"Contacto",
+            "contact_text":"Teléfono: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
+            "footer_text":"Contáctanos: info@bar.com | Teléfono: 123-456-7890"
+          }
+        },
+        fr:{
+          translation:{
+            "menu_button":"Voir le menu",
+            "location_title":"Notre emplacement",
+            "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Ouvrir sur Google Maps</a>",
+            "hours_title":"Horaires d'ouverture",
+            "hours_text":"Lun - Ven: 07:00 - 20:00<br>Sam - Dim: 08:00 - 18:00",
+            "contact_title":"Contacts",
+            "contact_text":"Téléphone: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
+            "footer_text":"Contactez-nous: info@bar.com | Téléphone: 123-456-7890"
+          }
+        },
+        de:{
+          translation:{
+            "menu_button":"Menü anzeigen",
+            "location_title":"Standort",
+            "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>In Google Maps öffnen</a>",
+            "hours_title":"Öffnungszeiten",
+            "hours_text":"Mo - Fr: 07:00 - 20:00<br>Sa - So: 08:00 - 18:00",
+            "contact_title":"Kontakt",
+            "contact_text":"Telefon: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
+            "footer_text":"Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890"
+          }
+        }
       }
     });
 
     document.querySelector('.btn').textContent=i18next.t('menu_button');
+    document.querySelector('#location-title').textContent=i18next.t('location_title');
+    document.querySelector('#location-text').innerHTML=i18next.t('location_text');
+    document.querySelector('#hours-title').textContent=i18next.t('hours_title');
+    document.querySelector('#hours-text').innerHTML=i18next.t('hours_text');
+    document.querySelector('#contact-title').textContent=i18next.t('contact_title');
+    document.querySelector('#contact-text').innerHTML=i18next.t('contact_text');
     document.querySelector('#footer-text').textContent=i18next.t('footer_text');
+
+    function toggleDropdown(event){
+      const dropdown=document.querySelector('.language-dropdown');
+      dropdown.style.display=dropdown.style.display==='block'?'none':'block';
+    }
   </script>
 
 </body>
