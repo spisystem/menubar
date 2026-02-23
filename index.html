@@ -5,175 +5,188 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menù del Bar</title>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      font-family:'Poppins', sans-serif;
+      background-color:#f9f9f9;
+      color:#333;
     }
 
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 15px 20px;
-      z-index: 1000;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
+      position:fixed;
+      top:0; left:0; width:100%;
+      background-color: rgba(0,0,0,0.6);
+      padding:15px 20px;
+      z-index:1000;
+      display:flex;
+      align-items:center;
     }
 
     nav .logo img {
-      height: 90px;
-      width: auto;
-      position: absolute;
-      left: 20px;
+      height:90px;
+      width:auto;
+      position:absolute;
+      left:20px;
     }
 
     .hero {
-      height: 100vh;
-      background-image: url('images/IMG_3752.jpeg');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      padding-bottom: 50px;
+      height:100vh;
+      background-image:url('images/IMG_3752.jpeg');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      align-items:center;
+      text-align:center;
+      position:relative;
+      padding-bottom:50px;
     }
 
     .promo-text {
-      position: absolute;
-      top: 100px;
-      width: 100%;
-      text-align: center;
-      font-family: 'Lora', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: #ffffff;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-      z-index: 5;
+      position:absolute;
+      top:100px;
+      width:100%;
+      text-align:center;
+      font-family:'Lora', serif;
+      font-size:2rem;
+      font-weight:700;
+      color:#fff;
+      text-shadow:1px 1px 3px rgba(0,0,0,0.6);
+      z-index:5;
     }
 
     .hero .btn {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      font-family: 'Lora', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
+      background-color: rgba(0,0,0,0.5);
+      color:white;
+      font-family:'Lora', serif;
+      font-size:1.5rem;
+      font-weight:700;
+      padding:15px 30px;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
-      margin-bottom: 20px;
-      z-index: 2;
+      margin-bottom:20px;
+      z-index:2;
     }
 
     .hero .btn:hover {
-      background-color: rgba(0, 0, 0, 0.7);
-      transform: translateY(-2px);
+      background-color: rgba(0,0,0,0.7);
+      transform:translateY(-2px);
     }
 
     .language-selector {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1001;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      background-color: transparent;
-      padding: 5px;
+      position:fixed;
+      top:20px;
+      right:20px;
+      z-index:1001;
+      display:flex;
+      align-items:center;
+      cursor:pointer;
+      padding:5px;
     }
 
-    .language-selector span { font-size: 2em; margin-right: 5px; }
-    .arrow { font-size: 1em; margin-left: 5px; cursor: pointer; color: white; }
+    .language-selector span { font-size:2em; margin-right:5px; }
+    .arrow { font-size:1em; margin-left:5px; cursor:pointer; color:white; }
 
     .language-dropdown {
-      display: none;
-      position: absolute;
-      top: 45px;
-      right: 0;
-      background-color: rgba(255, 255, 255, 0.8);
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.2);
-      z-index: 1002;
+      display:none;
+      position:absolute;
+      top:45px;
+      right:0;
+      background-color:rgba(255,255,255,0.8);
+      border:1px solid #ccc;
+      border-radius:5px;
+      box-shadow:0 0 5px rgba(0,0,0,0.2);
+      z-index:1002;
     }
 
     .language-dropdown a {
-      display: block;
-      padding: 10px;
-      text-decoration: none;
-      color: #333;
-      font-size: 1.1em;
+      display:block;
+      padding:10px;
+      text-decoration:none;
+      color:#333;
+      font-size:1.1em;
       transition: background-color 0.3s ease;
     }
 
     .language-dropdown a:hover { background-color: rgba(0,0,0,0.1); }
 
-    /* Sezione informazioni nera e box moderni */
+    /* Sezione informazioni moderna con icone */
     .info-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      background-color: #000;
-      color: #fff;
-      padding: 60px 20px;
-      text-align: center;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      background-color:#000;
+      color:#fff;
+      padding:60px 20px;
+      text-align:center;
+      position:relative;
     }
 
     .info-box {
-      flex: 1 1 250px;
-      margin: 20px;
-      padding: 25px;
-      border-radius: 15px;
+      flex:1 1 250px;
+      margin:20px;
+      padding:25px;
+      border-radius:15px;
       background-color: rgba(255,255,255,0.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+      box-shadow:0 6px 15px rgba(0,0,0,0.5);
       transition: transform 0.3s ease, background-color 0.3s ease;
+      position:relative;
     }
 
+    /* Sfalsamento leggero dei box */
+    .info-box:nth-child(2) { top:20px; }
+    .info-box:nth-child(3) { top:40px; }
+
     .info-box:hover {
-      transform: translateY(-5px);
+      transform:translateY(-5px);
       background-color: rgba(255,255,255,0.1);
     }
 
+    .info-box i {
+      font-size:2rem;
+      color:#f1c40f;
+      margin-bottom:10px;
+    }
+
     .info-box h3 {
-      margin-bottom: 15px;
-      font-family: 'Lora', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #f1c40f;
+      margin-bottom:15px;
+      font-family:'Lora', serif;
+      font-size:1.5rem;
+      font-weight:700;
+      color:#f1c40f;
     }
 
     .info-box p {
-      font-size: 1.1rem;
-      line-height: 1.5;
+      font-size:1.1rem;
+      line-height:1.5;
     }
 
     .info-box a {
-      color: #f1c40f;
-      text-decoration: none;
+      color:#f1c40f;
+      text-decoration:none;
     }
 
     .info-box a:hover { text-decoration: underline; }
 
     footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 30px;
-      position: relative;
+      background-color:#333;
+      color:white;
+      text-align:center;
+      padding:30px;
+      position:relative;
+    }
+
+    /* Responsive */
+    @media (max-width:768px){
+      .info-box:nth-child(2), .info-box:nth-child(3) { top:0px; }
     }
   </style>
 </head>
@@ -190,18 +203,21 @@
     <button class="btn" onclick="window.location.href='menu.html';">Visualizza Menù</button>
   </div>
 
-  <!-- Sezione informazioni -->
+  <!-- Sezione informazioni con icone -->
   <div class="info-section">
     <div class="info-box">
+      <i class="fas fa-map-marker-alt"></i>
       <h3>Dove ci troviamo</h3>
       <p>Via Monterosa, 22<br>Palo del Colle (BA)<br>
       <a href="https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle" target="_blank">Apri su Google Maps</a></p>
     </div>
     <div class="info-box">
+      <i class="fas fa-clock"></i>
       <h3>Orari di apertura</h3>
       <p>Lun - Ven: 07:00 - 20:00<br>Sab - Dom: 08:00 - 18:00</p>
     </div>
     <div class="info-box">
+      <i class="fas fa-phone-alt"></i>
       <h3>Contatti</h3>
       <p>Telefono: 123-456-7890<br>Email: <a href="mailto:info@bar.com">info@bar.com</a></p>
     </div>
@@ -231,27 +247,27 @@
         document.querySelector('.btn').textContent = i18next.t('menu_button');
         document.querySelector('#footer-text').textContent = i18next.t('footer_text');
       });
-      setTimeout(() => document.querySelector('.language-dropdown').style.display = 'none', 200);
+      setTimeout(()=>document.querySelector('.language-dropdown').style.display='none',200);
     }
 
     function toggleDropdown(event) {
       const dropdown = document.querySelector('.language-dropdown');
-      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      dropdown.style.display = dropdown.style.display==='block'?'none':'block';
     }
 
     i18next.init({
-      lng: 'it',
-      resources: {
-        it: { translation: { "menu_button": "Visualizza Menù", "footer_text": "Contattaci: info@bar.com | Telefono: 123-456-7890" }},
-        en: { translation: { "menu_button": "View Menu", "footer_text": "Contact us: info@bar.com | Phone: 123-456-7890" }},
-        es: { translation: { "menu_button": "Ver menú", "footer_text": "Contáctanos: info@bar.com | Teléfono: 123-456-7890" }},
-        fr: { translation: { "menu_button": "Voir le menu", "footer_text": "Contactez-nous: info@bar.com | Téléphone: 123-456-7890" }},
-        de: { translation: { "menu_button": "Menü anzeigen", "footer_text": "Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890" }}
+      lng:'it',
+      resources:{
+        it:{translation:{"menu_button":"Visualizza Menù","footer_text":"Contattaci: info@bar.com | Telefono: 123-456-7890"}},
+        en:{translation:{"menu_button":"View Menu","footer_text":"Contact us: info@bar.com | Phone: 123-456-7890"}},
+        es:{translation:{"menu_button":"Ver menú","footer_text":"Contáctanos: info@bar.com | Teléfono: 123-456-7890"}},
+        fr:{translation:{"menu_button":"Voir le menu","footer_text":"Contactez-nous: info@bar.com | Téléphone: 123-456-7890"}},
+        de:{translation:{"menu_button":"Menü anzeigen","footer_text":"Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890"}}
       }
     });
 
-    document.querySelector('.btn').textContent = i18next.t('menu_button');
-    document.querySelector('#footer-text').textContent = i18next.t('footer_text');
+    document.querySelector('.btn').textContent=i18next.t('menu_button');
+    document.querySelector('#footer-text').textContent=i18next.t('footer_text');
   </script>
 
 </body>
