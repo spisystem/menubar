@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menù del Bar</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Nuovo font Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- Inclusione della libreria i18next -->
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
 
   <style>
-    /* Stili di base */
     * {
       margin: 0;
       padding: 0;
@@ -23,7 +22,6 @@
       color: #333;
     }
 
-    /* Barra di navigazione superiore */
     nav {
       position: fixed;
       top: 0;
@@ -37,15 +35,25 @@
       align-items: center;
     }
 
-    /* Logo all'angolo sinistro */
     nav .logo img {
-      height: 90px; /* Logo ridotto leggermente */
+      height: 90px;
       width: auto;
       position: absolute;
-      left: 20px; /* Posizionato all'angolo sinistro */
+      left: 20px;
     }
 
-    /* Sezione Hero con immagine di sfondo */
+    /* Scritta promozionale sotto il logo */
+    .promo-text {
+      position: absolute;
+      top: 110px; /* poco sotto il logo */
+      width: 100%;
+      text-align: center;
+      font-family: 'Lora', serif;
+      font-size: 1.8rem;
+      color: #b8860b; /* dorato elegante */
+      font-weight: 700;
+    }
+
     .hero {
       height: 100vh;
       background-image: url('images/IMG_3752.jpeg');
@@ -53,32 +61,32 @@
       background-position: center;
       display: flex;
       justify-content: center;
-      align-items: flex-end;
+      align-items: center;
       text-align: center;
       position: relative;
-      padding-bottom: 50px;
     }
 
-    /* Tasto trasparente per visualizzare il menù */
     .hero .btn {
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.5);
       color: white;
-      font-size: 1.5em;
-      padding: 15px 30px;
+      font-family: 'Lora', serif; /* font elegante per il bottone */
+      font-size: 2rem; /* più grande e leggibile */
+      font-weight: 700;
+      padding: 20px 40px;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
       margin-bottom: 20px;
     }
 
     .hero .btn:hover {
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.7);
+      transform: translateY(-2px);
     }
 
-    /* Selettore di lingua che segue la pagina quando scorri */
     .language-selector {
-      position: fixed; /* Fissato in alto a destra, indipendente dallo scroll */
+      position: fixed;
       top: 20px;
       right: 20px;
       z-index: 1001;
@@ -94,21 +102,19 @@
       margin-right: 5px;
     }
 
-    /* Nuovo simbolo della freccia */
     .arrow {
-      font-size: 1.0em; /* Nuova dimensione per la freccia */
+      font-size: 1em;
       margin-left: 5px;
       cursor: pointer;
-      color: white; /* Freccia bianca */
+      color: white;
     }
 
-    /* Menu a tendina trasparente */
     .language-dropdown {
       display: none;
       position: absolute;
       top: 45px;
       right: 0;
-      background-color: rgba(255, 255, 255, 0.8); /* Trasparente */
+      background-color: rgba(255, 255, 255, 0.8);
       border: 1px solid #ccc;
       border-radius: 5px;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -125,10 +131,9 @@
     }
 
     .language-dropdown a:hover {
-      background-color: rgba(0, 0, 0, 0.1); /* Aggiunto effetto hover */
+      background-color: rgba(0, 0, 0, 0.1);
     }
 
-    /* Footer */
     footer {
       background-color: #333;
       color: white;
@@ -140,22 +145,24 @@
 </head>
 <body>
 
-  <!-- Barra di navigazione -->
   <nav>
     <div class="logo">
       <img src="images/E7FAAD49-2107-44FF-8C7F-167C8E1D017F.png" alt="Logo">
     </div>
   </nav>
 
-  <!-- Sezione Hero -->
-  <div class="hero">
-<button class="btn" onclick="window.location.href='menu.html';">Visualizza Menù</button>
+  <!-- Scritta promozionale -->
+  <div class="promo-text">
+    Menù digitali interattivi – Questa è una demo
   </div>
 
-  <!-- Selettore Lingua con bandiera emoji e freccia -->
+  <div class="hero">
+    <button class="btn" onclick="window.location.href='menu.html';">Visualizza Menù</button>
+  </div>
+
   <div class="language-selector" onclick="toggleDropdown(event)">
-    <span>🇮🇹</span> <!-- Bandiera Italiana -->
-    <span class="arrow">&#8595;</span> <!-- Nuova freccia verso il basso -->
+    <span>🇮🇹</span>
+    <span class="arrow">&#8595;</span>
     <div class="language-dropdown">
       <a href="#" onclick="changeLanguage(event, 'it')">🇮🇹</a>
       <a href="#" onclick="changeLanguage(event, 'en')">🇬🇧</a>
@@ -165,72 +172,37 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
     <p id="footer-text"></p>
     <p>&copy; 2026 Bar Provamen</p>
   </footer>
 
   <script>
-    // Funzione per cambiare la lingua dinamicamente
     function changeLanguage(event, language) {
-      event.preventDefault(); // Impedisce il comportamento predefinito del link (recarica la pagina)
+      event.preventDefault();
       i18next.changeLanguage(language, () => {
         document.querySelector('.btn').textContent = i18next.t('menu_button');
         document.querySelector('#footer-text').textContent = i18next.t('footer_text');
       });
-
-      // Chiudi il menu a tendina dopo aver selezionato una lingua
-      setTimeout(() => {
-        document.querySelector('.language-dropdown').style.display = 'none';
-      }, 200); // Ritardo di 200ms per il cambiamento di lingua
+      setTimeout(() => document.querySelector('.language-dropdown').style.display = 'none', 200);
     }
 
-    // Funzione per togglare il menu a tendina
     function toggleDropdown(event) {
       const dropdown = document.querySelector('.language-dropdown');
-      const isVisible = dropdown.style.display === 'block';
-      dropdown.style.display = isVisible ? 'none' : 'block';
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
     }
 
-    // Configurazione i18next per le lingue
     i18next.init({
-      lng: 'it', // Lingua di default
+      lng: 'it',
       resources: {
-        it: {
-          translation: {
-            "menu_button": "Visualizza Menù",
-            "footer_text": "Contattaci: info@bar.com | Telefono: 123-456-7890"
-          }
-        },
-        en: {
-          translation: {
-            "menu_button": "View Menu",
-            "footer_text": "Contact us: info@bar.com | Phone: 123-456-7890"
-          }
-        },
-        es: {
-          translation: {
-            "menu_button": "Ver menú",
-            "footer_text": "Contáctanos: info@bar.com | Teléfono: 123-456-7890"
-          }
-        },
-        fr: {
-          translation: {
-            "menu_button": "Voir le menu",
-            "footer_text": "Contactez-nous: info@bar.com | Téléphone: 123-456-7890"
-          }
-        },
-        de: {
-          translation: {
-            "menu_button": "Menü anzeigen",
-            "footer_text": "Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890"
-          }
-        }
+        it: { translation: { "menu_button": "Visualizza Menù", "footer_text": "Contattaci: info@bar.com | Telefono: 123-456-7890" }},
+        en: { translation: { "menu_button": "View Menu", "footer_text": "Contact us: info@bar.com | Phone: 123-456-7890" }},
+        es: { translation: { "menu_button": "Ver menú", "footer_text": "Contáctanos: info@bar.com | Teléfono: 123-456-7890" }},
+        fr: { translation: { "menu_button": "Voir le menu", "footer_text": "Contactez-nous: info@bar.com | Téléphone: 123-456-7890" }},
+        de: { translation: { "menu_button": "Menü anzeigen", "footer_text": "Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890" }}
       }
     });
 
-    // Inizializza i testi al caricamento della pagina
     document.querySelector('.btn').textContent = i18next.t('menu_button');
     document.querySelector('#footer-text').textContent = i18next.t('footer_text');
   </script>
