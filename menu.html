@@ -168,7 +168,6 @@
       border-bottom: none;
     }
 
-    /* RIMOSSO DOT TRA NOME E PREZZO */
     .products li span:first-child::after {
       content: "";
       margin: 0;
@@ -289,9 +288,33 @@
   </footer>
 
   <script>
+    // Recupero lingua salvata dal localStorage
+    const savedLang = localStorage.getItem('selectedLanguage');
+    if(savedLang){
+      i18next.changeLanguage(savedLang, () => {
+        document.querySelector('#footer-text').textContent = i18next.t('footer_text');
+        document.querySelector('#caffetteria-title').textContent = i18next.t('caffetteria');
+        document.querySelector('#cornetti-title').textContent = i18next.t('cornetti');
+        document.querySelector('#bevande-title').textContent = i18next.t('bevande');
+        document.querySelector('#alcolici-title').textContent = i18next.t('alcolici');
+        document.querySelector('#rosticceria-title').textContent = i18next.t('rosticceria');
+
+        // Aggiorna bandiera
+        const langSpan = document.querySelector('.language-selector span:first-child');
+        switch(savedLang){
+          case 'en': langSpan.textContent='🇬🇧'; break;
+          case 'es': langSpan.textContent='🇪🇸'; break;
+          case 'fr': langSpan.textContent='🇫🇷'; break;
+          case 'de': langSpan.textContent='🇩🇪'; break;
+          default: langSpan.textContent='🇮🇹';
+        }
+      });
+    }
+
     // Funzione per cambiare lingua
     function changeLanguage(event, language) {
       event.preventDefault();
+      localStorage.setItem('selectedLanguage', language);
       i18next.changeLanguage(language, () => {
         document.querySelector('#footer-text').textContent = i18next.t('footer_text');
         document.querySelector('#caffetteria-title').textContent = i18next.t('caffetteria');
@@ -299,16 +322,29 @@
         document.querySelector('#bevande-title').textContent = i18next.t('bevande');
         document.querySelector('#alcolici-title').textContent = i18next.t('alcolici');
         document.querySelector('#rosticceria-title').textContent = i18next.t('rosticceria');
+
+        // Aggiorna bandiera
+        const langSpan = document.querySelector('.language-selector span:first-child');
+        switch(language){
+          case 'en': langSpan.textContent='🇬🇧'; break;
+          case 'es': langSpan.textContent='🇪🇸'; break;
+          case 'fr': langSpan.textContent='🇫🇷'; break;
+          case 'de': langSpan.textContent='🇩🇪'; break;
+          default: langSpan.textContent='🇮🇹';
+        }
       });
+
+      // Chiudi dropdown
+      setTimeout(()=>{ document.querySelector('.language-dropdown').style.display='none'; },200);
     }
 
-    // Toggle menu a tendina lingua
+    // Toggle dropdown lingua
     function toggleDropdown() {
       const dropdown = document.querySelector('.language-dropdown');
       dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
     }
 
-    // Config i18next
+    // Configurazione i18next
     i18next.init({
       lng: 'it',
       resources: {
@@ -364,6 +400,14 @@
         }
       }
     });
+
+    // Inizializza testi al caricamento
+    document.querySelector('#footer-text').textContent = i18next.t('footer_text');
+    document.querySelector('#caffetteria-title').textContent = i18next.t('caffetteria');
+    document.querySelector('#cornetti-title').textContent = i18next.t('cornetti');
+    document.querySelector('#bevande-title').textContent = i18next.t('bevande');
+    document.querySelector('#alcolici-title').textContent = i18next.t('alcolici');
+    document.querySelector('#rosticceria-title').textContent = i18next.t('rosticceria');
   </script>
 
 </body>
