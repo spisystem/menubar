@@ -4,146 +4,190 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menù del Bar</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Font Poppins -->
+  
+  <!-- Font eleganti -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Inclusione della libreria i18next -->
+  <!-- Libreria i18next -->
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
 
   <style>
-    /* Stili di base */
+    /* RESET */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Lora', serif; /* Font elegante */
-      background-color: #000; /* Sfondo nero elegante */
-      color: #fff;
-      min-height: 100vh;
-      padding-top: 80px; /* Distanza dalla barra di navigazione */
+    /* PALETTE MODERNA */
+    :root {
+      --bg-main: #0f0f0f;
+      --bg-card: #1a1a1a;
+      --accent: #c6a75e;
+      --text-main: #f5f5f5;
+      --text-soft: #bdbdbd;
+      --border-soft: rgba(255,255,255,0.08);
     }
 
-    /* Barra di navigazione superiore */
+    /* BODY */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding-top: 100px;
+      letter-spacing: 0.3px;
+    }
+
+    /* NAVBAR */
     nav {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 15px 20px;
-      z-index: 1000;
+      background: rgba(15, 15, 15, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 18px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid var(--border-soft);
+      z-index: 1000;
     }
 
     nav .logo img {
-      height: 60px; /* Logo più piccolo */
-      width: auto;
+      height: 55px;
     }
 
-    /* Selettore di lingua */
+    /* LANGUAGE SELECTOR */
     .language-selector {
-      position: fixed; /* Fissato in alto a destra */
-      top: 20px;
-      right: 20px;
-      z-index: 1001;
+      position: relative;
       display: flex;
       align-items: center;
       cursor: pointer;
-      background-color: transparent;
-      padding: 5px;
     }
 
     .language-selector span {
-      font-size: 2.2em; /* Aumentato per visibilità */
-      margin-right: 5px;
+      font-size: 1.4rem;
     }
 
-    /* Freccia simbolo verso il basso */
     .arrow {
-      font-size: 1.0em;
-      margin-left: 5px;
-      cursor: pointer;
-      color: white; /* Freccia bianca */
+      font-size: 0.8rem;
+      margin-left: 6px;
+      color: var(--text-soft);
     }
 
-    /* Menu a tendina trasparente */
     .language-dropdown {
       display: none;
       position: absolute;
-      top: 45px;
+      top: 40px;
       right: 0;
-      background-color: rgba(255, 255, 255, 0.9); /* Trasparente con effetto lucido */
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-      z-index: 1002;
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
     .language-dropdown a {
       display: block;
-      padding: 10px;
+      padding: 10px 15px;
       text-decoration: none;
-      color: #333;
-      font-size: 1.1em;
-      transition: background-color 0.3s ease;
+      color: var(--text-main);
+      transition: background 0.2s ease;
     }
 
     .language-dropdown a:hover {
-      background-color: rgba(0, 0, 0, 0.1);
+      background: rgba(255,255,255,0.05);
     }
 
-    /* Menu principale */
+    /* MENU CONTAINER */
     .menu {
-      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 25px 80px;
     }
 
-    /* Sezione delle categorie come un classico menù, ma più moderno */
+    /* CATEGORY CARD */
     .category {
-      background-color: #2b2b2b; /* Colore più scuro, elegante, raffinato */
-      margin: 15px 0;
-      padding: 25px 35px; /* Più padding per uno stile più raffinato */
-      border-radius: 15px; /* Bordi arrotondati per un look più moderno */
-      color: white;
-      font-size: 1.4em; /* Grandezza del testo ridotta */
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Ombra leggera */
+      background: var(--bg-card);
+      margin-bottom: 40px;
+      padding: 35px 40px;
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .category:hover {
-      background-color: #444; /* Colore di hover più scuro */
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Ombra più marcata al passaggio del mouse */
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
 
+    /* TITOLI */
     .category h2 {
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      font-size: 1.8em; /* Più grande per i titoli */
+      font-family: 'Lora', serif;
+      font-size: 1.8rem;
       font-weight: 700;
-      color: #b8860b; /* Dorato più scuro per il titolo */
+      margin-bottom: 25px;
+      color: var(--accent);
+      letter-spacing: 1px;
     }
 
+    /* LISTA PRODOTTI */
     .products {
-      margin-top: 10px;
-      font-size: 1.1em;
-      color: #ccc;
-      list-style-type: none;
+      list-style: none;
     }
 
     .products li {
-      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      font-size: 1rem;
+      color: var(--text-soft);
+      border-bottom: 1px solid var(--border-soft);
     }
 
-    /* Footer */
+    .products li:last-child {
+      border-bottom: none;
+    }
+
+    /* PREZZO */
+    .products li span:last-child {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* FOOTER */
     footer {
-      background-color: #333;
-      color: white;
+      border-top: 1px solid var(--border-soft);
+      background: #111;
+      padding: 40px 20px;
       text-align: center;
-      padding: 30px;
-      position: relative;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px 20px;
+      }
+
+      .category {
+        padding: 25px;
+      }
+
+      .products li {
+        font-size: 0.95rem;
+      }
+
+      .products li {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .products li span:last-child {
+        margin-top: 5px;
+      }
     }
   </style>
 </head>
@@ -157,8 +201,8 @@
 
     <!-- Selettore di lingua -->
     <div class="language-selector" onclick="toggleDropdown()">
-      <span>🇮🇹</span> <!-- Bandiera Italiana -->
-      <span class="arrow">&#8595;</span> <!-- Freccia verso il basso -->
+      <span>🇮🇹</span>
+      <span class="arrow">&#8595;</span>
       <div class="language-dropdown">
         <a href="#" onclick="changeLanguage(event, 'it')">🇮🇹</a>
         <a href="#" onclick="changeLanguage(event, 'en')">🇬🇧</a>
@@ -175,9 +219,9 @@
     <div class="category" id="caffetteria">
       <h2 id="caffetteria-title">Caffetteria</h2>
       <ul class="products" id="caffetteria-products">
-        <li>Caffè - €1.50</li>
-        <li>Latte - €2.00</li>
-        <li>Cappuccino - €2.50</li>
+        <li><span>Caffè</span><span>€1.50</span></li>
+        <li><span>Latte</span><span>€2.00</span></li>
+        <li><span>Cappuccino</span><span>€2.50</span></li>
       </ul>
     </div>
 
@@ -185,8 +229,8 @@
     <div class="category" id="cornetti">
       <h2 id="cornetti-title">Cornetti</h2>
       <ul class="products" id="cornetti-products">
-        <li>Cornetto Classico - €1.00</li>
-        <li>Cornetto al Cioccolato - €1.50</li>
+        <li><span>Cornetto Classico</span><span>€1.00</span></li>
+        <li><span>Cornetto al Cioccolato</span><span>€1.50</span></li>
       </ul>
     </div>
 
@@ -194,8 +238,8 @@
     <div class="category" id="bevande">
       <h2 id="bevande-title">Bevande</h2>
       <ul class="products" id="bevande-products">
-        <li>Coca-Cola - €1.80</li>
-        <li>Acqua - €1.00</li>
+        <li><span>Coca-Cola</span><span>€1.80</span></li>
+        <li><span>Acqua</span><span>€1.00</span></li>
       </ul>
     </div>
 
@@ -203,8 +247,8 @@
     <div class="category" id="alcolici">
       <h2 id="alcolici-title">Alcolici</h2>
       <ul class="products" id="alcolici-products">
-        <li>Birra - €3.50</li>
-        <li>Vino - €4.00</li>
+        <li><span>Birra</span><span>€3.50</span></li>
+        <li><span>Vino</span><span>€4.00</span></li>
       </ul>
     </div>
 
@@ -212,8 +256,8 @@
     <div class="category" id="rosticceria">
       <h2 id="rosticceria-title">Rosticceria</h2>
       <ul class="products" id="rosticceria-products">
-        <li>Panzerotto - €2.50</li>
-        <li>Arancino - €2.00</li>
+        <li><span>Panzerotto</span><span>€2.50</span></li>
+        <li><span>Arancino</span><span>€2.00</span></li>
       </ul>
     </div>
   </div>
@@ -225,9 +269,9 @@
   </footer>
 
   <script>
-    // Funzione per cambiare la lingua dinamicamente
+    // Funzione per cambiare lingua
     function changeLanguage(event, language) {
-      event.preventDefault(); // Impedisce il comportamento predefinito del link (recarica la pagina)
+      event.preventDefault();
       i18next.changeLanguage(language, () => {
         document.querySelector('#footer-text').textContent = i18next.t('footer_text');
         document.querySelector('#caffetteria-title').textContent = i18next.t('caffetteria');
@@ -238,16 +282,15 @@
       });
     }
 
-    // Funzione per togglare il menu a tendina
+    // Toggle menu a tendina lingua
     function toggleDropdown() {
       const dropdown = document.querySelector('.language-dropdown');
-      const isVisible = dropdown.style.display === 'block';
-      dropdown.style.display = isVisible ? 'none' : 'block';
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
     }
 
-    // Configurazione i18next per le lingue
+    // Config i18next
     i18next.init({
-      lng: 'it', // Lingua di default
+      lng: 'it',
       resources: {
         it: {
           translation: {
