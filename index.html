@@ -1,173 +1,345 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menù del Bar</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menù del Bar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;background-color:#f9f9f9;color:#333;}
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
 
-nav{
-  position:fixed;top:0;left:0;width:100%;
-  background-color: rgba(0,0,0,0.6);
-  padding:15px 20px;z-index:1000;
-  display:flex;align-items:center;
-}
-nav .logo img{height:105px;width:auto;transition: transform 0.3s ease;}
-nav .logo img:hover{transform:scale(1.05);}
+    body {
+      font-family:'Poppins', sans-serif;
+      background-color:#f9f9f9;
+      color:#333;
+    }
 
-.hero{
-  height:100vh;
-  background-image:url('images/IMG_3752.jpeg');
-  background-size:cover;background-position:center;
-  display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
-  text-align:center;position:relative;padding-bottom:50px;
-}
-.promo-text{
-  position:absolute;top:100px;width:100%;
-  text-align:center;font-family:'Lora', serif;
-  font-size:2rem;font-weight:700;color:#c6a75e;
-  text-shadow:1px 1px 3px rgba(0,0,0,0.6);z-index:5;
-}
-.hero .btn{
-  background-color: rgba(0,0,0,0.5);
-  color:white;font-family:'Lora', serif;font-size:1.2rem;font-weight:700;
-  padding:15px 30px;border:none;border-radius:10px;
-  cursor:pointer;transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-bottom:20px;z-index:2;
-}
-.hero .btn:hover{background-color: rgba(0,0,0,0.7);transform:translateY(-2px);}
+    nav {
+      position:fixed;
+      top:0; left:0; width:100%;
+      background-color: rgba(0,0,0,0.6);
+      padding:15px 20px;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+    }
 
-.language-selector{
-  position:fixed;top:20px;right:20px;z-index:1001;
-  display:flex;align-items:center;cursor:pointer;padding:5px;
-}
-.language-selector span:first-child{font-size:1.9rem;margin-right:5px;}
-.arrow{font-size:1.6rem;margin-left:6px;color:#ffffff;transition:transform 0.3s ease;}
-.language-dropdown{
-  display:none;position:absolute;top:45px;right:0;
-  background-color:rgba(255,255,255,0.8);
-  border:1px solid #ccc;border-radius:5px;box-shadow:0 0 5px rgba(0,0,0,0.2);
-  z-index:1002;
-}
-.language-dropdown a{
-  display:block;padding:10px;text-decoration:none;color:#333;font-size:1.1em;
-  transition:background-color 0.3s ease;
-}
-.language-dropdown a:hover{background-color: rgba(0,0,0,0.1);}
+    nav .logo img {
+      height:90px;
+      width:auto;
+      position:absolute;
+      left:20px;
+    }
 
-.info-section{
-  display:flex;flex-wrap:wrap;justify-content:center;
-  background-color:#000;color:#fff;padding:60px 20px;text-align:center;
-}
-.info-box{
-  flex:1 1 250px;margin:20px;padding:25px;border-radius:15px;
-  background-color: rgba(0,0,0,0.7);
-  box-shadow:0 6px 15px rgba(0,0,0,0.5);
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-.info-box:hover{transform:translateY(-5px);background-color: rgba(0,0,0,0.85);}
-.info-box i{font-size:2rem;color:#c6a75e;margin-bottom:10px;}
-.info-box h3{margin-bottom:15px;font-family:'Lora', serif;font-size:1.5rem;font-weight:700;color:#c6a75e;}
-.info-box p{font-size:1.1rem;line-height:1.5;}
-.info-box a{color:#c6a75e;text-decoration:none;transition:text-decoration 0.2s ease;}
-.info-box a:hover{text-decoration:underline;}
+    .hero {
+      height:100vh;
+      background-image:url('images/IMG_3752.jpeg');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      align-items:center;
+      text-align:center;
+      position:relative;
+      padding-bottom:50px;
+    }
 
-footer{background-color:#333;color:white;text-align:center;padding:30px;position:relative;}
+   .promo-text {
+  position:absolute;
+  top:100px;
+  width:100%;
+  text-align:center;
+  font-family:'Lora', serif; /* già elegante */
+  font-size:2rem;
+  font-weight:700;
+  color:#c6a75e; /* dorato soft */
+  text-shadow:1px 1px 3px rgba(0,0,0,0.6);
+  z-index:5;
+}
 
-@media(max-width:768px){.info-box{top:0;}}
-</style>
+    .hero .btn {
+      background-color: rgba(0,0,0,0.5);
+      color:white;
+      font-family:'Lora', serif;
+      font-size:1.2rem;
+      font-weight:700;
+      padding:15px 30px;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-bottom:20px;
+      z-index:2;
+    }
+
+    .hero .btn:hover {
+      background-color: rgba(0,0,0,0.7);
+      transform:translateY(-2px);
+    }
+
+    .language-selector {
+      position:fixed;
+      top:20px;
+      right:20px;
+      z-index:1001;
+      display:flex;
+      align-items:center;
+      cursor:pointer;
+      padding:5px;
+    }
+
+    .language-selector span { font-size:2em; margin-right:5px; }
+.arrow {
+  font-size: 1.4rem;  /* grandezza media */
+  margin-left: 6px;
+  color: #ffffff;      /* bianca */
+}
+
+    .language-dropdown {
+      display:none;
+      position:absolute;
+      top:45px;
+      right:0;
+      background-color:rgba(255,255,255,0.8);
+      border:1px solid #ccc;
+      border-radius:5px;
+      box-shadow:0 0 5px rgba(0,0,0,0.2);
+      z-index:1002;
+    }
+
+    .language-dropdown a {
+      display:block;
+      padding:10px;
+      text-decoration:none;
+      color:#333;
+      font-size:1.1em;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-dropdown a:hover { background-color: rgba(0,0,0,0.1); }
+
+    .info-section {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      background-color:#000;
+      color:#fff;
+      padding:60px 20px;
+      text-align:center;
+    }
+
+    .info-box {
+      flex:1 1 250px;
+      margin:20px;
+      padding:25px;
+      border-radius:15px;
+      background-color: rgba(0,0,0,0.7);
+      box-shadow:0 6px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      position:relative;
+    }
+
+    .info-box:hover {
+      transform:translateY(-5px);
+      background-color: rgba(0,0,0,0.85);
+    }
+
+    .info-box i {
+  font-size:2rem;
+  color:#c6a75e; /* dorato soft */
+  margin-bottom:10px;
+}
+
+.info-box h3 {
+  margin-bottom:15px;
+  font-family:'Lora', serif;
+  font-size:1.5rem;
+  font-weight:700;
+  color:#c6a75e; /* dorato soft */
+}
+
+    .info-box p {
+      font-size:1.1rem;
+      line-height:1.5;
+    }
+
+   .info-box a {
+  color: #c6a75e; /* dorato soft uniforme */
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+}
+
+.info-box a:hover {
+  text-decoration: underline;
+}
+
+    footer {
+      background-color:#333;
+      color:white;
+      text-align:center;
+      padding:30px;
+      position:relative;
+    }
+
+    @media (max-width:768px){
+      .info-box { top:0px; }
+    }
+  </style>
 </head>
 <body>
 
-<nav><div class="logo"><img src="images/E7FAAD49-2107-44FF-8C7F-167C8E1D017F.png" alt="Logo"></div></nav>
+  <nav>
+    <div class="logo">
+      <img src="images/E7FAAD49-2107-44FF-8C7F-167C8E1D017F.png" alt="Logo">
+    </div>
+  </nav>
 
-<div class="hero">
-  <div class="promo-text">Il tuo menù, in un QR code</div>
-  <button class="btn" onclick="window.location.href='menu.html';">Visualizza Menù</button>
-</div>
-
-<div class="info-section">
-  <div class="info-box" id="location-box">
-    <i class="fas fa-map-marker-alt"></i>
-    <h3 id="location-title">Dove ci troviamo</h3>
-    <p id="location-text">Via Monterosa, 22<br>Palo del Colle (BA)<br><a href="https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle" target="_blank">Apri su Google Maps</a></p>
+  <div class="hero">
+    <div class="promo-text">Il tuo menù, in un QR code</div>
+    <button class="btn" onclick="window.location.href='menu.html';">Visualizza Menù</button>
   </div>
-  <div class="info-box" id="hours-box">
-    <i class="fas fa-clock"></i>
-    <h3 id="hours-title">Orari di apertura</h3>
-    <p id="hours-text">Lun - Ven: 07:00 - 20:00<br>Sab - Dom: 08:00 - 18:00</p>
+
+  <div class="info-section">
+    <div class="info-box" id="location-box">
+      <i class="fas fa-map-marker-alt"></i>
+      <h3 id="location-title">Dove ci troviamo</h3>
+      <p id="location-text">Via Monterosa, 22<br>Palo del Colle (BA)<br><a href="https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle" target="_blank">Apri su Google Maps</a></p>
+    </div>
+    <div class="info-box" id="hours-box">
+      <i class="fas fa-clock"></i>
+      <h3 id="hours-title">Orari di apertura</h3>
+      <p id="hours-text">Lun - Ven: 07:00 - 20:00<br>Sab - Dom: 08:00 - 18:00</p>
+    </div>
+    <div class="info-box" id="contact-box">
+      <i class="fas fa-phone-alt"></i>
+      <h3 id="contact-title">Contatti</h3>
+      <p id="contact-text">Telefono: 123-456-7890<br>Email: <a href="mailto:info@bar.com">info@bar.com</a></p>
+    </div>
   </div>
-  <div class="info-box" id="contact-box">
-    <i class="fas fa-phone-alt"></i>
-    <h3 id="contact-title">Contatti</h3>
-    <p id="contact-text">Telefono: 123-456-7890<br>Email: <a href="mailto:info@bar.com">info@bar.com</a></p>
+
+  <div class="language-selector" onclick="toggleDropdown(event)">
+    <span>🇮🇹</span>
+    <span class="arrow">&#8595;</span>
+    <div class="language-dropdown">
+      <a href="#" onclick="changeLanguage(event, 'it')">🇮🇹</a>
+      <a href="#" onclick="changeLanguage(event, 'en')">🇬🇧</a>
+      <a href="#" onclick="changeLanguage(event, 'es')">🇪🇸</a>
+      <a href="#" onclick="changeLanguage(event, 'fr')">🇫🇷</a>
+      <a href="#" onclick="changeLanguage(event, 'de')">🇩🇪</a>
+    </div>
   </div>
-</div>
 
-<div class="language-selector" onclick="toggleDropdown(event)">
-  <span>🇮🇹</span>
-  <span class="arrow">&#8595;</span>
-  <div class="language-dropdown">
-    <a href="#" onclick="changeLanguage(event,'it')">🇮🇹</a>
-    <a href="#" onclick="changeLanguage(event,'en')">🇬🇧</a>
-    <a href="#" onclick="changeLanguage(event,'es')">🇪🇸</a>
-    <a href="#" onclick="changeLanguage(event,'fr')">🇫🇷</a>
-    <a href="#" onclick="changeLanguage(event,'de')">🇩🇪</a>
-  </div>
-</div>
+  <footer>
+    <p id="footer-text"></p>
+    <p>&copy; 2026 Bar Provamen</p>
+  </footer>
 
-<footer>
-  <p id="footer-text"></p>
-  <p>&copy; 2026 Bar Provamen</p>
-</footer>
+  <script>
+    // Funzione per cambiare lingua
+    function changeLanguage(event, language) {
+      event.preventDefault();
+      i18next.changeLanguage(language, updateTexts);
+      localStorage.setItem('selectedLanguage', language);
+      updateFlag(language);
+      setTimeout(()=>document.querySelector('.language-dropdown').style.display='none',200);
+    }
 
-<script>
-i18next.init({
-  lng:localStorage.getItem('selectedLanguage')||'it',
-  resources:{
-    it:{translation:{
-      "promo_text":"Il tuo menù, in un QR code",
-      "menu_button":"Visualizza Menù",
-      "location_title":"Dove ci troviamo",
-      "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Apri su Google Maps</a>",
-      "hours_title":"Orari di apertura",
-      "hours_text":"Lun - Ven: 07:00 - 20:00<br>Sab - Dom: 08:00 - 18:00",
-      "contact_title":"Contatti",
-      "contact_text":"Telefono: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
-      "footer_text":"Contattaci: info@bar.com | Telefono: 123-456-7890"
-    }},
-    en:{translation:{/* ...same as before... */}},
-    es:{translation:{/* ...same as before... */}},
-    fr:{translation:{/* ...same as before... */}},
-    de:{translation:{/* ...same as before... */}}
-  }
-}, updateTexts);
+    function updateTexts() {
+      document.querySelector('.promo-text').textContent = i18next.t('promo_text'); // slogan tradotto
+      document.querySelector('.btn').textContent = i18next.t('menu_button');
+      document.querySelector('#location-title').textContent = i18next.t('location_title');
+      document.querySelector('#location-text').innerHTML = i18next.t('location_text');
+      document.querySelector('#hours-title').textContent = i18next.t('hours_title');
+      document.querySelector('#hours-text').innerHTML = i18next.t('hours_text');
+      document.querySelector('#contact-title').textContent = i18next.t('contact_title');
+      document.querySelector('#contact-text').innerHTML = i18next.t('contact_text');
+      document.querySelector('#footer-text').textContent = i18next.t('footer_text');
+    }
 
-function updateTexts(){
-  document.querySelector('.promo-text').textContent=i18next.t('promo_text');
-  document.querySelector('.btn').textContent=i18next.t('menu_button');
-  document.querySelector('#location-title').textContent=i18next.t('location_title');
-  document.querySelector('#location-text').innerHTML=i18next.t('location_text');
-  document.querySelector('#hours-title').textContent=i18next.t('hours_title');
-  document.querySelector('#hours-text').innerHTML=i18next.t('hours_text');
-  document.querySelector('#contact-title').textContent=i18next.t('contact_title');
-  document.querySelector('#contact-text').innerHTML=i18next.t('contact_text');
-  document.querySelector('#footer-text').textContent=i18next.t('footer_text');
-}
-function updateFlag(lang){
-  const f=document.querySelector('.language-selector span:first-child');
-  switch(lang){case'it':f.textContent='🇮🇹';break;case'en':f.textContent='🇬🇧';break;case'es':f.textContent='🇪🇸';break;case'fr':f.textContent='🇫🇷';break;case'de':f.textContent='🇩🇪';break;}
-}
-function changeLanguage(e,lang){e.preventDefault();i18next.changeLanguage(lang,updateTexts);localStorage.setItem('selectedLanguage',lang);updateFlag(lang);setTimeout(()=>document.querySelector('.language-dropdown').style.display='none',200);}
-function toggleDropdown(){const d=document.querySelector('.language-dropdown');d.style.display=d.style.display==='block'?'none':'block';}
-updateFlag(i18next.language);
-</script>
+    function updateFlag(language){
+      const flag = document.querySelector('.language-selector span:first-child');
+      switch(language){
+        case 'it': flag.textContent='🇮🇹'; break;
+        case 'en': flag.textContent='🇬🇧'; break;
+        case 'es': flag.textContent='🇪🇸'; break;
+        case 'fr': flag.textContent='🇫🇷'; break;
+        case 'de': flag.textContent='🇩🇪'; break;
+      }
+    }
+
+    // Inizializza i18next con traduzioni
+    i18next.init({
+      lng: localStorage.getItem('selectedLanguage') || 'it',
+      resources:{
+        it:{translation:{
+          "promo_text":"Il tuo menù, in un QR code",
+          "menu_button":"Visualizza Menù",
+          "location_title":"Dove ci troviamo",
+          "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Apri su Google Maps</a>",
+          "hours_title":"Orari di apertura",
+          "hours_text":"Lun - Ven: 07:00 - 20:00<br>Sab - Dom: 08:00 - 18:00",
+          "contact_title":"Contatti",
+          "contact_text":"Telefono: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
+          "footer_text":"Contattaci: info@bar.com | Telefono: 123-456-7890"
+        }},
+        en:{translation:{
+          "promo_text":"Your menu, in a QR code",
+          "menu_button":"View Menu",
+          "location_title":"Our Location",
+          "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Open in Google Maps</a>",
+          "hours_title":"Opening Hours",
+          "hours_text":"Mon - Fri: 07:00 - 20:00<br>Sat - Sun: 08:00 - 18:00",
+          "contact_title":"Contacts",
+          "contact_text":"Phone: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
+          "footer_text":"Contact us: info@bar.com | Phone: 123-456-7890"
+        }},
+        es:{translation:{
+          "promo_text":"Tu menú, en un código QR",
+          "menu_button":"Ver menú",
+          "location_title":"Ubicación",
+          "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Abrir en Google Maps</a>",
+          "hours_title":"Horario",
+          "hours_text":"Lun - Vie: 07:00 - 20:00<br>Sáb - Dom: 08:00 - 18:00",
+          "contact_title":"Contacto",
+          "contact_text":"Teléfono: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
+          "footer_text":"Contáctanos: info@bar.com | Teléfono: 123-456-7890"
+        }},
+        fr:{translation:{
+          "promo_text":"Votre menu, en QR code",
+          "menu_button":"Voir le menu",
+          "location_title":"Notre emplacement",
+          "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Ouvrir sur Google Maps</a>",
+          "hours_title":"Horaires d'ouverture",
+          "hours_text":"Lun - Ven: 07:00 - 20:00<br>Sam - Dim: 08:00 - 18:00",
+          "contact_title":"Contacts",
+          "contact_text":"Téléphone: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
+          "footer_text":"Contactez-nous: info@bar.com | Téléphone: 123-456-7890"
+        }},
+        de:{translation:{
+          "promo_text":"Ihr Menü, in einem QR-Code",
+          "menu_button":"Menü anzeigen",
+          "location_title":"Standort",
+          "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>In Google Maps öffnen</a>",
+          "hours_title":"Öffnungszeiten",
+          "hours_text":"Mo - Fr: 07:00 - 20:00<br>Sa - So: 08:00 - 18:00",
+          "contact_title":"Kontakt",
+          "contact_text":"Telefon: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
+          "footer_text":"Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890"
+        }}
+      }
+    }, updateTexts);
+
+    updateFlag(i18next.language);
+
+    function toggleDropdown(event){
+      const dropdown=document.querySelector('.language-dropdown');
+      dropdown.style.display=dropdown.style.display==='block'?'none':'block';
+    }
+  </script>
 
 </body>
 </html>
