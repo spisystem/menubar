@@ -132,14 +132,16 @@
 .category-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start; /* sposta freccia leggermente più in alto */
   cursor: pointer;
+  gap: 12px; /* distanza elegante tra titolo e freccia */
 }
 
-/* Icona freccia dorata */
 .category-toggle {
-  font-size: 1.2rem;
-  color: var(--accent);
+  font-size: 1.8rem;       /* più grande e visibile */
+  color: var(--accent);    /* dorato */
+  font-weight: bold;       /* enfatizza il simbolo */
+  margin-top: 4px;         /* leggero spostamento verso l’alto */
   transition: transform 0.3s ease;
 }
 
