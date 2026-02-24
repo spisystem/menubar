@@ -205,11 +205,19 @@ nav .logo img:hover {
 .social-icons a:hover { transform:scale(1.2); }
 
 footer {
-  background-color:#333;
+  background-color:#000; /* nero */
   color:white;
   text-align:center;
-  padding:30px;
+  padding:30px 20px;
   position:relative;
+  font-family:'Poppins', sans-serif;
+  letter-spacing:0.3px;
+}
+
+#footer-text {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #c6a75e; /* dorato per evidenziare SPI System */
 }
 
 @media (max-width:768px){
@@ -269,8 +277,8 @@ footer {
 </div>
 
 <footer>
-  <p id="footer-text"></p>
-  <p>&copy; 2026 Bar Provamen</p>
+  <p id="footer-text">SPI System di Giuseppe Spizzico | P. IVA: 08791580726</p>
+  <p>&copy; 2026 Demo Menù</p>
 </footer>
 
 <script>
