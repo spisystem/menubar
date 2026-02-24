@@ -128,6 +128,42 @@
       color: var(--accent);
       letter-spacing: 1px;
     }
+    /* HEADER CATEGORIA CLICCABILE */
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Icona freccia dorata */
+.category-toggle {
+  font-size: 1.2rem;
+  color: var(--accent);
+  transition: transform 0.3s ease;
+}
+
+/* Rotazione quando aperta */
+.category.open .category-toggle {
+  transform: rotate(180deg);
+}
+
+/* Animazione apertura */
+.products {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.category.closed .products {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+}
+
+.category.open .products {
+  max-height: 500px;
+  opacity: 1;
+}
 
     .products { list-style: none; }
 
@@ -187,8 +223,11 @@
   </nav>
 
   <div class="menu">
-    <div class="category" id="caffetteria">
-      <h2 id="caffetteria-title">Caffetteria</h2>
+    <div class="category closed" id="caffetteria">
+  <div class="category-header" onclick="toggleCategory(this)">
+    <h2 id="caffetteria-title">Caffetteria</h2>
+    <span class="category-toggle">⌄</span>
+  </div>
       <ul class="products" id="caffetteria-products">
         <li><span data-key="caffe">Caffè</span><span>€1.50</span></li>
         <li><span data-key="latte">Latte</span><span>€2.00</span></li>
@@ -326,6 +365,18 @@
         default: langSpan.textContent='🇮🇹';
       }
     }
+      function toggleCategory(element){
+  const category = element.parentElement;
+
+  if(category.classList.contains('open')){
+    category.classList.remove('open');
+    category.classList.add('closed');
+  } else {
+    category.classList.remove('closed');
+    category.classList.add('open');
+  }
+}
+  
   </script>
 
 </body>
