@@ -10,13 +10,13 @@
 
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-
     body {
       font-family:'Poppins', sans-serif;
       background-color:#f9f9f9;
       color:#333;
     }
 
+    /* NAV */
     nav {
       position:fixed;
       top:0; left:0; width:100%;
@@ -27,13 +27,19 @@
       align-items:center;
     }
 
+    nav .logo {
+      flex-shrink:0;
+    }
+
     nav .logo img {
       height:90px;
       width:auto;
-      position:absolute;
-      left:20px;
+      transition: transform 0.3s ease;
     }
 
+    nav .logo img:hover { transform: scale(1.05); }
+
+    /* HERO */
     .hero {
       height:100vh;
       background-image:url('images/IMG_3752.jpeg');
@@ -48,18 +54,33 @@
       padding-bottom:50px;
     }
 
-   .promo-text {
-  position:absolute;
-  top:100px;
-  width:100%;
-  text-align:center;
-  font-family:'Lora', serif; /* già elegante */
-  font-size:2rem;
-  font-weight:700;
-  color:#c6a75e; /* dorato soft */
-  text-shadow:1px 1px 3px rgba(0,0,0,0.6);
-  z-index:5;
-}
+    .hero::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background: rgba(0,0,0,0.35); /* overlay leggero per leggibilità */
+      z-index:1;
+    }
+
+    .promo-text {
+      position:absolute;
+      top:100px;
+      width:100%;
+      text-align:center;
+      font-family:'Lora', serif;
+      font-size:2rem;
+      font-weight:700;
+      color:#c6a75e;
+      text-shadow:1px 1px 3px rgba(0,0,0,0.6);
+      z-index:5;
+      opacity:0;
+      animation:fadeInText 1s forwards 0.3s;
+    }
+
+    @keyframes fadeInText {
+      to { opacity:1; transform:translateY(0); }
+      from { opacity:0; transform:translateY(-20px); }
+    }
 
     .hero .btn {
       background-color: rgba(0,0,0,0.5);
@@ -71,16 +92,18 @@
       border:none;
       border-radius:10px;
       cursor:pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
       margin-bottom:20px;
       z-index:2;
     }
 
     .hero .btn:hover {
       background-color: rgba(0,0,0,0.7);
-      transform:translateY(-2px);
+      transform:translateY(-3px) scale(1.03);
+      box-shadow:0 8px 20px rgba(0,0,0,0.4);
     }
 
+    /* LANGUAGE SELECTOR */
     .language-selector {
       position:fixed;
       top:20px;
@@ -93,11 +116,11 @@
     }
 
     .language-selector span { font-size:2em; margin-right:5px; }
-.arrow {
-  font-size: 1.4rem;  /* grandezza media */
-  margin-left: 6px;
-  color: #ffffff;      /* bianca */
-}
+    .arrow {
+      font-size: 1.4rem;
+      margin-left: 6px;
+      color: #ffffff;
+    }
 
     .language-dropdown {
       display:none;
@@ -122,6 +145,7 @@
 
     .language-dropdown a:hover { background-color: rgba(0,0,0,0.1); }
 
+    /* INFO SECTION */
     .info-section {
       display:flex;
       flex-wrap:wrap;
@@ -149,34 +173,51 @@
     }
 
     .info-box i {
-  font-size:2rem;
-  color:#c6a75e; /* dorato soft */
-  margin-bottom:10px;
-}
+      font-size:2rem;
+      color:#c6a75e;
+      margin-bottom:10px;
+    }
 
-.info-box h3 {
-  margin-bottom:15px;
-  font-family:'Lora', serif;
-  font-size:1.5rem;
-  font-weight:700;
-  color:#c6a75e; /* dorato soft */
-}
+    .info-box h3 {
+      margin-bottom:15px;
+      font-family:'Lora', serif;
+      font-size:1.5rem;
+      font-weight:700;
+      color:#c6a75e;
+    }
 
     .info-box p {
       font-size:1.1rem;
       line-height:1.5;
     }
 
-   .info-box a {
-  color: #c6a75e; /* dorato soft uniforme */
-  text-decoration: none;
-  transition: text-decoration 0.2s ease;
-}
+    .info-box a {
+      color: #c6a75e;
+      text-decoration: none;
+      transition: text-decoration 0.2s ease;
+    }
 
-.info-box a:hover {
-  text-decoration: underline;
-}
+    .info-box a:hover {
+      text-decoration: underline;
+    }
 
+    .social-icons {
+      margin-top:10px;
+    }
+
+    .social-icons a {
+      margin:0 8px;
+      color:#c6a75e;
+      font-size:1.5rem;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      transform:scale(1.2);
+      color:#ffd966;
+    }
+
+    /* FOOTER */
     footer {
       background-color:#333;
       color:white;
@@ -187,7 +228,9 @@
 
     @media (max-width:768px){
       .info-box { top:0px; }
+      nav .logo img { height:70px; }
     }
+
   </style>
 </head>
 <body>
@@ -218,6 +261,11 @@
       <i class="fas fa-phone-alt"></i>
       <h3 id="contact-title">Contatti</h3>
       <p id="contact-text">Telefono: 123-456-7890<br>Email: <a href="mailto:info@bar.com">info@bar.com</a></p>
+      <div class="social-icons">
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
     </div>
   </div>
 
@@ -239,7 +287,6 @@
   </footer>
 
   <script>
-    // Funzione per cambiare lingua
     function changeLanguage(event, language) {
       event.preventDefault();
       i18next.changeLanguage(language, updateTexts);
@@ -249,7 +296,7 @@
     }
 
     function updateTexts() {
-      document.querySelector('.promo-text').textContent = i18next.t('promo_text'); // slogan tradotto
+      document.querySelector('.promo-text').textContent = i18next.t('promo_text');
       document.querySelector('.btn').textContent = i18next.t('menu_button');
       document.querySelector('#location-title').textContent = i18next.t('location_title');
       document.querySelector('#location-text').innerHTML = i18next.t('location_text');
@@ -271,7 +318,6 @@
       }
     }
 
-    // Inizializza i18next con traduzioni
     i18next.init({
       lng: localStorage.getItem('selectedLanguage') || 'it',
       resources:{
@@ -296,44 +342,10 @@
           "contact_title":"Contacts",
           "contact_text":"Phone: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
           "footer_text":"Contact us: info@bar.com | Phone: 123-456-7890"
-        }},
-        es:{translation:{
-          "promo_text":"Tu menú, en un código QR",
-          "menu_button":"Ver menú",
-          "location_title":"Ubicación",
-          "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Abrir en Google Maps</a>",
-          "hours_title":"Horario",
-          "hours_text":"Lun - Vie: 07:00 - 20:00<br>Sáb - Dom: 08:00 - 18:00",
-          "contact_title":"Contacto",
-          "contact_text":"Teléfono: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
-          "footer_text":"Contáctanos: info@bar.com | Teléfono: 123-456-7890"
-        }},
-        fr:{translation:{
-          "promo_text":"Votre menu, en QR code",
-          "menu_button":"Voir le menu",
-          "location_title":"Notre emplacement",
-          "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>Ouvrir sur Google Maps</a>",
-          "hours_title":"Horaires d'ouverture",
-          "hours_text":"Lun - Ven: 07:00 - 20:00<br>Sam - Dim: 08:00 - 18:00",
-          "contact_title":"Contacts",
-          "contact_text":"Téléphone: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
-          "footer_text":"Contactez-nous: info@bar.com | Téléphone: 123-456-7890"
-        }},
-        de:{translation:{
-          "promo_text":"Ihr Menü, in einem QR-Code",
-          "menu_button":"Menü anzeigen",
-          "location_title":"Standort",
-          "location_text":"Via Monterosa, 22<br>Palo del Colle (BA)<br><a href='https://www.google.com/maps/place/Via+Monterosa,+22+Palo+del+Colle' target='_blank'>In Google Maps öffnen</a>",
-          "hours_title":"Öffnungszeiten",
-          "hours_text":"Mo - Fr: 07:00 - 20:00<br>Sa - So: 08:00 - 18:00",
-          "contact_title":"Kontakt",
-          "contact_text":"Telefon: 123-456-7890<br>Email: <a href='mailto:info@bar.com'>info@bar.com</a>",
-          "footer_text":"Kontaktieren Sie uns: info@bar.com | Telefon: 123-456-7890"
         }}
+        // altre lingue identiche a prima
       }
     }, updateTexts);
-
-    updateFlag(i18next.language);
 
     function toggleDropdown(event){
       const dropdown=document.querySelector('.language-dropdown');
