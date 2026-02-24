@@ -34,6 +34,7 @@
       letter-spacing: 0.3px;
     }
 
+    /* NAVBAR */
     nav {
       position: fixed;
       top: 0; width: 100%;
@@ -48,13 +49,14 @@
     }
 
     nav .logo img {
-  height: 105px; /* più grande ma ancora elegante */
-  width: auto;
-  transition: transform 0.3s ease;
-}
+      height: 105px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
 
     nav .logo img:hover { transform: scale(1.05); }
 
+    /* LINGUE */
     .language-selector {
       position: relative;
       display: flex;
@@ -62,14 +64,15 @@
       cursor: pointer;
     }
 
-   .language-selector span:first-child {
-  font-size: 1.9rem; /* bandiera più visibile */
-}
-.arrow {
-  font-size: 1.4rem;  /* molto più grande */
-  margin-left: 6px;
-  color: var(--text-soft);
-}
+    .language-selector span:first-child {
+      font-size: 1.9rem;
+    }
+
+    .arrow {
+      font-size: 1.4rem;
+      margin-left: 6px;
+      color: var(--text-soft);
+    }
 
     .language-dropdown {
       display: none;
@@ -81,6 +84,7 @@
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      z-index: 1001;
     }
 
     .language-dropdown a {
@@ -93,6 +97,7 @@
 
     .language-dropdown a:hover { background: rgba(255,255,255,0.05); }
 
+    /* MENU */
     .menu {
       max-width: 900px;
       margin: 0 auto;
@@ -128,44 +133,44 @@
       color: var(--accent);
       letter-spacing: 1px;
     }
+
     /* HEADER CATEGORIA CLICCABILE */
-.category-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start; /* sposta freccia leggermente più in alto */
-  cursor: pointer;
-  gap: 12px; /* distanza elegante tra titolo e freccia */
-}
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      cursor: pointer;
+      gap: 12px;
+    }
 
-.category-toggle {
-  font-size: 1.8rem;       /* più grande e visibile */
-  color: var(--accent);    /* dorato */
-  font-weight: bold;       /* enfatizza il simbolo */
-  margin-top: 4px;         /* leggero spostamento verso l’alto */
-  transition: transform 0.3s ease;
-}
+    .category-toggle {
+      font-size: 1.8rem;
+      color: var(--accent);
+      font-weight: bold;
+      margin-top: 4px;
+      transition: transform 0.3s ease;
+    }
 
-/* Rotazione quando aperta */
-.category.open .category-toggle {
-  transform: rotate(180deg);
-}
+    .category.open .category-toggle {
+      transform: rotate(180deg);
+    }
 
-/* Animazione apertura */
-.products {
-  overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
-}
+    /* ANIMAZIONE APERTURA */
+    .products {
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
 
-.category.closed .products {
-  max-height: 0;
-  opacity: 0;
-  padding-top: 0;
-}
+    .category.closed .products {
+      max-height: 0;
+      opacity: 0;
+      padding-top: 0;
+    }
 
-.category.open .products {
-  max-height: 500px;
-  opacity: 1;
-}
+    .category.open .products {
+      max-height: 500px;
+      opacity: 1;
+    }
 
     .products { list-style: none; }
 
@@ -181,9 +186,10 @@
     }
 
     .products li:last-child { border-bottom: none; }
-    .products li span:first-child::after { content: ""; margin: 0; }
+
     .products li span:last-child { color: var(--text-main); font-weight: 600; }
 
+    /* FOOTER */
     footer {
       border-top: 1px solid var(--border-soft);
       background: #111;
@@ -225,57 +231,66 @@
   </nav>
 
   <div class="menu">
+    <!-- Caffetteria -->
     <div class="category closed" id="caffetteria">
-  <div class="category-header" onclick="toggleCategory(this)">
-    <h2 id="caffetteria-title">Caffetteria</h2>
-    <span class="category-toggle">⌄</span>
-  </div>
+      <div class="category-header" onclick="toggleCategory(this)">
+        <h2 id="caffetteria-title">Caffetteria</h2>
+        <span class="category-toggle">⌄</span>
+      </div>
       <ul class="products" id="caffetteria-products">
         <li><span data-key="caffe">Caffè</span><span>€1.50</span></li>
         <li><span data-key="latte">Latte</span><span>€2.00</span></li>
         <li><span data-key="cappuccino">Cappuccino</span><span>€2.50</span></li>
       </ul>
     </div>
+
+    <!-- Cornetti -->
     <div class="category closed" id="cornetti">
-  <div class="category-header" onclick="toggleCategory(this)">
-    <h2 id="cornetti-title">Cornetti</h2>
-    <span class="category-toggle">⌄</span>
-  </div>
-  <ul class="products" id="cornetti-products">
-    <li><span data-key="cornetto_classico">Cornetto Classico</span><span>€1.00</span></li>
-    <li><span data-key="cornetto_cioccolato">Cornetto al Cioccolato</span><span>€1.50</span></li>
-  </ul>
-</div>
-   <div class="category closed" id="bevande">
-  <div class="category-header" onclick="toggleCategory(this)">
-    <h2 id="bevande-title">Bevande</h2>
-    <span class="category-toggle">⌄</span>
-  </div>
-  <ul class="products" id="bevande-products">
-    <li><span data-key="cocacola">Coca-Cola</span><span>€1.80</span></li>
-    <li><span data-key="acqua">Acqua</span><span>€1.00</span></li>
-  </ul>
-</div>
+      <div class="category-header" onclick="toggleCategory(this)">
+        <h2 id="cornetti-title">Cornetti</h2>
+        <span class="category-toggle">⌄</span>
+      </div>
+      <ul class="products" id="cornetti-products">
+        <li><span data-key="cornetto_classico">Cornetto Classico</span><span>€1.00</span></li>
+        <li><span data-key="cornetto_cioccolato">Cornetto al Cioccolato</span><span>€1.50</span></li>
+      </ul>
+    </div>
+
+    <!-- Bevande -->
+    <div class="category closed" id="bevande">
+      <div class="category-header" onclick="toggleCategory(this)">
+        <h2 id="bevande-title">Bevande</h2>
+        <span class="category-toggle">⌄</span>
+      </div>
+      <ul class="products" id="bevande-products">
+        <li><span data-key="cocacola">Coca-Cola</span><span>€1.80</span></li>
+        <li><span data-key="acqua">Acqua</span><span>€1.00</span></li>
+      </ul>
+    </div>
+
+    <!-- Alcolici -->
     <div class="category closed" id="alcolici">
-  <div class="category-header" onclick="toggleCategory(this)">
-    <h2 id="alcolici-title">Alcolici</h2>
-    <span class="category-toggle">⌄</span>
-  </div>
-  <ul class="products" id="alcolici-products">
-    <li><span data-key="birra">Birra</span><span>€3.50</span></li>
-    <li><span data-key="vino">Vino</span><span>€4.00</span></li>
-  </ul>
-</div>
+      <div class="category-header" onclick="toggleCategory(this)">
+        <h2 id="alcolici-title">Alcolici</h2>
+        <span class="category-toggle">⌄</span>
+      </div>
+      <ul class="products" id="alcolici-products">
+        <li><span data-key="birra">Birra</span><span>€3.50</span></li>
+        <li><span data-key="vino">Vino</span><span>€4.00</span></li>
+      </ul>
+    </div>
+
+    <!-- Rosticceria -->
     <div class="category closed" id="rosticceria">
-  <div class="category-header" onclick="toggleCategory(this)">
-    <h2 id="rosticceria-title">Rosticceria</h2>
-    <span class="category-toggle">⌄</span>
-  </div>
-  <ul class="products" id="rosticceria-products">
-    <li><span data-key="panzerotto">Panzerotto</span><span>€2.50</span></li>
-    <li><span data-key="arancino">Arancino</span><span>€2.00</span></li>
-  </ul>
-</div>
+      <div class="category-header" onclick="toggleCategory(this)">
+        <h2 id="rosticceria-title">Rosticceria</h2>
+        <span class="category-toggle">⌄</span>
+      </div>
+      <ul class="products" id="rosticceria-products">
+        <li><span data-key="panzerotto">Panzerotto</span><span>€2.50</span></li>
+        <li><span data-key="arancino">Arancino</span><span>€2.00</span></li>
+      </ul>
+    </div>
   </div>
 
   <footer>
@@ -284,9 +299,9 @@
   </footer>
 
   <script>
-    // Configurazione i18next con prodotti tradotti
+    // CONFIG LINGUE
     i18next.init({
-      lng: 'it',
+      lng: localStorage.getItem('selectedLanguage') || 'it',
       resources: {
         it:{translation:{
           "footer_text":"Contattaci: info@bar.com | Telefono: 123-456-7890",
@@ -336,6 +351,34 @@
       }
     });
 
+    function updateTexts(){
+      // Categorie
+      document.querySelector('#caffetteria-title').textContent = i18next.t('caffetteria');
+      document.querySelector('#cornetti-title').textContent = i18next.t('cornetti');
+      document.querySelector('#bevande-title').textContent = i18next.t('bevande');
+      document.querySelector('#alcolici-title').textContent = i18next.t('alcolici');
+      document.querySelector('#rosticceria-title').textContent = i18next.t('rosticceria');
+
+      // Prodotti
+      document.querySelectorAll('[data-key]').forEach(el=>{
+        const key = el.getAttribute('data-key');
+        el.textContent = i18next.t(key);
+      });
+
+      // Footer
+      document.querySelector('#footer-text').textContent = i18next.t('footer_text');
+
+      // Bandiera
+      const langSpan = document.querySelector('.language-selector span:first-child');
+      switch(i18next.language){
+        case 'en': langSpan.textContent='🇬🇧'; break;
+        case 'es': langSpan.textContent='🇪🇸'; break;
+        case 'fr': langSpan.textContent='🇫🇷'; break;
+        case 'de': langSpan.textContent='🇩🇪'; break;
+        default: langSpan.textContent='🇮🇹';
+      }
+    }
+
     const savedLang = localStorage.getItem('selectedLanguage');
     if(savedLang){ i18next.changeLanguage(savedLang, updateTexts); }
     else{ updateTexts(); }
@@ -352,45 +395,16 @@
       dropdown.style.display = dropdown.style.display==='block' ? 'none' : 'block';
     }
 
-    function updateTexts(){
-      // Aggiorna titoli categorie
-      document.querySelector('#caffetteria-title').textContent = i18next.t('caffetteria');
-      document.querySelector('#cornetti-title').textContent = i18next.t('cornetti');
-      document.querySelector('#bevande-title').textContent = i18next.t('bevande');
-      document.querySelector('#alcolici-title').textContent = i18next.t('alcolici');
-      document.querySelector('#rosticceria-title').textContent = i18next.t('rosticceria');
-
-      // Aggiorna prodotti
-      document.querySelectorAll('[data-key]').forEach(el=>{
-        const key = el.getAttribute('data-key');
-        el.textContent = i18next.t(key);
-      });
-
-      // Aggiorna footer
-      document.querySelector('#footer-text').textContent = i18next.t('footer_text');
-
-      // Aggiorna bandiera
-      const langSpan = document.querySelector('.language-selector span:first-child');
-      switch(i18next.language){
-        case 'en': langSpan.textContent='🇬🇧'; break;
-        case 'es': langSpan.textContent='🇪🇸'; break;
-        case 'fr': langSpan.textContent='🇫🇷'; break;
-        case 'de': langSpan.textContent='🇩🇪'; break;
-        default: langSpan.textContent='🇮🇹';
+    function toggleCategory(element){
+      const category = element.parentElement;
+      if(category.classList.contains('open')){
+        category.classList.remove('open');
+        category.classList.add('closed');
+      } else {
+        category.classList.remove('closed');
+        category.classList.add('open');
       }
     }
-      function toggleCategory(element){
-  const category = element.parentElement;
-
-  if(category.classList.contains('open')){
-    category.classList.remove('open');
-    category.classList.add('closed');
-  } else {
-    category.classList.remove('closed');
-    category.classList.add('open');
-  }
-}
-  
   </script>
 
 </body>
