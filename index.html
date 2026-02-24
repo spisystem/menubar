@@ -222,6 +222,27 @@ footer {
 
 @media (max-width:768px){
   .info-box { top:0px; }
+  #footer-text {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #c6a75e; /* dorato */
+  -webkit-touch-callout: none; /* blocca copia/azioni automatiche su iOS */
+  -webkit-user-select: none;
+  -webkit-text-decoration: none;
+  text-decoration: none; /* rimuove la sottolineatura */
+}
+
+#footer-text a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Blocca la formattazione automatica di numeri (iOS/Chrome) */
+footer, #footer-text {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
 }
 </style>
 </head>
@@ -277,7 +298,10 @@ footer {
 </div>
 
 <footer>
-  <p id="footer-text">SPI System di Giuseppe Spizzico | P. IVA: 08791580726</p>
+  <p id="footer-text">
+    SPI System di Giuseppe Spizzico |<br>
+    P. IVA: 08791580726
+  </p>
   <p>&copy; 2026 Demo Menù</p>
 </footer>
 
