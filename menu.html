@@ -236,34 +236,46 @@
         <li><span data-key="cappuccino">Cappuccino</span><span>€2.50</span></li>
       </ul>
     </div>
-    <div class="category" id="cornetti">
-      <h2 id="cornetti-title">Cornetti</h2>
-      <ul class="products" id="cornetti-products">
-        <li><span data-key="cornetto_classico">Cornetto Classico</span><span>€1.00</span></li>
-        <li><span data-key="cornetto_cioccolato">Cornetto al Cioccolato</span><span>€1.50</span></li>
-      </ul>
-    </div>
-    <div class="category" id="bevande">
-      <h2 id="bevande-title">Bevande</h2>
-      <ul class="products" id="bevande-products">
-        <li><span data-key="cocacola">Coca-Cola</span><span>€1.80</span></li>
-        <li><span data-key="acqua">Acqua</span><span>€1.00</span></li>
-      </ul>
-    </div>
-    <div class="category" id="alcolici">
-      <h2 id="alcolici-title">Alcolici</h2>
-      <ul class="products" id="alcolici-products">
-        <li><span data-key="birra">Birra</span><span>€3.50</span></li>
-        <li><span data-key="vino">Vino</span><span>€4.00</span></li>
-      </ul>
-    </div>
-    <div class="category" id="rosticceria">
-      <h2 id="rosticceria-title">Rosticceria</h2>
-      <ul class="products" id="rosticceria-products">
-        <li><span data-key="panzerotto">Panzerotto</span><span>€2.50</span></li>
-        <li><span data-key="arancino">Arancino</span><span>€2.00</span></li>
-      </ul>
-    </div>
+    <div class="category closed" id="cornetti">
+  <div class="category-header" onclick="toggleCategory(this)">
+    <h2 id="cornetti-title">Cornetti</h2>
+    <span class="category-toggle">⌄</span>
+  </div>
+  <ul class="products" id="cornetti-products">
+    <li><span data-key="cornetto_classico">Cornetto Classico</span><span>€1.00</span></li>
+    <li><span data-key="cornetto_cioccolato">Cornetto al Cioccolato</span><span>€1.50</span></li>
+  </ul>
+</div>
+   <div class="category closed" id="bevande">
+  <div class="category-header" onclick="toggleCategory(this)">
+    <h2 id="bevande-title">Bevande</h2>
+    <span class="category-toggle">⌄</span>
+  </div>
+  <ul class="products" id="bevande-products">
+    <li><span data-key="cocacola">Coca-Cola</span><span>€1.80</span></li>
+    <li><span data-key="acqua">Acqua</span><span>€1.00</span></li>
+  </ul>
+</div>
+    <div class="category closed" id="alcolici">
+  <div class="category-header" onclick="toggleCategory(this)">
+    <h2 id="alcolici-title">Alcolici</h2>
+    <span class="category-toggle">⌄</span>
+  </div>
+  <ul class="products" id="alcolici-products">
+    <li><span data-key="birra">Birra</span><span>€3.50</span></li>
+    <li><span data-key="vino">Vino</span><span>€4.00</span></li>
+  </ul>
+</div>
+    <div class="category closed" id="rosticceria">
+  <div class="category-header" onclick="toggleCategory(this)">
+    <h2 id="rosticceria-title">Rosticceria</h2>
+    <span class="category-toggle">⌄</span>
+  </div>
+  <ul class="products" id="rosticceria-products">
+    <li><span data-key="panzerotto">Panzerotto</span><span>€2.50</span></li>
+    <li><span data-key="arancino">Arancino</span><span>€2.00</span></li>
+  </ul>
+</div>
   </div>
 
   <footer>
