@@ -218,16 +218,14 @@
   margin: 0 20px 15px;
   opacity: 0.7;
 }
-    .products li {
+.products li {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* nome+prezzo a sinistra, input+button a destra */
   align-items: center;
   padding: 12px 0;
   font-size: 1rem;
   color: var(--text-soft);
   border-bottom: 1px solid var(--border-soft);
-  position: relative;
-  gap: 10px; /* spazio tra elementi */
 }
 
 .products li .product-controls {
@@ -235,29 +233,6 @@
   align-items: center;
   gap: 5px; /* spazio tra input e pulsante */
 }
-
-.products li input[type="number"] {
-  width: 50px;
-  text-align: center;
-  border-radius:4px;
-  border:1px solid rgba(255,255,255,0.2);
-  background:#111;
-  color:#fff;
-}
-
-.products li button.add-to-cart {
-  border-radius:4px;
-  transition:0.2s;
-  background:#c6a75e;
-  border:none;
-  padding:4px 8px;
-  cursor:pointer;
-  font-weight:bold;
-}
-.products li button.add-to-cart:hover{
-  background:#b59840;
-}
-
   </style>
 </head>
 <body>
@@ -314,11 +289,15 @@
       </div>
       <ul class="products" id="caffetteria-products">
         <li>
+  <div style="display:flex; gap:10px; align-items:center;">
     <span data-key="caffe">Caffè</span>
     <span>€1.50</span>
-    <input type="number" min="1" value="1" style="width:50px; margin-left:10px; text-align:center;">
-    <button class="add-to-cart" style="background:#c6a75e; border:none; padding:4px 8px; margin-left:5px; cursor:pointer; font-weight:bold;">+</button>
-  </li>
+  </div>
+  <div class="product-controls">
+    <input type="number" min="1" value="1">
+    <button class="add-to-cart">+</button>
+  </div>
+</li>
         <li><span data-key="latte">Latte</span><span>€2.00</span></li>
         <li><span data-key="cappuccino">Cappuccino</span><span>€2.50</span></li>
       </ul>
