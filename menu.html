@@ -245,7 +245,11 @@
         <span class="category-toggle">⌄</span>
       </div>
       <ul class="products" id="caffetteria-products">
-        <li><span data-key="caffe">Caffè</span><span>€1.50</span></li>
+        <li>
+    <span data-key="caffe">Caffè</span>
+    <span>€1.50</span>
+    <button class="add-to-cart" data-name="Caffè" data-price="1.50">+</button>
+  </li>
         <li><span data-key="latte">Latte</span><span>€2.00</span></li>
         <li><span data-key="cappuccino">Cappuccino</span><span>€2.50</span></li>
       </ul>
@@ -299,7 +303,17 @@
       </ul>
     </div>
   </div>
+<div id="cart" style="position:fixed; right:0; top:80px; width:300px; max-height:80vh; overflow:auto; background:#1a1a1a; color:#fff; padding:20px; border-left:1px solid rgba(255,255,255,0.1); display:none; z-index:999;">
+  <h3>Carrello</h3>
+  <ul id="cart-items" style="list-style:none; padding:0; margin:0;"></ul>
+  <p id="cart-total" style="margin-top:15px; font-weight:bold;">Totale: €0.00</p>
+  <button id="pay-online" style="margin-top:10px; background:#c6a75e; border:none; padding:10px; width:100%; font-weight:bold; cursor:pointer;">Paga Online</button>
+  <button id="pay-cash" style="margin-top:5px; background:#444; border:none; padding:10px; width:100%; font-weight:bold; cursor:pointer;">Pago in Cassa</button>
+  <button id="close-cart" style="margin-top:5px; background:#222; border:none; padding:5px; width:100%; cursor:pointer;">Chiudi</button>
+</div>
 
+<!-- Pulsante per aprire il carrello -->
+<button id="open-cart" style="position:fixed; right:20px; top:20px; background:#c6a75e; border:none; padding:12px 15px; cursor:pointer; font-weight:bold; z-index:1000;">Carrello</button>
 <footer>
   <hr class="footer-line">
   <p id="footer-text">
@@ -415,6 +429,56 @@
       }
     }
   </script>
+<script>
+const cart = [];
+const cartEl = document.getElementById('cart');
+const cartItemsEl = document.getElementById('cart-items');
+const cartTotalEl = document.getElementById('cart-total');
 
+document.querySelectorAll('.add-to-cart').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const name = btn.getAttribute('data-name');
+    const price = parseFloat(btn.getAttribute('data-price'));
+    
+    const existing = cart.find(item => item.name === name);
+    if(existing){ existing.qty += 1; }
+    else{ cart.push({name, price, qty:1}); }
+    
+    updateCart();
+  });
+});
+
+function updateCart(){
+  cartItemsEl.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, index) => {
+    total += item.price * item.qty;
+    const li = document.createElement('li');
+    li.style.marginBottom = "10px";
+    li.innerHTML = `${item.name} x ${item.qty} - €${(item.price*item.qty).toFixed(2)} 
+      <button onclick="removeItem(${index})" style="background:red;color:#fff;border:none;padding:2px 5px;margin-left:5px;cursor:pointer;">x</button>`;
+    cartItemsEl.appendChild(li);
+  });
+  cartTotalEl.textContent = `Totale: €${total.toFixed(2)}`;
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  updateCart();
+}
+
+// Apertura e chiusura carrello
+document.getElementById('open-cart').addEventListener('click',()=>{ cartEl.style.display='block'; });
+document.getElementById('close-cart').addEventListener('click',()=>{ cartEl.style.display='none'; });
+
+// Pulsanti pagamento
+document.getElementById('pay-online').addEventListener('click',()=>{
+  alert('Pagamento Online non ancora collegato al server.');
+});
+
+document.getElementById('pay-cash').addEventListener('click',()=>{
+  alert('Ordine registrato per pagamento in cassa.');
+});
+</script>
 </body>
 </html>
