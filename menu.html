@@ -324,7 +324,7 @@
     <span>€1.50</span>
   </div>
   <div class="product-controls">
-    <input type="number" min="1" value="1">
+    <input type="number" min="1" value="1" step="1" pattern="\d*">
     <button class="add-to-cart">+</button>
   </div>
 </li>
@@ -565,22 +565,40 @@ function changeQty(index, delta){
   if(cartItems[index].qty <= 0) cartItems.splice(index,1);
   updateCart();
 }
-  // Seleziona tutti i pulsanti + nei prodotti
+// Aggiungi evento a tutti i pulsanti +
 document.querySelectorAll('.add-to-cart').forEach(btn => {
-  btn.addEventListener('click', (e)=>{
+  btn.addEventListener('click', (e) => {
     const li = e.target.closest('li');
     const name = li.querySelector('[data-key]').textContent;
-    const priceText = li.querySelector('span:nth-child(2)').textContent;
+    const priceText = li.querySelector('.product-name span:nth-child(2)').textContent;
     const price = parseFloat(priceText.replace('€','').replace(',','.'));
+
     const qtyInput = li.querySelector('input[type="number"]');
-    const qty = qtyInput ? parseInt(qtyInput.value) : 1;
-    
-    // Aggiungi quantità al carrello
+    let qty = parseInt(qtyInput.value);
+
+    // Se qty non è un numero valido, usa 1
+    if (isNaN(qty) || qty < 1) qty = 1;
+
+    // Aggiungi al carrello
     const existing = cartItems.find(item => item.name === name);
-    if(existing){ existing.qty += qty; }
-    else{ cartItems.push({name: name, price: price, qty: qty}); }
+    if (existing) { 
+      existing.qty += qty; 
+    } else { 
+      cartItems.push({name: name, price: price, qty: qty}); 
+    }
 
     updateCart();
+
+    // Dopo aver aggiunto, resetta input a 1
+    qtyInput.value = 1;
+  });
+
+  // Previeni lettere o input non valido in tempo reale
+  const input = btn.previousElementSibling;
+  input.addEventListener('input', () => {
+    if (input.value === '' || isNaN(parseInt(input.value)) || parseInt(input.value) < 1) {
+      input.value = 1;
+    }
   });
 });
 </script>
