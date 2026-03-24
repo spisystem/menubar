@@ -9,7 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papTHrNp1+k3E7p3Zx9g7b0k/6Vv5d+qpx1xYlR2Vz3iUR2p3s6E9DZo2z+6oMk2hDdI2b1XJ1uV5M1w0ZsYwg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<!-- Stripe.js -->
+<script src="https://js.stripe.com/v3/"></script>
   <!-- Libreria i18next -->
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/i18next.min.js"></script>
 
@@ -599,6 +600,28 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
     // Rimuove lettere e simboli non numerici
     input.value = input.value.replace(/[^0-9]/g, '');
   });
+});
+</script>
+ <script>
+document.getElementById("pay-online").addEventListener("click", () => {
+
+if(cartItems.length === 0){
+alert("Il carrello è vuoto");
+return;
+}
+
+let total = 0;
+
+cartItems.forEach(item => {
+total += item.price * item.qty;
+});
+
+// tuo link Stripe
+let stripeLink = "https://buy.stripe.com/test_00w7sLd9YfnX8jQ3XS3Je00";
+
+// passa totale a Stripe
+window.location.href = stripeLink + "?prefilled_amount=" + Math.round(total * 100);
+
 });
 </script>
 </body>
