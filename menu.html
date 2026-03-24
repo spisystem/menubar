@@ -576,7 +576,7 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
     const qtyInput = li.querySelector('input[type="number"]');
     let qty = parseInt(qtyInput.value);
 
-    // Se qty non è un numero valido, usa 1
+    // Se qty non è valido o minore di 1, imposta a 1
     if (isNaN(qty) || qty < 1) qty = 1;
 
     // Aggiungi al carrello
@@ -589,16 +589,15 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
 
     updateCart();
 
-    // Dopo aver aggiunto, resetta input a 1
+    // Reset input a 1 solo DOPO aver aggiunto
     qtyInput.value = 1;
   });
 
-  // Previeni lettere o input non valido in tempo reale
+  // Blocca solo valori non numerici in tempo reale, ma lascia digitare numeri
   const input = btn.previousElementSibling;
   input.addEventListener('input', () => {
-    if (input.value === '' || isNaN(parseInt(input.value)) || parseInt(input.value) < 1) {
-      input.value = 1;
-    }
+    // Rimuove lettere e simboli non numerici
+    input.value = input.value.replace(/[^0-9]/g, '');
   });
 });
 </script>
