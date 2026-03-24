@@ -235,6 +235,20 @@
         <a href="#" onclick="changeLanguage(event, 'de')">🇩🇪</a>
       </div>
     </div>
+    <div id="cart-icon" style="position:fixed; top:20px; right:20px; cursor:pointer; z-index:1001;">
+  <i class="fas fa-shopping-cart" style="font-size:2rem; color:#c6a75e;"></i>
+  <span id="cart-count" style="
+      background:#c6a75e;
+      color:#000;
+      font-weight:bold;
+      border-radius:50%;
+      padding:2px 7px;
+      font-size:0.9rem;
+      position:absolute;
+      top:-8px;
+      right:-8px;
+  ">0</span>
+</div>
   </nav>
 
   <div class="menu">
@@ -307,31 +321,27 @@
 <div id="cart" style="
     position:fixed;
     right:0;
-    top:80px;
-    width:320px;
+    top:60px;
+    width:300px;
     max-height:80vh;
-    overflow:auto;
+    overflow-y:auto;
     background:#1a1a1a;
     color:#fff;
     padding:20px;
     border-left:1px solid rgba(255,255,255,0.1);
     display:none;
-    z-index:999;
+    z-index:1000;
+    border-radius:8px 0 0 8px;
     font-family:'Poppins', sans-serif;
 ">
-  <h3 style="margin-bottom:15px; color:#c6a75e;">Carrello</h3>
-
+  <h3 style="color:#c6a75e; margin-bottom:15px;">Il tuo Carrello</h3>
   <ul id="cart-items" style="list-style:none; padding:0; margin:0;"></ul>
-
-  <p id="cart-total" style="margin-top:15px; font-weight:bold; font-size:1.1rem;">Totale: €0.00</p>
-
-  <div style="display:flex; flex-direction:column; gap:8px; margin-top:15px;">
-    <button id="pay-online" style="background:#c6a75e; border:none; padding:10px; width:100%; font-weight:bold; cursor:pointer;">Paga Online</button>
-    <button id="pay-cash" style="background:#444; border:none; padding:10px; width:100%; font-weight:bold; cursor:pointer;">Pago in Cassa</button>
-    <button id="close-cart" style="background:#222; border:none; padding:8px; width:100%; cursor:pointer;">Chiudi</button>
-  </div>
+  <p id="cart-total" style="margin-top:15px; font-weight:bold;">Totale: €0.00</p>
+  <button id="pay-online" style="width:100%; padding:10px; margin-top:10px; background:#c6a75e; border:none; cursor:pointer; font-weight:bold;">Paga Online</button>
+  <button id="pay-cash" style="width:100%; padding:10px; margin-top:5px; background:#444; border:none; cursor:pointer; font-weight:bold;">Pago in Cassa</button>
 </div>
-<!-- Pulsante per aprire il carrello -->
+</div>
+<!-- Pulsante per apriret il carrello -->
 <button id="open-cart" style="position:fixed; right:20px; top:20px; background:#c6a75e; border:none; padding:12px 15px; cursor:pointer; font-weight:bold; z-index:1000;">Carrello</button>
 <footer>
   <hr class="footer-line">
@@ -449,55 +459,50 @@
     }
   </script>
 <script>
-const cart = [];
-const cartEl = document.getElementById('cart');
-const cartItemsEl = document.getElementById('cart-items');
-const cartTotalEl = document.getElementById('cart-total');
+const cartIcon = document.getElementById('cart-icon');
+const cart = document.getElementById('cart');
+const cartCount = document.getElementById('cart-count');
+let cartItems = [];
 
-document.querySelectorAll('.add-to-cart').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const name = btn.getAttribute('data-name');
-    const price = parseFloat(btn.getAttribute('data-price'));
-    
-    const existing = cart.find(item => item.name === name);
-    if(existing){ existing.qty += 1; }
-    else{ cart.push({name, price, qty:1}); }
-    
-    updateCart();
-  });
+cartIcon.addEventListener('click', () => {
+  cart.style.display = cart.style.display === 'block' ? 'none' : 'block';
 });
 
-function updateCart(){
-  cartItemsEl.innerHTML = '';
-  let total = 0;
-  cart.forEach((item, index) => {
-    total += item.price * item.qty;
-    const li = document.createElement('li');
-    li.style.marginBottom = "10px";
-    li.innerHTML = `${item.name} x ${item.qty} - €${(item.price*item.qty).toFixed(2)} 
-      <button onclick="removeItem(${index})" style="background:red;color:#fff;border:none;padding:2px 5px;margin-left:5px;cursor:pointer;">x</button>`;
-    cartItemsEl.appendChild(li);
-  });
-  cartTotalEl.textContent = `Totale: €${total.toFixed(2)}`;
-}
-
-function removeItem(index){
-  cart.splice(index,1);
+function addToCart(productName, price){
+  const existing = cartItems.find(item => item.name === productName);
+  if(existing){ existing.qty++; }
+  else{ cartItems.push({name: productName, price: price, qty:1}); }
   updateCart();
 }
 
-// Apertura e chiusura carrello
-document.getElementById('open-cart').addEventListener('click',()=>{ cartEl.style.display='block'; });
-document.getElementById('close-cart').addEventListener('click',()=>{ cartEl.style.display='none'; });
+function updateCart(){
+  const list = document.getElementById('cart-items');
+  list.innerHTML = '';
+  let totalQty = 0;
+  let totalPrice = 0;
+  cartItems.forEach((item, i) => {
+    totalQty += item.qty;
+    totalPrice += item.qty * item.price;
+    list.innerHTML += `
+      <li style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span>${item.name}</span>
+        <div>
+          <button onclick="changeQty(${i},-1)">-</button>
+          <span style="margin:0 5px">${item.qty}</span>
+          <button onclick="changeQty(${i},1)">+</button>
+          <span style="margin-left:10px;">€${(item.price*item.qty).toFixed(2)}</span>
+        </div>
+      </li>`;
+  });
+  cartCount.textContent = totalQty;
+  document.getElementById('cart-total').textContent = `Totale: €${totalPrice.toFixed(2)}`;
+}
 
-// Pulsanti pagamento
-document.getElementById('pay-online').addEventListener('click',()=>{
-  alert('Pagamento Online non ancora collegato al server.');
-});
-
-document.getElementById('pay-cash').addEventListener('click',()=>{
-  alert('Ordine registrato per pagamento in cassa.');
-});
+function changeQty(index, delta){
+  cartItems[index].qty += delta;
+  if(cartItems[index].qty <= 0) cartItems.splice(index,1);
+  updateCart();
+}
 </script>
 </body>
 </html>
