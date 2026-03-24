@@ -216,6 +216,20 @@
   margin: 0 20px 15px;
   opacity: 0.7;
 }
+    .products li input[type="number"]{
+  border-radius:4px;
+  border:1px solid rgba(255,255,255,0.2);
+  background:#111;
+  color:#fff;
+}
+
+.products li button.add-to-cart{
+  border-radius:4px;
+  transition:0.2s;
+}
+.products li button.add-to-cart:hover{
+  background:#b59840;
+}
   </style>
 </head>
 <body>
@@ -341,8 +355,7 @@
   <button id="pay-cash" style="width:100%; padding:10px; margin-top:5px; background:#444; border:none; cursor:pointer; font-weight:bold;">Pago in Cassa</button>
 </div>
 </div>
-<!-- Pulsante per apriret il carrello -->
-<button id="open-cart" style="position:fixed; right:20px; top:20px; background:#c6a75e; border:none; padding:12px 15px; cursor:pointer; font-weight:bold; z-index:1000;">Carrello</button>
+
 <footer>
   <hr class="footer-line">
   <p id="footer-text">
@@ -503,6 +516,24 @@ function changeQty(index, delta){
   if(cartItems[index].qty <= 0) cartItems.splice(index,1);
   updateCart();
 }
+  // Seleziona tutti i pulsanti + nei prodotti
+document.querySelectorAll('.add-to-cart').forEach(btn => {
+  btn.addEventListener('click', (e)=>{
+    const li = e.target.closest('li');
+    const name = li.querySelector('[data-key]').textContent;
+    const priceText = li.querySelector('span:nth-child(2)').textContent;
+    const price = parseFloat(priceText.replace('€','').replace(',','.'));
+    const qtyInput = li.querySelector('input[type="number"]');
+    const qty = qtyInput ? parseInt(qtyInput.value) : 1;
+    
+    // Aggiungi quantità al carrello
+    const existing = cartItems.find(item => item.name === name);
+    if(existing){ existing.qty += qty; }
+    else{ cartItems.push({name: name, price: price, qty: qty}); }
+
+    updateCart();
+  });
+});
 </script>
 </body>
 </html>
