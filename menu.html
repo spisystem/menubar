@@ -220,18 +220,48 @@
 }
 .products li {
   display: flex;
-  justify-content: space-between; /* nome+prezzo a sinistra, input+button a destra */
-  align-items: center;
+  justify-content: space-between; /* divide nome+prezzo a sinistra e controlli a destra */
+  align-items: center; /* allinea tutto sulla stessa riga */
   padding: 12px 0;
   font-size: 1rem;
   color: var(--text-soft);
   border-bottom: 1px solid var(--border-soft);
+  gap: 10px;
+}
+
+.products li .product-name {
+  display: flex;
+  gap: 10px; /* spazio tra nome e prezzo */
+  align-items: center;
 }
 
 .products li .product-controls {
   display: flex;
-  align-items: center;
   gap: 5px; /* spazio tra input e pulsante */
+  align-items: center;
+}
+
+.products li input[type="number"] {
+  width: 50px;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: #111;
+  color: #fff;
+}
+
+.products li button.add-to-cart {
+  border-radius: 4px;
+  transition: 0.2s;
+  background: #c6a75e;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.products li button.add-to-cart:hover {
+  background: #b59840;
 }
   </style>
 </head>
@@ -289,7 +319,7 @@
       </div>
       <ul class="products" id="caffetteria-products">
         <li>
-  <div style="display:flex; gap:10px; align-items:center;">
+  <div class="product-name">
     <span data-key="caffe">Caffè</span>
     <span>€1.50</span>
   </div>
